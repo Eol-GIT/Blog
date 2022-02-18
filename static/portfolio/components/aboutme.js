@@ -11,7 +11,7 @@ Vue.component('about-me', {
                         <button class="btn btn-outline-primary">{{i18next.t("downloadResumeText")}}</button> 
                     </a> 
                 </div>
-                <div class="col-md text-center my-3"> <img src="static/images/profile-img.webp" class="about-me-image"></div>
+                <div class="col-md text-center my-3"> <img src="static/portfolio/images/profile-img.webp" class="about-me-image"></div>
             </div>
         </div>
     `

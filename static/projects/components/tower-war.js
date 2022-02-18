@@ -27,11 +27,11 @@ Vue.component('tower-war', {
         <span class="fas fa-moon position-fixed text-warning" onclick="darkModeToggle()" id="moon"></span>
         <div class="flag-menu-parent" tab-index="0" v-if="consent">
             <div class="flag-active">
-                <img :src="'/static/images/' + activeLn + '.png'" data-toggle="tooltip" data-placement="left" 
+                <img :src="'/static/portfolio/images/' + activeLn + '.png'" data-toggle="tooltip" data-placement="left" 
                     :title="i18next.t(activeLn + 'Language')">
             </div>
             <div class="flag-menu">
-                <img v-for="ln in languages" :src="'/static/images/' + ln + '.png'" data-toggle="tooltip" data-placement="left" 
+                <img v-for="ln in languages" :src="'/static/portfolio/images/' + ln + '.png'" data-toggle="tooltip" data-placement="left" 
                     :title="i18next.t(ln + 'Language')" @click="eventBus.$emit('changeLanguage', ln)">  
             </div>
         </div>
@@ -45,19 +45,19 @@ Vue.component('tower-war', {
         </ol>
         <div class="carousel-inner container">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="../static/images/projects/tower-1.png" alt="First slide">
+            <img class="d-block w-100" src="../static/portfolio/images/projects/tower-1.png" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../static/images/projects/tower-2.png" alt="First slide">
+            <img class="d-block w-100" src="../static/portfolio/images/projects/tower-2.png" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../static/images/projects/tower-3.png" alt="Second slide">
+            <img class="d-block w-100" src="../static/portfolio/images/projects/tower-3.png" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../static/images/projects/tower-4.png" alt="Third slide">
+            <img class="d-block w-100" src="../static/portfolio/images/projects/tower-4.png" alt="Third slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="../static/images/projects/tower-5.png" alt="Third slide">
+            <img class="d-block w-100" src="../static/portfolio/images/projects/tower-5.png" alt="Third slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -83,15 +83,15 @@ Vue.component('tower-war', {
           <p class="text-primary">{{i18next.t("otherProjectsText")}}:</p>
         </div>
         <div class="imageContainer mt-5">
-          <div class="project-image project-img-1" style="background-image: url('../static/images/movie-freaks.webp')"
+          <div class="project-image project-img-1" style="background-image: url('../static/portfolio/images/movie-freaks.webp')"
             onclick="projectRedirect('/projects/movie-freaks')">
           </div>
 
-          <div class="project-image project-img-2" style="background-image: url('../static/images/sorting-visualizer1.webp')"
+          <div class="project-image project-img-2" style="background-image: url('../static/portfolio/images/sorting-visualizer1.webp')"
             onclick="projectRedirect('/projects/sorting-visualizer')">
           </div>
 
-          <div class="project-image project-img-3" style="background-image: url('../static/images/cyber-city.webp')"
+          <div class="project-image project-img-3" style="background-image: url('../static/portfolio/images/cyber-city.webp')"
             onclick="projectRedirect('/projects/cyber-city')">
           </div>
         </div>
