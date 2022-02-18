@@ -1,6 +1,4 @@
-from nis import cat
-from unicodedata import category
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 from flask_cors import CORS
@@ -37,7 +35,7 @@ class Blog(db.Model):
     date_posted = db.Column(db.DateTime)
 
 
-def createAuthorsList():
+def getAuthorsList():
     authors_list = []
     for i in Author.query.all():
         author_dict = {
@@ -50,17 +48,43 @@ def createAuthorsList():
         authors_list.append(author_dict)
     return authors_list
 
-def createEntresList():
+def getEntriesList():
     entries_list = []
     for i in Entry.query.all():
         entries_dict = {
             "id": i.id,
             "title": i.title,
-            "img": i.img,
             "body": i.body,
+            "img": i.img,
         }
         entries_list.append(entries_dict)
     return entries_list
+
+def getBlogsList():
+    blogs_list = []
+    for i in Blog.query.all():
+        blogs_dict = {
+            "id": i.id,
+            "title": i.title,
+            "category": i.category,
+            "author": {
+                "id": i.author.id,
+                "firstName": i.author.first_name,
+                "lastName": i.author.last_name,
+                "body": i.author.body,
+                "img": i.author.img,
+            },
+            "entry": {
+                "id": i.entry.id,
+                "title": i.entry.title,
+                "body": i.entry.body,
+                "img": i.entry.img,
+            },
+            "body": i.body,
+            "date": i.date_posted,
+        }
+        blogs_list.append(blogs_dict)
+    return blogs_list
 
 @app.route('/')
 def index():
@@ -93,7 +117,7 @@ def createblog():
 
         db.session.add(post)
         db.session.commit()
-    return render_template('admin/create-blog.html', entries=createEntresList(), authors=createAuthorsList(), blogs=Blog.query.all())
+    return render_template('admin/create-blog.html', entries=getEntriesList(), authors=getAuthorsList(), blogs=Blog.query.all())
 
 @app.route('/admin/create-entry', methods=["POST", "GET"])
 def createentry():
@@ -121,6 +145,13 @@ def createauthor():
         db.session.add(author)
         db.session.commit()
     return render_template('admin/create-author.html')
+
+"""
+================================ REST ENDPOINTS =============================
+"""
+@app.route('/rest/s1/blogs', methods=["GET"])
+def getblogs():
+    return jsonify(getBlogsList())
 
 if __name__ == '__main__':
     db.create_all()
