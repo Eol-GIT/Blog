@@ -1,0 +1,8 @@
+{% extends 'admin/base.html' %}
+{% block title %}Admin Panel | Create Author{% endblock %}
+{% block body %}
+<div id="create-author">
+    <create-author></create-author>
+</div>
+<script src="{{ url_for('static', filename='admin/components/create-author.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'admin/base.html' %}
+{% block title %}Admin Panel | Create Blog{% endblock %}
+{% block body %}
+<div id="create-blog">
+    <create-blog 
+        v-bind:authors="{{ authors }}" 
+        v-bind:entries="{{ entries }}">
+    </create-blog>
+</div>
+<script src="{{ url_for('static', filename='admin/components/create-blog.js') }}"></script>
+{% endblock %}

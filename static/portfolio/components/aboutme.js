@@ -7,7 +7,7 @@ Vue.component('about-me', {
                 <div class="col-md">
                     <h2 class="text-primary">{{i18next.t("aSoftwareDeveloperText")}}</h2>
                     <p> {{i18next.t("aboutMeIntro")}} <a href="#contact">{{i18next.t("belowText")}}!</a></p> 
-                    <a href="static/images/cv.pdf" download="cv"> 
+                    <a href="static/portfolio/images/cv.pdf" download="cv"> 
                         <button class="btn btn-outline-primary">{{i18next.t("downloadResumeText")}}</button> 
                     </a> 
                 </div>

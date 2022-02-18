@@ -1,0 +1,38 @@
+{% extends 'admin/base.html' %}
+{% block title %}Admin Panel{% endblock %}
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+    <h1 class="text-center">Admin Panel</h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md">
+            <a href="/admin/create-blog">
+                <div class="card text-white bg-primary">
+                    <div class="card-body py-5 text-center">
+                        <h2 class="card-title">Create Blog</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md">
+            <a href="/admin/create-entry">
+                <div class="card text-white bg-primary">
+                    <div class="card-body py-5 text-center">
+                        <h2 class="card-title">Create Entry</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md">
+            <a href="/admin/create-author">
+                <div class="card text-white bg-primary">
+                    <div class="card-body py-5 text-center">
+                        <h2 class="card-title">Create Author</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

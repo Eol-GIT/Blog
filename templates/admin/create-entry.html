@@ -1,0 +1,8 @@
+{% extends 'admin/base.html' %}
+{% block title %}Admin Panel | Create Entry{% endblock %}
+{% block body %}
+<div id="create-entry">
+    <create-entry></create-entry>
+</div>
+<script src="{{ url_for('static', filename='admin/components/create-entry.js') }}"></script>
+{% endblock %}
