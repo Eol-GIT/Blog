@@ -1,0 +1,11 @@
+{% extends 'projects/base.html' %}
+{% block title %}Eol Nuha | Sorting Visualizer{% endblock %}
+{% block body %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='projects/assets/sorting-style.css') }}">
+    <script src="{{ url_for('static', filename='projects/assets/helper-functions.js') }}"></script>
+    <script src="{{ url_for('static', filename='projects/sorting-algorithms/merge-sort.js') }}"></script>
+    <div id="sorting">
+        <sorting></sorting>
+    </div>
+    <script src="{{ url_for('static', filename='projects/components/sorting.js') }}"></script>
+{% endblock %}

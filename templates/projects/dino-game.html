@@ -1,0 +1,8 @@
+{% extends 'projects/base.html' %}
+{% block title %}Eol Nuha | Dino Game{% endblock %}
+{% block body %}
+    <div id="dino">
+        <dino-game></dino-game>
+    </div>
+    <script src="{{ url_for('static', filename='projects/components/dino-game.js') }}"></script>
+{% endblock %}

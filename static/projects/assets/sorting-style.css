@@ -1,0 +1,29 @@
+.array-bar {
+    width: 1vw;
+    border-radius: 4px 4px 0px 0px;
+    display: inline-block;
+    margin: 0 1px;
+    background-color: rgba(8, 153, 255, 0.5);
+}
+.sorting-box-shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.bars-icon {
+    cursor: pointer;
+    border-radius: 50%;
+}
+.bars-icon:hover{background-color: rgba(0,0,0,.05) }
+.sidebar{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    background-color: #ffffff;
+    padding: 10px;
+    transition-duration: 0.3s;
+}
+.sort-description{display: none;}
+@media screen and (min-width: 800px) {
+    .sidebar {width: 40%;}
+    .sort-description{display: block;}
+}

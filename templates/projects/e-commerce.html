@@ -1,0 +1,8 @@
+{% extends 'projects/base.html' %}
+{% block title %}Eol Nuha | E-Commerce{% endblock %}
+{% block body %}
+    <div id="e-commerce">
+        <e-commerce></e-commerce>
+    </div>
+    <script src="{{ url_for('static', filename='projects/components/e-commerce.js') }}"></script>
+{% endblock %}

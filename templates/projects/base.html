@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="description" content="This is the official Portfolio of Eol Nuha - a software developer at Pythys Software" />
+  <meta name="keywords" content="Portfolio, Eol Nuha, eol, Software Developer, Pythys Software, eolnuha, Python Developer, Frontend Developer" />
+  <meta name="robots" content="index, follow">
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+  <meta name="google-site-verification" content="frJ1iTP8J6nnDrllgLvnmDvupEWQRDwI4sC5nfTHemE" />
+  <link rel="shortcut icon" type="image/png" href="../static/images/headerimg.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='projects/assets/darkmode.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='projects/assets/style.css') }}">
+  <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/57d9fea0149e9b4ee5bc58a04291d308.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script> const eventBus = new Vue();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/20.2.1/i18next.js" integrity="sha512-Vd45UNjQs/FRSXodib15vNQkRv5hYH3FN/ocM/vu9L7Z3w+EIHy2cFpR25z7pYK9AZLNdLEl2DrhWObRlsX6UQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="{{ url_for('static', filename='projects/assets/localization.js') }}"></script>
+</head>
+<body id="body">
+    <div id="cookie-banner">
+        <cookie-banner></cookie-banner>
+    </div>
+    <script src="{{ url_for('static', filename='js/helper-functions.js') }}"></script>
+    <script src="{{ url_for('static', filename='components/cookie-banner.js') }}"></script>
+    {% block body %}{% endblock %}
+    <script src="{{ url_for('static', filename='projects/assets/darkmode.js') }}"></script>
+</body>
+</html>

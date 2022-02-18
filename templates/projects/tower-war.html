@@ -1,0 +1,8 @@
+{% extends 'projects/base.html' %}
+{% block title %}Eol Nuha | Tower War Game{% endblock %}
+{% block body %}
+    <div id="tower">
+        <tower-war></tower-war>
+    </div>
+    <script src="{{ url_for('static', filename='projects/components/tower-war.js') }}"></script>
+{% endblock %}

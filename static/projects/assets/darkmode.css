@@ -1,0 +1,14 @@
+li {background-color: #007bff!important;}
+.active {background-color: blue!important;}
+.carousel-item {background-color: transparent!important;}
+.fa {font-size: 40px; opacity: 1;}
+.fa-sun, .fa-moon {bottom: 30px; left: 30px; z-index: 1001; font-size: 40px; cursor: pointer}
+
+/*============================= DARK MODE =========================*/
+.dark-mode-body{background-color: rgb(20, 20, 20) !important;}
+.dark-mode-body > * {color: white !important;}
+.dark-mode-body .jumbotron {background-color: #000 !important;}
+.dark-mode-body .list-group-item {border: 1px solid white;}
+.dark-mode-body .sorting-box-shadow {box-shadow: 0 .5rem 1rem rgba(255, 255, 255, 0.288) !important;}
+.dark-mode-body .sidebar {background-color: rgb(20, 20, 20) !important; box-shadow: 0 .5rem 1rem rgba(255, 255, 255, 0.288) !important;}
+.dark-mode-body .text-warning {color: #ffc107!important}
