@@ -11,7 +11,6 @@ Vue.component('create-blog', {
     },
     methods: {
         createBlog(){
-            console.log(this.title, this.category, this.body)
             axios.post('/admin/create-blog', {
                 title: this.title,
                 category: this.category,
@@ -25,6 +24,10 @@ Vue.component('create-blog', {
                 this.author = '';
                 this.entry = '';
                 this.body = '';
+                toastr.success("Blog created successfully!", "Success!")
+            })
+            .catch(err => {
+                toastr.error(err, "Error!")
             })
         }
     },

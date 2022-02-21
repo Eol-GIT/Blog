@@ -8,7 +8,6 @@ Vue.component('create-entry', {
     },
     methods: {
         createEntry(){
-            console.log(this.title, this.image, this.body)
             axios.post('/admin/create-entry', {
                 title: this.title,
                 img: this.image,
@@ -18,6 +17,10 @@ Vue.component('create-entry', {
                 this.title = '';
                 this.image = '';
                 this.body = '';
+                toastr.success("Entry created successfully!", "Success!")
+            })
+            .catch(err => {
+                toastr.error(err, "Error!")
             })
         }
     },

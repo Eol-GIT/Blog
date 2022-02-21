@@ -2,6 +2,8 @@ from flask import Flask, jsonify, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 from flask_cors import CORS
+import helpers
+from slugify import slugify
 
 app = Flask(__name__)
 CORS(app)
@@ -12,79 +14,34 @@ db = SQLAlchemy(app)
 
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50))
+    title = db.Column(db.String(200))
+    slug = db.Column(db.String(200))
     body = db.Column(db.Text)
-    img = db.Column(db.String(50))
+    img = db.Column(db.String(200), default="blog/assets/images/default-blog.png")
     blogs = db.relationship('Blog', backref='entry', lazy=True)
+    __table_args__ = (db.UniqueConstraint('slug',),)
 
 class Author(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50))
-    last_name = db.Column(db.String(50))
+    first_name = db.Column(db.String(200))
+    last_name = db.Column(db.String(200))
+    slug = db.Column(db.String(200))
     body = db.Column(db.Text)
-    img = db.Column(db.String(50))
+    img = db.Column(db.String(200), default="blog/assets/images/default-author.png")
     blogs = db.relationship('Blog', backref='author', lazy=True)
+    __table_args__ = (db.UniqueConstraint('slug',),)
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50))
-    category = db.Column(db.String(50))
+    title = db.Column(db.String(200))
+    slug = db.Column(db.String(200))
+    category = db.Column(db.String(200))
     author_id = db.Column(db.Integer, db.ForeignKey('author.id'), nullable=False)
     entry_id = db.Column(db.Integer, db.ForeignKey('entry.id'), nullable=False)
     body = db.Column(db.Text)
-    date_posted = db.Column(db.DateTime)
+    date_posted = db.Column(db.DateTime, default=datetime.now())
+    __table_args__ = (db.UniqueConstraint('slug',),)
 
-
-def getAuthorsList():
-    authors_list = []
-    for i in Author.query.all():
-        author_dict = {
-            "id": i.id,
-            "firstName": i.first_name,
-            "lastName": i.last_name,
-            "body": i.body,
-            "img": i.img,
-        }
-        authors_list.append(author_dict)
-    return authors_list
-
-def getEntriesList():
-    entries_list = []
-    for i in Entry.query.all():
-        entries_dict = {
-            "id": i.id,
-            "title": i.title,
-            "body": i.body,
-            "img": i.img,
-        }
-        entries_list.append(entries_dict)
-    return entries_list
-
-def getBlogsList():
-    blogs_list = []
-    for i in Blog.query.all():
-        blogs_dict = {
-            "id": i.id,
-            "title": i.title,
-            "category": i.category,
-            "author": {
-                "id": i.author.id,
-                "firstName": i.author.first_name,
-                "lastName": i.author.last_name,
-                "body": i.author.body,
-                "img": i.author.img,
-            },
-            "entry": {
-                "id": i.entry.id,
-                "title": i.entry.title,
-                "body": i.entry.body,
-                "img": i.entry.img,
-            },
-            "body": i.body,
-            "date": i.date_posted,
-        }
-        blogs_list.append(blogs_dict)
-    return blogs_list
 
 @app.route('/')
 def index():
@@ -113,11 +70,14 @@ def createblog():
         query_author = Author.query.filter_by(id=author).one()
         query_entry = Entry.query.filter_by(id=entry).one()
 
-        post = Blog(title=title, category=category, author=query_author, entry=query_entry, body=body, date_posted=datetime.now())
+        post = Blog(title=title, slug=slugify(title), category=category.lower(), author=query_author, entry=query_entry, body=body)
 
         db.session.add(post)
         db.session.commit()
-    return render_template('admin/create-blog.html', entries=getEntriesList(), authors=getAuthorsList(), blogs=Blog.query.all())
+    return render_template('admin/create-blog.html', 
+            entries=helpers.getEntriesList(Entry.query.all()), 
+            authors=helpers.getAuthorsList(Author.query.all()), 
+            blogs=Blog.query.all())
 
 @app.route('/admin/create-entry', methods=["POST", "GET"])
 def createentry():
@@ -126,7 +86,7 @@ def createentry():
         img = request.json["img"]
         body = request.json["body"]
 
-        entry = Entry(title=title, img=img, body=body)
+        entry = Entry(title=title, slug=slugify(title), img=img, body=body)
 
         db.session.add(entry)
         db.session.commit()
@@ -140,7 +100,7 @@ def createauthor():
         img = request.json["img"]
         body = request.json["body"]
 
-        author = Author(first_name=first_name, last_name=last_name, img=img, body=body)
+        author = Author(first_name=first_name, last_name=last_name, slug=slugify(first_name + " " + last_name), img=img, body=body)
 
         db.session.add(author)
         db.session.commit()
@@ -151,7 +111,66 @@ def createauthor():
 """
 @app.route('/rest/s1/blogs', methods=["GET"])
 def getblogs():
-    return jsonify(getBlogsList())
+    if request.args.get('category'):
+        query = Blog.query.filter_by(category=request.args.get('category'))
+    else:
+        query = Blog.query
+    return jsonify(helpers.getBlogsList(query.all()))
+
+@app.route('/rest/s1/blogs/<int:id>', methods=["GET"])
+def getBlogDetails(id):
+    return jsonify(
+        helpers.getBlogsList(
+            Blog.query.filter_by(id=id).all()
+            )[0]
+        )
+
+@app.route('/rest/s1/entries', methods=["GET"])
+def getEntries():
+    return jsonify(
+        helpers.getEntriesList(Entry.query.all())
+        )
+
+@app.route('/rest/s1/entries/<string:slug>', methods=["GET"])
+def getEntryDetails(slug):
+    return jsonify(
+        helpers.getEntriesList(
+            Entry.query.filter_by(slug=slug).all()
+            )[0]
+        )
+
+@app.route('/rest/s1/entries/<string:slug>/blogs', methods=["GET"])
+def getEntryBlogs(slug):
+    return jsonify(
+        helpers.getBlogsList(
+            Blog.query.filter(Blog.entry.has(slug=slug)).all()
+            )
+        )
+
+@app.route('/rest/s1/authors', methods=["GET"])
+def getAuthors():
+    return jsonify(
+        helpers.getAuthorsList(
+            Author.query.all()
+            )
+        )
+
+@app.route('/rest/s1/authors/<string:slug>', methods=["GET"])
+def getAuthorDetails(slug):
+    return jsonify(
+        helpers.getAuthorsList(
+            Author.query.filter_by(slug=slug).all()
+            )[0]
+        )
+
+@app.route('/rest/s1/authors/<string:slug>/blogs', methods=["GET"])
+def getAuthorBlogs(slug):
+    return jsonify(
+        helpers.getBlogsList(
+            Blog.query.filter(Blog.author.has(slug=slug)).all()
+            )
+        )
+
 
 if __name__ == '__main__':
     db.create_all()

@@ -9,7 +9,6 @@ Vue.component('create-author', {
     },
     methods: {
         createAuthor(){
-            console.log(this.firstName, this.lastName, this.image, this.body)
             axios.post('/admin/create-author', {
                 firstName: this.firstName,
                 lastName: this.lastName,
@@ -21,6 +20,10 @@ Vue.component('create-author', {
                 this.lastName = '';
                 this.image = '';
                 this.body = '';
+                toastr.success("Author created successfully!", "Success!")
+            })
+            .catch(err => {
+                toastr.error(err, "Error!")
             })
         }
     },
@@ -40,8 +43,8 @@ Vue.component('create-author', {
                 <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" v-model="lastName">
             </div>
             <div class="form-group">
-                <label>Blog Image</label>
-                <input type="text" class="form-control" name="img" id="image" placeholder="Blog image" v-model="image">
+                <label>Author Image</label>
+                <input type="text" class="form-control" name="img" id="image" placeholder="Author image" v-model="image">
             </div>
             <div class="form-group">
                 <label>Author Description</label>
