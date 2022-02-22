@@ -77,10 +77,25 @@ def entries():
 
 @app.route('/blog/entries/<string:slug>')
 def blogentry(slug):
-    entry = Entry.query.filter_by(slug=slug).one()
+    entry = Entry.query.filter_by(slug=slug).first_or_404()
     entry.views = entry.views + 1
     db.session.commit()
     return render_template('blog/entry.html', entry=entry, keywords=entry.keywords)
+
+@app.route('/blog/entries/<string:entry>/<string:blog>')
+def blogdetail(entry, blog):
+    entry = Entry.query.filter_by(slug=entry).first_or_404()
+    blog = Blog.query.filter_by(slug=blog).first_or_404()
+    blog.views = blog.views + 1
+    db.session.commit()
+    return render_template('blog/blog-detail.html', blog=blog, entry=entry, keywords=blog.keywords)
+
+
+@app.route('/blog/entries/<string:slug>/category/<string:category>')
+def blogcategory(slug, category):
+    entry = Entry.query.filter_by(slug=slug).first_or_404()
+
+    return render_template('blog/category-blogs.html', category=category, entry=entry, keywords=entry.keywords)
 
 """
 ================================ BLOG ADMIN =============================
@@ -155,11 +170,11 @@ def getblogs():
 
     return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
 
-@app.route('/rest/s1/blogs/<int:id>', methods=["GET"])
-def getBlogDetails(id):
+@app.route('/rest/s1/blogs/<string:slug>', methods=["GET"])
+def getBlogDetails(slug):
     return jsonify(
         helpers.getBlogsList(
-            Blog.query.filter_by(id=id).all()
+            Blog.query.filter_by(slug=slug).all()
             )[0]
         )
 
@@ -236,6 +251,22 @@ def getCategories():
 
     return jsonify(categories[:per_page])
 
+@app.route('/rest/s1/categories/<string:category>', methods=["GET"])
+def getCategoryBlogs(category):
+    print(category)
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+
+    if request.args.get('entry'):
+        query = Blog.query.filter(Blog.entry.has(slug=request.args.get('entry')))
+    else:
+        query = Blog.query
+
+    query = query.filter_by(category=category)
+
+    paginated_items = query.order_by(Blog.id.desc()).paginate(page=page, per_page=per_page)
+
+    return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)

@@ -77,7 +77,7 @@ Vue.component('sidemenu', {
             </div>
             <div class="content">
                 <ul>
-                    <li v-for="category in categories"><a :href="'category-blogs.html?q=' + category">- {{category}}</a></li>
+                    <li v-for="category in categories"><a :href="'/blog/entries/' + entrySlug + '/category/' + category">- {{category}}</a></li>
                 </ul>
             </div>
             </div>

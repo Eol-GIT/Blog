@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ entry.title }} | {{ blog.title }}{% endblock %}
+{% block body %}
+    <!-- Header -->
+    <header class="" id="navbar">
+        <nav-bar active=""></nav-bar>
+    </header>
+    
+
+    <div id="blog-details">
+        <blog-details 
+            blog-slug="{{ blog.slug }}"
+            entry-slug="{{ entry.slug }}">
+        </blog-details>
+    </div>
+    
+{% endblock %}
+{% block extrascripts %}
+    <script src="{{ url_for('static', filename='blog/components/blog-details.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/blogs-sidemenu.js') }}"></script>
+{% endblock %}
