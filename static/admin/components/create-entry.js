@@ -3,7 +3,8 @@ Vue.component('create-entry', {
         return {
             title: "",
             image: "",
-            body: ""
+            body: "",
+            keywords: "",
         };
     },
     methods: {
@@ -11,12 +12,14 @@ Vue.component('create-entry', {
             axios.post('/admin/create-entry', {
                 title: this.title,
                 img: this.image,
-                body: this.body
+                body: this.body,
+                keywords: this.keywords,
             })
             .then(res => {
                 this.title = '';
                 this.image = '';
                 this.body = '';
+                this.keywords = '';
                 toastr.success("Entry created successfully!", "Success!")
             })
             .catch(err => {
@@ -43,6 +46,11 @@ Vue.component('create-entry', {
                 <label>Entry Content</label>
                 <textarea class="form-control" name="body" id="body" rows="3" v-model="body"></textarea>
                 <small class="form-text text-muted">To write the Entry content use markdown!</small>
+            </div>
+            <div class="form-group">
+                <label>Entry Keywords</label>
+                <input type="text" class="form-control" name="keywords" id="keywords" placeholder="Entry Keywords" v-model="keywords" required>
+                <small class="form-text text-muted">Keywords must be letters and numbers only and be separated by commas(,)</small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

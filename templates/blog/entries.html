@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+{% block title %}Blog | Entries{% endblock %}
+{% block body %}
+    <!-- Header -->
+    <header class="" id="navbar">
+        <nav-bar active="entries"></nav-bar>
+    </header>
+    
+    <div class="heading-page header-text">
+        <section class="page-heading">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-content">
+                  <h2>Our Blog Entries</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    <div id="banner">
+        <banner></banner>
+    </div>
+
+    <section class="blog-posts grid-system">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9" id="entries">
+                    <entries></entries>
+                </div>
+                <div class="col-lg-3" id="sidemenu">
+                    <sidemenu></sidemenu>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block extrascripts %}
+    <script src="{{ url_for('static', filename='blog/components/entries.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/entries-sidemenu.js') }}"></script>
+{% endblock %}

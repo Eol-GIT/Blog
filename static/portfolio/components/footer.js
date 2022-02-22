@@ -56,7 +56,7 @@ Vue.component('footer-component', {
                 <div class="card-body">
                     <h3 class="card-title"><strong>{{i18next.t("officialBlogText")}}</strong></h3>
                     <p class="card-text text-muted">{{i18next.t("blogDescriptionText")}}</p>
-                    <a href="/blog/" class="btn btn-primary">{{i18next.t("visitNowText")}}</a>
+                    <a href="/blog" class="btn btn-primary">{{i18next.t("visitNowText")}}</a>
                 </div>
             </div>
             <div class="row">

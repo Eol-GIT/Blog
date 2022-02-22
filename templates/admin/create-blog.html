@@ -5,10 +5,7 @@
     <i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v p-1"></i><i class="fa fa-ellipsis-v"></i>
 </a>
 <div id="create-blog">
-    <create-blog 
-        v-bind:authors="{{ authors }}" 
-        v-bind:entries="{{ entries }}">
-    </create-blog>
+    <create-blog></create-blog>
 </div>
 <script src="{{ url_for('static', filename='admin/components/create-blog.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% block title %}Blog | Home{% endblock %}
+{% block body %}
+<!-- Header -->
+<header class="" id="navbar">
+    <nav-bar active="home"></nav-bar>
+</header>
+
+<!-- Page Content -->
+<!-- Slider Starts Here -->
+<div id="slider">
+    <slider-blogs></slider-blogs>
+</div>
+<!-- Slider Ends Here -->
+
+<div id="banner">
+    <banner></banner>
+</div>
+
+<section class="blog-posts">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-9" id="entries-home">
+            <entries-home></entries-home>
+        </div>
+        <div class="col-lg-3" id="sidemenu">
+            <sidemenu></sidemenu>
+        </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extrascripts %}
+<script src="{{ url_for('static', filename='blog/components/slider-blogs.js') }}"></script>
+<script src="{{ url_for('static', filename='blog/components/entries-home.js') }}"></script>
+<script src="{{ url_for('static', filename='blog/components/entries-sidemenu.js') }}"></script>
+{% endblock %}

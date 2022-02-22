@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+{% block title %}Blog | About Us{% endblock %}
+{% block body %}
+    <!-- Header -->
+    <header class="" id="navbar">
+        <nav-bar active="about"></nav-bar>
+    </header>
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="heading-page header-text">
+      <section class="page-heading">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-content">
+                <h4>about us</h4>
+                <h2>more about us!</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Banner Ends Here -->
+
+    <div id="banner">
+        <banner></banner>
+    </div>
+
+    <section class="about-us">
+        <div class="container">
+            
+          <div class="row">
+            <div class="col-lg-12">
+              <img src="{{ url_for('static', filename='blog/assets/images/aboutus.jpg') }}" alt="" width="100%">
+              <p>Eol Nuha is an 18 year old self-taught software developer from Kosovo, currently working at Pythys Software a company located in Kuwait City, Kuwait. Eol has experience working in various different languages and technologies including 
+                <i>Python, Javascript, Java, Groovy, Vue.js, Django, Flask, React.js, React-Native, MySQL, HTML, CSS, SCSS, PostgreSQL, SQLITE and many more</i>. He is currently studying for a Computer Science Degree at UBT - University for Business and Technology. With this Blog we are 
+                trying to have a platform to display the highlights of the day-to-day activities of Eol Nuha.</p>
+              <h5 class="text-left">From Eol:</h5>
+              <blockquote>
+                I’ve always been a great problem solver, an independent introvert, and a tech freak obsessed with the latest devices. Today, I’m working from home as a software engineer for Pythys Software and I get to show off all these elements of who I am.
+                I started learning to code when I was very young, though it was always more of a hobby than a career focus. After I took a tutorial on Python I fell for it and realized software engineering was the right field for me.
+                I’m familiar with a variety of programming languages, including Python, JavaScript, HTML, CSS, jQuery, Vue.JS, Java, and Groovy, but I’m always adding new skills to my repertoire. I’m also eager to meet other software engineers in the area, so feel free to <a href="contact.html">contact me</a>!
+              </blockquote>
+            </div>
+          </div>
+          
+          
+        </div>
+      </section>
+{% endblock %}

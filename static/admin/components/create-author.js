@@ -4,7 +4,8 @@ Vue.component('create-author', {
             firstName: "",
             lastName: "",
             image: "",
-            body: ""
+            body: "",
+            keywords: ""
         };
     },
     methods: {
@@ -13,13 +14,15 @@ Vue.component('create-author', {
                 firstName: this.firstName,
                 lastName: this.lastName,
                 img: this.image,
-                body: this.body
+                body: this.body,
+                keywords: this.keywords
             })
             .then(res => {
                 this.firstName = '';
                 this.lastName = '';
                 this.image = '';
                 this.body = '';
+                this.keywords = '';
                 toastr.success("Author created successfully!", "Success!")
             })
             .catch(err => {
@@ -36,20 +39,25 @@ Vue.component('create-author', {
         <form method="POST" @submit.prevent="createAuthor">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" class="form-control" name="firstName" id="firstname" placeholder="First Name" v-model="firstName">
+                <input type="text" class="form-control" name="firstName" id="firstname" placeholder="First Name" v-model="firstName" required>
             </div>
             <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" v-model="lastName">
+                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" v-model="lastName" required>
             </div>
             <div class="form-group">
                 <label>Author Image</label>
-                <input type="text" class="form-control" name="img" id="image" placeholder="Author image" v-model="image">
+                <input type="text" class="form-control" name="img" id="image" placeholder="Author image" v-model="image" required>
             </div>
             <div class="form-group">
                 <label>Author Description</label>
-                <textarea class="form-control" name="body" id="body" rows="3" v-model="body"></textarea>
+                <textarea class="form-control" name="body" id="body" rows="3" v-model="body" required></textarea>
                 <small class="form-text text-muted">To write the author description use markdown!</small>
+            </div>
+            <div class="form-group">
+                <label>Author Keywords</label>
+                <input type="text" class="form-control" name="keywords" id="keywords" placeholder="Author Keywords" v-model="keywords" required>
+                <small class="form-text text-muted">Keywords must be letters and numbers only and be separated by commas(,)</small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

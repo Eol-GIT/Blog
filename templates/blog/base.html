@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Official Blog of Eol Nuha - Learn to code!">
+    <meta name="keywords" content="Blog, eol blog, eolnuha, eolnuha blog, Frontend Developer, Backend Developer, programming languages, programming tutorials, w3, stackoverflow, w3schools, {{ keywords }}" />
+    <meta name="author" content="Eol Nuha">
+    <meta name="robots" content="index, follow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eol Nuha | Blog" />
+    <meta name="twitter:description" content="Official Blog of Eol Nuha - Your perfect environment to learn coding!" />
+    <meta name="twitter:image" content="{{ url_for('static', filename='blog/assets/images/twitter-image1.png') }}"/>
+    <meta property="og:image" content="{{ url_for('static', filename='blog/assets/images/twitter-image1.png') }}"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta name="google-site-verification" content="q6lq8jTKt4nMLw398smBcJ8bp7iZ6ficgsq0QdVWTbY" />
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='portfolio/images/headerimg.webp') }}">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='blog/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='blog/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='blog/assets/css/templatemo-stand-blog.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='blog/assets/css/owl.css') }}">
+    
+    <!--Scripts-->
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/57d9fea0149e9b4ee5bc58a04291d308.js"></script>
+    <script type="text/plain" data-cookiescript="accepted" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8400632007706493" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script> const eventBus = new Vue();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  </head>
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <div id="cookie-banner">
+        <cookie-banner></cookie-banner>
+    </div>
+
+    {% block body %}{% endblock %}
+
+    
+    <footer id="footer">
+      <footer-section></footer-section>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='blog/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Additional Scripts -->
+    <script src="{{ url_for('static', filename='blog/assets/js/custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/assets/js/owl.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/assets/js/slick.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/assets/js/isotope.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/assets/js/accordions.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/assets/js/helper-functions.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/assets/js/blogs.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/footer.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/banner.js') }}"></script>
+    <script src="{{ url_for('static', filename='portfolio/components/cookie-banner.js') }}"></script>
+    {% block extrascripts %}{% endblock %}
+  </body>
+</html>
