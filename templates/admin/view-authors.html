@@ -1,0 +1,11 @@
+{% extends 'admin/base.html' %}
+{% block title %}Admin Panel | View Authors{% endblock %}
+{% block body %}
+<a href="/admin" class="h1 m-1" style="position: absolute; top: 0px; left: 0px">
+    <i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v p-1"></i><i class="fa fa-ellipsis-v"></i>
+</a>
+<div id="view-authors">
+    <view-authors></view-authors>
+</div>
+<script src="{{ url_for('static', filename='admin/components/view-authors.js') }}"></script>
+{% endblock %}

@@ -1,3 +1,4 @@
+import json
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
@@ -174,6 +175,33 @@ def createauthor():
         db.session.commit()
     return render_template('admin/create-author.html')
 
+@app.route('/admin/authors')
+def adminAuthors():
+    return render_template('admin/view-authors.html')
+
+@app.route('/admin/authors/<string:slug>')
+def adminAuthorDetails(slug):
+    author = Author.query.filter_by(slug=slug).first_or_404()
+    return render_template('admin/edit-author.html', author=author)
+
+@app.route('/admin/entries')
+def adminEntries():
+    return render_template('admin/view-entries.html')
+
+@app.route('/admin/entries/<string:slug>')
+def adminEntryDetails(slug):
+    entry = Entry.query.filter_by(slug=slug).first_or_404()
+    return render_template('admin/edit-entry.html', entry=entry)
+
+@app.route('/admin/blogs')
+def adminBlogs():
+    return render_template('admin/view-blogs.html')
+
+@app.route('/admin/blogs/<string:slug>')
+def adminBlogDetails(slug):
+    blog = Blog.query.filter_by(slug=slug).first_or_404()
+    return render_template('admin/edit-blog.html', blog=blog)
+
 """
 ================================ REST ENDPOINTS =============================
 """
@@ -199,6 +227,34 @@ def getBlogDetails(slug):
             Blog.query.filter_by(slug=slug).all()
             )[0]
         )
+@app.route('/rest/s1/blogs/<string:slug>/delete', methods=["POST"])
+def deleteBlog(slug):
+    blog = Blog.query.filter_by(slug=slug).delete()
+    db.session.commit()
+    return jsonify(blog)
+
+@app.route('/rest/s1/blogs/<string:slug>/update', methods=["POST"])
+def editBlog(slug):
+    title = request.json["title"]
+    category = request.json["category"]
+    author = request.json["author"]
+    entry = request.json["entry"]
+    body = request.json["body"]
+    keywords = request.json["keywords"]
+    query_author = Author.query.filter_by(id=author).one()
+    query_entry = Entry.query.filter_by(id=entry).one()
+
+    blog = Blog.query.filter_by(slug=slug).first_or_404()
+    blog.title = title
+    blog.slug = slugify(title)
+    blog.category = category.lower()
+    blog.author = query_author
+    blog.entry = query_entry
+    blog.body = body
+    blog.keywords = keywords
+
+    db.session.commit()
+    return jsonify(f"{blog.slug} updated successfully!")
 
 @app.route('/rest/s1/entries', methods=["GET"])
 def getEntries():
@@ -222,6 +278,29 @@ def getEntryDetails(slug):
             Entry.query.filter_by(slug=slug).all()
             )[0]
         )
+
+@app.route('/rest/s1/entries/<string:slug>/delete', methods=["POST"])
+def deleteEntry(slug):
+    entry = Entry.query.filter_by(slug=slug).delete()
+    db.session.commit()
+    return jsonify(entry)
+
+@app.route('/rest/s1/entries/<string:slug>/update', methods=["POST"])
+def editEntry(slug):
+    title = request.json["title"]
+    img = request.json["img"]
+    body = request.json["body"]
+    keywords = request.json["keywords"]
+
+    entry = Entry.query.filter_by(slug=slug).first_or_404()
+    entry.title = title
+    entry.slug = slugify(title)
+    entry.img = img
+    entry.body = body
+    entry.keywords = keywords
+
+    db.session.commit()
+    return jsonify(f"{entry.slug} updated successfully!")
 
 @app.route('/rest/s1/entries/<string:slug>/blogs', methods=["GET"])
 def getEntryBlogs(slug):
@@ -247,6 +326,35 @@ def getAuthorDetails(slug):
             Author.query.filter_by(slug=slug).all()
             )[0]
         )
+
+@app.route('/rest/s1/authors/<string:slug>/delete', methods=["POST"])
+def deleteauthor(slug):
+    author = Author.query.filter_by(slug=slug).delete()
+    db.session.commit()
+    return jsonify(author)
+
+@app.route('/rest/s1/authors/<string:slug>/update', methods=["POST"])
+def editauthor(slug):
+    first_name = request.json["firstName"]
+    last_name = request.json["lastName"]
+    img = request.json["img"]
+    location = request.json["location"]
+    social = request.json["social"]
+    body = request.json["body"]
+    keywords = request.json["keywords"]
+
+    author = Author.query.filter_by(slug=slug).first_or_404()
+    author.first_name = first_name
+    author.last_name = last_name
+    author.slug = slugify(first_name + last_name)
+    author.img = img
+    author.location = location
+    author.social = social
+    author.body = body
+    author.keywords = keywords
+
+    db.session.commit()
+    return jsonify(f"{author.slug} updated successfully!")
 
 @app.route('/rest/s1/authors/<string:slug>/blogs', methods=["GET"])
 def getAuthorBlogs(slug):

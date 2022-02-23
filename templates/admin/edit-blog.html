@@ -1,0 +1,11 @@
+{% extends 'admin/base.html' %}
+{% block title %}Edit Blog | {{blog.title}}{% endblock %}
+{% block body %}
+<a href="/admin" class="h1 m-1" style="position: absolute; top: 0px; left: 0px">
+    <i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v p-1"></i><i class="fa fa-ellipsis-v"></i>
+</a>
+<div id="edit-blog">
+    <edit-blog slug="{{ blog.slug }}"></edit-blog>
+</div>
+<script src="{{ url_for('static', filename='admin/components/edit-blog.js') }}"></script>
+{% endblock %}
