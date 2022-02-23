@@ -54,6 +54,10 @@ class Blog(db.Model):
     __table_args__ = (db.UniqueConstraint('slug',),)
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -404,4 +408,4 @@ def getCategoryBlogs(category):
     return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run()
