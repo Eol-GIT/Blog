@@ -1,4 +1,3 @@
-import json
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
@@ -51,7 +50,16 @@ class Blog(db.Model):
     keywords = db.Column(db.String(200))
     views = db.Column(db.Integer, default=0)
     date_posted = db.Column(db.DateTime, default=datetime.now())
+    comments = db.relationship('Comment', backref='blog', lazy=True)
     __table_args__ = (db.UniqueConstraint('slug',),)
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(200))
+    last_name = db.Column(db.String(200))
+    body = db.Column(db.Text)
+    blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'), nullable=False)
+    date_posted = db.Column(db.DateTime, default=datetime.now())
 
 
 @app.errorhandler(404)
@@ -406,6 +414,36 @@ def getCategoryBlogs(category):
     paginated_items = query.order_by(Blog.id.desc()).paginate(page=page, per_page=per_page)
 
     return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
+
+@app.route('/rest/s1/comments', methods=["GET"])
+def getComments():
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+    blog = request.args.get('blog')
+
+    paginated_items = Comment.query.filter(Comment.blog.has(slug=blog)).order_by(Comment.id.desc()).paginate(page=page, per_page=per_page)
+    return jsonify(helpers.getPaginatedDict(helpers.getCommentsList(paginated_items.items), paginated_items))
+
+@app.route('/rest/s1/comments/create', methods=["POST"])
+def createComment():
+    first_name = request.json["firstName"]
+    last_name = request.json["lastName"]
+    body = request.json["body"]
+    blog = request.json["blog"]
+    print(first_name, last_name, blog)
+
+    query_blog = Blog.query.filter_by(slug=blog).one()
+    
+    comment = Comment(
+        first_name = first_name,
+        last_name = last_name,
+        body = body,
+        blog = query_blog
+    )
+    db.session.add(comment)
+    db.session.commit()
+    return jsonify(f"Comment created successfully!")
+
 if __name__ == '__main__':
     db.create_all()
     app.run()

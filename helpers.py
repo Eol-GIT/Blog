@@ -72,6 +72,29 @@ def getBlogsList(blogs):
         blogs_list.append(blogs_dict)
     return blogs_list
 
+def getCommentsList(comments):
+    comments_list = []
+    for i in comments:
+        comments_dict = {
+            "id": i.id,
+            "firstName": i.first_name,
+            "lastName": i.last_name,
+            "blog": {
+                "id": i.blog.id,
+                "title": i.blog.title,
+                "slug": i.blog.slug, 
+                "body": i.blog.body,
+                "category": i.blog.category,
+                "keywords": i.blog.keywords,
+                "views": i.blog.views,
+                "date": i.blog.date_posted,
+            },
+            "body": i.body,
+            "date": i.date_posted,
+        }
+        comments_list.append(comments_dict)
+    return comments_list
+
 def getPaginatedDict(data, paginated_items):
     return {
         "data": data,

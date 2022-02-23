@@ -19,7 +19,7 @@ Vue.component('author-details', {
             )
         },
         getAuthorBlogs(pageSize){
-            this.buttonText = "Loading..";
+            this.buttonText = "Loading...";
             axios.get(`/rest/s1/authors/${this.slug}/blogs`, {params: {page: 1, per_page: pageSize}})
             .then(
                 res => {
@@ -91,7 +91,7 @@ Vue.component('author-details', {
                 </div>
                 </div>
             </div>
-            <button class="btn btn-primary w-100" v-if="blogs.has_next" @click="getAuthorBlogs(pageSize + pageSize)" id="load-blogs">{{buttonText}}</button>
+            <button class="btn btn-outline-primary w-100" v-if="blogs.has_next" @click="getAuthorBlogs(pageSize + pageSize)" id="load-blogs">{{buttonText}}</button>
         </div>
     </section>
     </div>

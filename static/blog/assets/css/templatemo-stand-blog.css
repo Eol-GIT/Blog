@@ -10,6 +10,7 @@ https://templatemo.com/tm-551-stand-blog
 html {
 	scroll-behavior: smooth;
 }
+#toast-container > div {opacity: 1;}
 
 body {
 	font-family: 'Raleway';
@@ -572,8 +573,16 @@ ul.page-numbers li a:hover {
 	margin-top: 30px;
 }
 
+.blog-posts .comments .markdown h1{font-size: 18px !important;}
+.blog-posts .comments .markdown h2{font-size: 18px !important;}
+.blog-posts .comments .markdown h3{font-size: 18px !important;}
+.blog-posts .comments .markdown h4{font-size: 18px !important;}
+.blog-posts .comments .markdown h5{font-size: 18px !important;}
+.blog-posts .comments .markdown h6{font-size: 10px !important;}
+.blog-posts .comments .markdown p {font-size: 15px !important;}
+.blog-posts .comments .markdown span{font-size: 15px !important;}
+
 .blog-posts .comments ul li {
-	display: inline-block;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #eee;
