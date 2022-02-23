@@ -17,11 +17,11 @@ class Entry(db.Model):
     title = db.Column(db.String(200))
     slug = db.Column(db.String(200))
     body = db.Column(db.Text)
-    img = db.Column(db.String(200), default="blog/assets/images/default-blog.png")
-    blogs = db.relationship('Blog', backref='entry', lazy=True)
+    img = db.Column(db.String(200), default="blog/assets/images/entries/default.png")
     keywords = db.Column(db.String(200))
     views = db.Column(db.Integer, default=0)
     date_posted = db.Column(db.DateTime, default=datetime.now())
+    blogs = db.relationship('Blog', backref='entry', lazy=True)
     __table_args__ = (db.UniqueConstraint('slug',),)
 
 class Author(db.Model):
@@ -29,12 +29,14 @@ class Author(db.Model):
     first_name = db.Column(db.String(200))
     last_name = db.Column(db.String(200))
     slug = db.Column(db.String(200))
+    location = db.Column(db.String(200))
+    social = db.Column(db.String(200))
+    img = db.Column(db.String(200), default="blog/assets/images/authors/default.png")
     body = db.Column(db.Text)
-    img = db.Column(db.String(200), default="blog/assets/images/default-author.png")
-    blogs = db.relationship('Blog', backref='author', lazy=True)
     keywords = db.Column(db.String(200))
     views = db.Column(db.Integer, default=0)
     date_posted = db.Column(db.DateTime, default=datetime.now())
+    blogs = db.relationship('Blog', backref='author', lazy=True)
     __table_args__ = (db.UniqueConstraint('slug',),)
 
 class Blog(db.Model):
@@ -61,7 +63,11 @@ def projects(project):
 
 @app.route('/blog')
 def blog():
-    return render_template('blog/index.html')
+    per_page = request.args.get('per_page', 6, type=int)
+    entries = helpers.getEntriesList(Entry.query.order_by(Entry.views.desc()).limit(per_page).all())
+    for i in entries:
+        i.pop('date')
+    return render_template('blog/index.html', entries=entries)
 
 @app.route('/blog/about-us')
 def about():
@@ -97,6 +103,11 @@ def blogcategory(slug, category):
 
     return render_template('blog/category-blogs.html', category=category, entry=entry, keywords=entry.keywords)
 
+
+@app.route('/blog/<string:slug>')
+def authordetails(slug):
+    author = Author.query.filter_by(slug=slug).first_or_404()
+    return render_template('blog/author-details.html', author=author, keywords=author.keywords)
 """
 ================================ BLOG ADMIN =============================
 """
@@ -131,7 +142,7 @@ def createentry():
         body = request.json["body"]
         keywords = request.json["keywords"]
 
-        entry = Entry(title=title, slug=slugify(title), img=img, body=body, keywords=keywords)
+        entry = Entry(title=title, slug=slugify(title), img='blog/assets/images/entries/' + img, body=body, keywords=keywords)
 
         db.session.add(entry)
         db.session.commit()
@@ -143,10 +154,21 @@ def createauthor():
         first_name = request.json["firstName"]
         last_name = request.json["lastName"]
         img = request.json["img"]
+        location = request.json["location"]
+        social = request.json["social"]
         body = request.json["body"]
         keywords = request.json["keywords"]
 
-        author = Author(first_name=first_name, last_name=last_name, slug=slugify(first_name + " " + last_name), img=img, body=body, keywords=keywords)
+        author = Author(
+            first_name=first_name, 
+            last_name=last_name, 
+            slug=slugify(first_name + " " + last_name), 
+            img='blog/assets/images/authors/' + img, 
+            location=location, 
+            social=social, 
+            body=body, 
+            keywords=keywords
+        )
 
         db.session.add(author)
         db.session.commit()
@@ -188,11 +210,10 @@ def getEntries():
 
 @app.route('/rest/s1/top-entries', methods=["GET"])
 def getTopEntries():
-    page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 10, type=int)
-    paginated_items = Entry.query.order_by(Entry.views).paginate(page=page, per_page=per_page)
+    entries = Entry.query.order_by(Entry.views.desc()).limit(per_page).all()
 
-    return jsonify(helpers.getPaginatedDict(helpers.getEntriesList(paginated_items.items), paginated_items))
+    return jsonify(helpers.getEntriesList(entries))
 
 @app.route('/rest/s1/entries/<string:slug>', methods=["GET"])
 def getEntryDetails(slug):
@@ -231,9 +252,15 @@ def getAuthorDetails(slug):
 def getAuthorBlogs(slug):
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 10, type=int)
+    total_views = 0
 
     paginated_items = Blog.query.filter(Blog.author.has(slug=slug)).order_by(Blog.id.desc()).paginate(page=page, per_page=per_page)
-    return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
+    blogs = helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items)
+    for i in Blog.query.filter(Blog.author.has(slug=slug)).all():
+        total_views += i.views
+    
+    blogs["totalViews"] = total_views
+    return jsonify(blogs)
 
 @app.route('/rest/s1/categories', methods=["GET"])
 def getCategories():

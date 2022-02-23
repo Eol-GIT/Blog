@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% block title %}Author | {{ author.first_name }} {{author.last_name}}{% endblock %}
+{% block body %}
+    <style>
+        :root {
+            font-size: 13px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        .author-profile-container {
+            max-width: 93.5rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+            font-size: 10px !important;
+        }
+    </style>
+    <!-- Header -->
+    <header class="" id="navbar">
+        <nav-bar active=""></nav-bar>
+    </header>
+    
+    <div id="author-details">
+        <author-details slug="{{ author.slug }}"></author-details>
+    </div>
+{% endblock %}
+{% block extrascripts %}
+    <script src="{{ url_for('static', filename='blog/components/author-details.js') }}"></script>
+{% endblock %}

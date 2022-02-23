@@ -80,11 +80,19 @@ Vue.component('blog-details', {
               <div class="col-lg-12">
                 <div class="blog-post">
                   <div class="down-content">
-                  <a :href="'/blog/entries/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
-                    <h3>{{blog.title}}</h3>
-                    <ul class="post-info">
-                      <li>{{new Date(blog.date).toLocaleDateString()}}</li>
-                    </ul>
+                        <div class="d-flex">
+                            <div class="p-1">
+                                <a :href="'/blog/' + blog.author.slug"><img class="rounded-circle" :src="'/static/' + blog.author.img" height="50" width="50"/></a>
+                            </div>
+                            <div class="p-1">
+                                <a :href="'/blog/' + blog.author.slug" class="h5">{{blog.author.firstName}} {{blog.author.lastName}}</a><br>
+                                <small>Posted on:</small> {{new Date(blog.date).toLocaleDateString()}}<br>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                        <a :href="'/blog/entries/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
+                        <h2 class="font-weight-bold">{{blog.title}}</h2>
+                        </div>
                     <hr class="devider">
                    <div class="markdown" v-html="markdown(blog.body)"></div>
                   </div>

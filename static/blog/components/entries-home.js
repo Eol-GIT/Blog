@@ -17,7 +17,7 @@ Vue.component('entries-home', {
     <div class="col-lg-12" v-for="entry in entries"><a :href="'/blog/entries/' + entry.slug">
         <div class="blog-post">
         <div class="blog-thumb">
-            <img :src="entry.img" alt="">
+            <img :src="'/static/' + entry.img" alt="">
         </div>
         <div class="down-content">
             <h4>{{entry.title}}</h4>

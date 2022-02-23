@@ -4,6 +4,8 @@ Vue.component('create-author', {
             firstName: "",
             lastName: "",
             image: "",
+            location: "",
+            social: "",
             body: "",
             keywords: ""
         };
@@ -14,6 +16,8 @@ Vue.component('create-author', {
                 firstName: this.firstName,
                 lastName: this.lastName,
                 img: this.image,
+                location: this.location,
+                social: this.social,
                 body: this.body,
                 keywords: this.keywords
             })
@@ -21,6 +25,8 @@ Vue.component('create-author', {
                 this.firstName = '';
                 this.lastName = '';
                 this.image = '';
+                this.location = '';
+                this.social = '';
                 this.body = '';
                 this.keywords = '';
                 toastr.success("Author created successfully!", "Success!")
@@ -35,7 +41,7 @@ Vue.component('create-author', {
         <div class="jumbotron jumbotron-fluid">
            <h1 class="text-center">Create Author</h1>
         </div>
-        <div class="container">
+        <div class="container mb-5">
         <form method="POST" @submit.prevent="createAuthor">
             <div class="form-group">
                 <label>First Name</label>
@@ -48,6 +54,14 @@ Vue.component('create-author', {
             <div class="form-group">
                 <label>Author Image</label>
                 <input type="text" class="form-control" name="img" id="image" placeholder="Author image" v-model="image" required>
+            </div>
+            <div class="form-group">
+                <label>Author Location</label>
+                <input type="text" class="form-control" name="location" id="location" placeholder="Author Location" v-model="location" required>
+            </div>
+            <div class="form-group">
+                <label>Author Social Link</label>
+                <input type="text" class="form-control" name="social" id="social" placeholder="Author Social Link" v-model="social" required>
             </div>
             <div class="form-group">
                 <label>Author Description</label>

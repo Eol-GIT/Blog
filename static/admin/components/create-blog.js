@@ -14,7 +14,7 @@ Vue.component('create-blog', {
     created(){
         axios.get('/rest/s1/authors', {params: {per_page: 10000}}).then(
             res => {
-                this.authors = res.data;
+                this.authors = res.data.data;
             }
         )
         axios.get('/rest/s1/entries', {params: {per_page: 10000}}).then(
