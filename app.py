@@ -22,7 +22,7 @@ db = SQLAlchemy(app)
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200))
-    slug = db.Column(db.String(200))
+    slug = db.Column(db.String(200), unique=True)
     body = db.Column(db.Text)
     img = db.Column(db.String(200), default="blog/assets/images/entries/default.png")
     keywords = db.Column(db.String(200))
@@ -30,13 +30,12 @@ class Entry(db.Model):
     date_posted = db.Column(db.DateTime, default=datetime.now())
     modified = db.Column(db.DateTime, default=datetime.now())
     blogs = db.relationship('Blog', backref='entry', lazy=True)
-    __table_args__ = (db.UniqueConstraint('slug',),)
 
 class Author(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(200))
     last_name = db.Column(db.String(200))
-    slug = db.Column(db.String(200))
+    slug = db.Column(db.String(200), unique=True)
     email = db.Column(db.String(200), unique=True)
     password = db.Column(db.String(200))
     location = db.Column(db.String(200))
@@ -48,12 +47,11 @@ class Author(db.Model, UserMixin):
     date_posted = db.Column(db.DateTime, default=datetime.now())
     modified = db.Column(db.DateTime, default=datetime.now())
     blogs = db.relationship('Blog', backref='author', lazy=True)
-    __table_args__ = (db.UniqueConstraint('slug',),)
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200))
-    slug = db.Column(db.String(200))
+    slug = db.Column(db.String(200), unique=True)
     category = db.Column(db.String(200))
     author_id = db.Column(db.Integer, db.ForeignKey('author.id'), nullable=False)
     entry_id = db.Column(db.Integer, db.ForeignKey('entry.id'), nullable=False)
@@ -63,7 +61,6 @@ class Blog(db.Model):
     date_posted = db.Column(db.DateTime, default=datetime.now())
     modified = db.Column(db.DateTime, default=datetime.now())
     comments = db.relationship('Comment', backref='blog', lazy=True)
-    __table_args__ = (db.UniqueConstraint('slug',),)
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -118,6 +115,9 @@ def index():
 
 @app.route('/projects/<string:project>')
 def projects(project):
+    project_list = ['sorting-visualizer', 'movie-freaks', 'dino-game', 'cyber-city', 'tower-war', 'e-commerce']
+    if project not in project_list:
+        return render_template('404.html'), 404
     return render_template(f'projects/{project}.html')
 
 @app.route('/blog')
@@ -141,14 +141,14 @@ def entries():
     return render_template('blog/entries.html')
 
 @app.route('/blog/entries/<string:slug>')
-def blogentry(slug):
+def blogEntry(slug):
     entry = Entry.query.filter_by(slug=slug).first_or_404()
     entry.views = entry.views + 1
     db.session.commit()
     return render_template('blog/entry.html', entry=entry, keywords=entry.keywords)
 
 @app.route('/blog/entries/<string:entry>/<string:blog>')
-def blogdetail(entry, blog):
+def blogDetails(entry, blog):
     entry = Entry.query.filter_by(slug=entry).first_or_404()
     blog = Blog.query.filter_by(slug=blog).first_or_404()
     blog.views = blog.views + 1
@@ -157,14 +157,14 @@ def blogdetail(entry, blog):
 
 
 @app.route('/blog/entries/<string:slug>/category/<string:category>')
-def blogcategory(slug, category):
+def categoryBlogs(slug, category):
     entry = Entry.query.filter_by(slug=slug).first_or_404()
 
     return render_template('blog/category-blogs.html', category=category, entry=entry, keywords=entry.keywords)
 
 
 @app.route('/blog/<string:slug>')
-def authordetails(slug):
+def authorDetails(slug):
     author = Author.query.filter_by(slug=slug).first_or_404()
     return render_template('blog/author-details.html', author=author, keywords=author.keywords)
 """
@@ -177,7 +177,7 @@ def admin():
 
 @app.route('/admin/create-blog', methods=["POST", "GET"])
 @login_required
-def createblog():
+def createBlog():
     if request.method == "POST":
         title = request.json["title"]
         category = request.json["category"]
@@ -197,7 +197,7 @@ def createblog():
 
 @app.route('/admin/create-entry', methods=["POST", "GET"])
 @login_required
-def createentry():
+def createEntry():
     if request.method == "POST":
         title = request.json["title"]
         img = request.json["img"]
@@ -211,7 +211,7 @@ def createentry():
     return render_template('admin/create-entry.html')
 
 @app.route('/admin/create-author', methods=["POST", "GET"])
-def createauthor():
+def createAuthor():
     if request.method == "POST":
         first_name = request.json["firstName"]
         last_name = request.json["lastName"]
@@ -282,7 +282,7 @@ def adminBlogDetails(slug):
 ================================ REST ENDPOINTS =============================
 """
 @app.route('/rest/s1/blogs', methods=["GET"])
-def getblogs():
+def getBlogs():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 10, type=int)
     if request.args.get('category'):
