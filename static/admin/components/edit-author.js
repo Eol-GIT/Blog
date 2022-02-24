@@ -19,6 +19,7 @@ Vue.component('edit-author', {
             axios.post(`/rest/s1/authors/${this.slug}/update`, {
                 firstName: this.author.firstName,
                 lastName: this.author.lastName,
+                email: this.author.email,
                 img: this.author.img,
                 location: this.author.location,
                 social: this.author.social,
@@ -49,6 +50,10 @@ Vue.component('edit-author', {
             <div class="form-group">
                 <label>Last Name</label>
                 <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" v-model="author.lastName" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="Email" v-model="author.email" required>
             </div>
             <div class="form-group">
                 <label>Author Image</label>

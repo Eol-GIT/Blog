@@ -415,15 +415,22 @@ def deleteAuthor(slug):
 def editAuthor(slug):
     first_name = request.json["firstName"]
     last_name = request.json["lastName"]
+    email = request.json["email"]
     img = request.json["img"]
     location = request.json["location"]
     social = request.json["social"]
     body = request.json["body"]
     keywords = request.json["keywords"]
 
+    user = Author.query.filter_by(email=email).first()
+
+    if user:
+        return Response("User with this email already exists!", 400)
+
     author = Author.query.filter_by(slug=slug).first_or_404()
     author.first_name = first_name
     author.last_name = last_name
+    author.email = email
     author.slug = slugify(first_name + " " + last_name)
     author.img = img
     author.location = location
@@ -511,4 +518,4 @@ def createComment():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run()
+    app.run(debug=True)
