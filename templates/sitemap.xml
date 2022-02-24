@@ -59,25 +59,26 @@
     <lastmod>2022-02-01</lastmod>
     <changefreq>weekly</changefreq>
   </url>
-  {%- for entry in entries %}
+  {% for entry in entries %}
   <url>
     <loc>{{ base_url }}/blog/entries/{{ entry.slug }}</loc>
     <lastmod>{{ entry.modified.strftime('%Y-%m-%d') }}</lastmod>
     <changefreq>weekly</changefreq>
   </url>
-  {%- endfor -%}
-  {%- for author in authors %}
+  {% endfor %}
+  {% for author in authors %}
   <url>
     <loc>{{ base_url }}/blog/{{ author.slug }}</loc>
     <lastmod>{{ author.modified.strftime('%Y-%m-%d') }}</lastmod>
     <changefreq>daily</changefreq>
   </url>
-  {%- endfor -%}
-  {%- for blog in blogs %}
+  {% endfor %}
+  {% for blog in blogs %}
   <url>
     <loc>{{ base_url }}/blog/entries/{{ blog.entry.slug }}/{{ blog.slug }}</loc>
     <lastmod>{{ blog.modified.strftime('%Y-%m-%d') }}</lastmod>
     <changefreq>daily</changefreq>
   </url>
-  {%- endfor -%}
+  {% endfor %}
+  
 </Urlset>
