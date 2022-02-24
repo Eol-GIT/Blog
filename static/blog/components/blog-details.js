@@ -105,7 +105,7 @@ Vue.component('blog-details', {
                             </div>
                             <div class="p-1">
                                 <a :href="'/blog/' + blog.author.slug" class="h5">{{blog.author.firstName}} {{blog.author.lastName}}</a><br>
-                                <small>Posted on:</small> {{new Date(blog.date).toLocaleDateString()}}<br>
+                                <small>Posted on:</small> {{blog.date}}<br>
                             </div>
                         </div>
                         <div class="p-2">
@@ -133,7 +133,7 @@ Vue.component('blog-details', {
 					<ul>
 					<li v-for="comment in comments.data">
 						<div class="right-content ml-0">
-						<h4>{{comment.firstName}} {{comment.lastName}}<span>{{new Date(blog.date).toLocaleDateString()}}</span></h4>
+						<h4>{{comment.firstName}} {{comment.lastName}}<span>{{comment.date}}</span></h4>
 						<div class="markdown" v-html="markdown(comment.body)"></div>
 						</div>
 					</li>

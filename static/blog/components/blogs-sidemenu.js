@@ -62,7 +62,7 @@ Vue.component('sidemenu', {
                     <div class="row">
                         <div class="col-12">
                             <h5>{{blog.title}}</h5>
-                            <span>{{new Date(blog.date).toLocaleDateString()}}</span>
+                            <span>{{blog.date}}</span>
                         </div>
                     </div>
                 </a></li>

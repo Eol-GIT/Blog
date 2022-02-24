@@ -21,6 +21,7 @@ class Entry(db.Model):
     keywords = db.Column(db.String(200))
     views = db.Column(db.Integer, default=0)
     date_posted = db.Column(db.DateTime, default=datetime.now())
+    modified = db.Column(db.DateTime, default=datetime.now())
     blogs = db.relationship('Blog', backref='entry', lazy=True)
     __table_args__ = (db.UniqueConstraint('slug',),)
 
@@ -36,6 +37,7 @@ class Author(db.Model):
     keywords = db.Column(db.String(200))
     views = db.Column(db.Integer, default=0)
     date_posted = db.Column(db.DateTime, default=datetime.now())
+    modified = db.Column(db.DateTime, default=datetime.now())
     blogs = db.relationship('Blog', backref='author', lazy=True)
     __table_args__ = (db.UniqueConstraint('slug',),)
 
@@ -50,6 +52,7 @@ class Blog(db.Model):
     keywords = db.Column(db.String(200))
     views = db.Column(db.Integer, default=0)
     date_posted = db.Column(db.DateTime, default=datetime.now())
+    modified = db.Column(db.DateTime, default=datetime.now())
     comments = db.relationship('Comment', backref='blog', lazy=True)
     __table_args__ = (db.UniqueConstraint('slug',),)
 
@@ -60,11 +63,19 @@ class Comment(db.Model):
     body = db.Column(db.Text)
     blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'), nullable=False)
     date_posted = db.Column(db.DateTime, default=datetime.now())
+    modified = db.Column(db.DateTime, default=datetime.now())
 
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+@app.route('/sitemap.xml')
+def sitemap():
+    blogs = Blog.query.order_by(Blog.id.desc()).all()
+    authors = Author.query.order_by(Author.id.desc()).all()
+    entries = Entry.query.order_by(Entry.id.desc()).all()
+    return render_template('sitemap.xml', blogs=blogs, authors=authors, entries=entries, base_url="https://eolnuha.com")
 
 @app.route('/')
 def index():
@@ -264,6 +275,7 @@ def editBlog(slug):
     blog.entry = query_entry
     blog.body = body
     blog.keywords = keywords
+    blog.modified = datetime.now()
 
     db.session.commit()
     return jsonify(f"{blog.slug} updated successfully!")
@@ -310,6 +322,7 @@ def editEntry(slug):
     entry.img = img
     entry.body = body
     entry.keywords = keywords
+    entry.modified = datetime.now()
 
     db.session.commit()
     return jsonify(f"{entry.slug} updated successfully!")
@@ -340,13 +353,13 @@ def getAuthorDetails(slug):
         )
 
 @app.route('/rest/s1/authors/<string:slug>/delete', methods=["POST"])
-def deleteauthor(slug):
+def deleteAuthor(slug):
     author = Author.query.filter_by(slug=slug).delete()
     db.session.commit()
     return jsonify(author)
 
 @app.route('/rest/s1/authors/<string:slug>/update', methods=["POST"])
-def editauthor(slug):
+def editAuthor(slug):
     first_name = request.json["firstName"]
     last_name = request.json["lastName"]
     img = request.json["img"]
@@ -358,12 +371,13 @@ def editauthor(slug):
     author = Author.query.filter_by(slug=slug).first_or_404()
     author.first_name = first_name
     author.last_name = last_name
-    author.slug = slugify(first_name + last_name)
+    author.slug = slugify(first_name + " " + last_name)
     author.img = img
     author.location = location
     author.social = social
     author.body = body
     author.keywords = keywords
+    author.modified = datetime.now()
 
     db.session.commit()
     return jsonify(f"{author.slug} updated successfully!")

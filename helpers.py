@@ -12,7 +12,8 @@ def getAuthorsList(authors):
             "body": i.body,
             "keywords": i.keywords,
             "views": i.views,
-            "date": i.date_posted,
+            "date": i.date_posted.strftime('%d-%m-%Y'),
+            "modified": i.modified.strftime('%d-%m-%Y'),
         }
         authors_list.append(author_dict)
     return authors_list
@@ -28,7 +29,8 @@ def getEntriesList(entries):
             "body": i.body,
             "keywords": i.keywords,
             "views": i.views,
-            "date": i.date_posted,
+            "date": i.date_posted.strftime('%d-%m-%Y'),
+            "modified": i.modified.strftime('%d-%m-%Y'),
         }
         entries_list.append(entries_dict)
     return entries_list
@@ -52,7 +54,8 @@ def getBlogsList(blogs):
                 "body": i.author.body,
                 "keywords": i.author.keywords,
                 "views": i.author.views,
-                "date": i.author.date_posted,
+                "date": i.author.date_posted.strftime('%d-%m-%Y'),
+                "modified": i.author.modified.strftime('%d-%m-%Y'),
             },
             "entry": {
                 "id": i.entry.id,
@@ -62,12 +65,14 @@ def getBlogsList(blogs):
                 "body": i.entry.body,
                 "keywords": i.entry.keywords,
                 "views": i.entry.views,
-                "date": i.entry.date_posted,
+                "date": i.entry.date_posted.strftime('%d-%m-%Y'),
+                "modified": i.entry.modified.strftime('%d-%m-%Y'),
             },
             "body": i.body,
             "keywords": i.keywords,
             "views": i.views,
-            "date": i.date_posted,
+            "date": i.date_posted.strftime('%d-%m-%Y'),
+            "modified": i.modified.strftime('%d-%m-%Y'),
         }
         blogs_list.append(blogs_dict)
     return blogs_list
@@ -87,10 +92,12 @@ def getCommentsList(comments):
                 "category": i.blog.category,
                 "keywords": i.blog.keywords,
                 "views": i.blog.views,
-                "date": i.blog.date_posted,
+                "date": i.blog.date_posted.strftime('%d-%m-%Y'),
+                "modified": i.blog.modified.strftime('%d-%m-%Y'),
             },
             "body": i.body,
-            "date": i.date_posted,
+            "date": i.date_posted.strftime('%d-%m-%Y'),
+            "modified": i.modified.strftime('%d-%m-%Y'),
         }
         comments_list.append(comments_dict)
     return comments_list

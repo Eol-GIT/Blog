@@ -28,7 +28,7 @@ Vue.component('entry-blogs', {
                 <a  :href="'/blog/entries/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
                 <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
                 <ul class="post-info">
-                    <li>{{new Date(blog.date).toLocaleDateString()}}</li>
+                    <li>{{blog.date}}</li>
                 </ul>
                 <hr class="devider">
                 </div>

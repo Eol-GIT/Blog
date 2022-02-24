@@ -58,7 +58,7 @@ Vue.component('author-details', {
                 <div class="profile-bio">
                     <p class="pb-2">{{ author.body }}</p>
                     <span class="mr-4"><i class="fa fa-map-marker text-primary"></i> From: <strong>{{ author.location }} </strong></span><br class="show-on-mobile">
-                    <span class="mr-4"><i class="fa fa-birthday-cake text-primary"></i> Joined on: <strong>{{new Date(author.date).toLocaleDateString()}} </strong></span><br class="show-on-mobile">
+                    <span class="mr-4"><i class="fa fa-birthday-cake text-primary"></i> Joined on: <strong>{{author.date}} </strong></span><br class="show-on-mobile">
                     <span class="mr-4"><i class="fa fa-link text-primary"></i> <a :href="author.social">{{ author.slug }} </span></span>
                 </div>
             </div>
@@ -80,7 +80,7 @@ Vue.component('author-details', {
                                     <a  :href="'/blog/entries/' + blog.entry.slug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
                                     <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
                                     <ul class="post-info">
-                                        <li>{{new Date(blog.date).toLocaleDateString()}}</li>
+                                        <li>{{blog.date}}</li>
                                     </ul>
                                     <hr class="devider">
                                     </div>

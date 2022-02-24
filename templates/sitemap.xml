@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>{{ base_url }}</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/projects/sorting-visualizer</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/projects/cyber-city</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/projects/movie-freaks</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/projects/e-commerce</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/projects/dino-game</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/projects/tower-war</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/blog</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/blog/entries</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/blog/about-us</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>{{ base_url }}/blog/contact-us</loc>
+    <lastmod>2022-02-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  {%- for entry in entries %}
+  <url>
+    <loc>{{ base_url }}/blog/entries/{{ entry.slug }}</loc>
+    <lastmod>{{ entry.modified.strftime('%Y-%m-%d') }}</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  {%- endfor -%}
+  {%- for author in authors %}
+  <url>
+    <loc>{{ base_url }}/blog/{{ author.slug }}</loc>
+    <lastmod>{{ author.modified.strftime('%Y-%m-%d') }}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  {%- endfor -%}
+  {%- for blog in blogs %}
+  <url>
+    <loc>{{ base_url }}/blog/entries/{{ blog.entry.slug }}/{{ blog.slug }}</loc>
+    <lastmod>{{ blog.modified.strftime('%Y-%m-%d') }}</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  {%- endfor -%}
+</Urlset>
