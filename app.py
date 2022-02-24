@@ -1,11 +1,18 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, Response, redirect, url_for
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy 
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_cors import CORS
 import helpers
 from slugify import slugify
+from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user
 
 app = Flask(__name__)
+app.secret_key = "thiskeyissoscret"
+app.permanent_session_lifetime = timedelta(days=365)
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -25,11 +32,13 @@ class Entry(db.Model):
     blogs = db.relationship('Blog', backref='entry', lazy=True)
     __table_args__ = (db.UniqueConstraint('slug',),)
 
-class Author(db.Model):
+class Author(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(200))
     last_name = db.Column(db.String(200))
     slug = db.Column(db.String(200))
+    email = db.Column(db.String(200), unique=True)
+    password = db.Column(db.String(200))
     location = db.Column(db.String(200))
     social = db.Column(db.String(200))
     img = db.Column(db.String(200), default="blog/assets/images/authors/default.png")
@@ -69,6 +78,32 @@ class Comment(db.Model):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+@login_manager.user_loader
+def load_user(user_id):
+    # since the user_id is just the primary key of our user table, use it in the query for the user
+    return Author.query.get(int(user_id))
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.json["email"]
+        password = request.json["password"]
+
+        user = Author.query.filter_by(email=email).first()
+
+        if not user or not check_password_hash(user.password, password):
+            return Response("error", 401)
+
+        login_user(user, remember=True)
+        return redirect(url_for('admin'))
+    return render_template('admin/login.html', )
 
 @app.route('/sitemap.xml')
 def sitemap():
@@ -136,10 +171,12 @@ def authordetails(slug):
 ================================ BLOG ADMIN =============================
 """
 @app.route('/admin')
+@login_required
 def admin():
     return render_template('admin/index.html')
 
 @app.route('/admin/create-blog', methods=["POST", "GET"])
+@login_required
 def createblog():
     if request.method == "POST":
         title = request.json["title"]
@@ -159,6 +196,7 @@ def createblog():
     return render_template('admin/create-blog.html')
 
 @app.route('/admin/create-entry', methods=["POST", "GET"])
+@login_required
 def createentry():
     if request.method == "POST":
         title = request.json["title"]
@@ -177,15 +215,24 @@ def createauthor():
     if request.method == "POST":
         first_name = request.json["firstName"]
         last_name = request.json["lastName"]
+        email = request.json["email"]
+        password = request.json["password"]
         img = request.json["img"]
         location = request.json["location"]
         social = request.json["social"]
         body = request.json["body"]
         keywords = request.json["keywords"]
 
+        user = Author.query.filter_by(email=email).first()
+
+        if user:
+            return Response("User already exists!", 400)
+
         author = Author(
             first_name=first_name, 
             last_name=last_name, 
+            email=email, 
+            password=generate_password_hash(password, method='sha256'), 
             slug=slugify(first_name + " " + last_name), 
             img='blog/assets/images/authors/' + img, 
             location=location, 
@@ -199,28 +246,34 @@ def createauthor():
     return render_template('admin/create-author.html')
 
 @app.route('/admin/authors')
+@login_required
 def adminAuthors():
     return render_template('admin/view-authors.html')
 
 @app.route('/admin/authors/<string:slug>')
+@login_required
 def adminAuthorDetails(slug):
     author = Author.query.filter_by(slug=slug).first_or_404()
     return render_template('admin/edit-author.html', author=author)
 
 @app.route('/admin/entries')
+@login_required
 def adminEntries():
     return render_template('admin/view-entries.html')
 
 @app.route('/admin/entries/<string:slug>')
+@login_required
 def adminEntryDetails(slug):
     entry = Entry.query.filter_by(slug=slug).first_or_404()
     return render_template('admin/edit-entry.html', entry=entry)
 
 @app.route('/admin/blogs')
+@login_required
 def adminBlogs():
     return render_template('admin/view-blogs.html')
 
 @app.route('/admin/blogs/<string:slug>')
+@login_required
 def adminBlogDetails(slug):
     blog = Blog.query.filter_by(slug=slug).first_or_404()
     return render_template('admin/edit-blog.html', blog=blog)
@@ -414,7 +467,6 @@ def getCategories():
 
 @app.route('/rest/s1/categories/<string:category>', methods=["GET"])
 def getCategoryBlogs(category):
-    print(category)
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
 
@@ -444,7 +496,6 @@ def createComment():
     last_name = request.json["lastName"]
     body = request.json["body"]
     blog = request.json["blog"]
-    print(first_name, last_name, blog)
 
     query_blog = Blog.query.filter_by(slug=blog).one()
     
@@ -460,4 +511,4 @@ def createComment():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run()

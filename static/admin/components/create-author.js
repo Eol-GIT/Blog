@@ -3,6 +3,8 @@ Vue.component('create-author', {
         return {
             firstName: "",
             lastName: "",
+            email: "",
+            password: "",
             image: "",
             location: "",
             social: "",
@@ -15,6 +17,8 @@ Vue.component('create-author', {
             axios.post('/admin/create-author', {
                 firstName: this.firstName,
                 lastName: this.lastName,
+                email: this.email,
+                password: this.password,
                 img: this.image,
                 location: this.location,
                 social: this.social,
@@ -24,6 +28,8 @@ Vue.component('create-author', {
             .then(res => {
                 this.firstName = '';
                 this.lastName = '';
+                this.email = '';
+                this.password = '';
                 this.image = '';
                 this.location = '';
                 this.social = '';
@@ -50,6 +56,14 @@ Vue.component('create-author', {
             <div class="form-group">
                 <label>Last Name</label>
                 <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" v-model="lastName" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email" v-model="email" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" v-model="password" required>
             </div>
             <div class="form-group">
                 <label>Author Image</label>
