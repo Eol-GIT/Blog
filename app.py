@@ -116,9 +116,9 @@ def login():
 def sitemap():
     host_components = urlparse(request.host_url)
     base_url = host_components.scheme + "://" + host_components.netloc
-    blogs = Blog.query.order_by(Blog.id.desc()).all()
-    authors = Author.query.order_by(Author.id.desc()).all()
-    entries = Entry.query.order_by(Entry.id.desc()).all()
+    blogs = Blog.query.order_by(Blog.id).all()
+    authors = Author.query.order_by(Author.id).all()
+    entries = Entry.query.order_by(Entry.id).all()
     xml_sitemap = render_template('sitemap.xml', projects=project_list, blogs=blogs, authors=authors, entries=entries, base_url=base_url)
     response = make_response(xml_sitemap)
     response.headers["Content-Type"] = "application/xml"
