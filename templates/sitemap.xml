@@ -11,41 +11,13 @@
     <changefreq>weekly</changefreq>
   </url>
 
+  {% for project in projects %}
   <url>
-    <loc>{{ base_url }}/projects/sorting-visualizer</loc>
+    <loc>{{ base_url }}/projects/{{project}}</loc>
     <lastmod>2022-02-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
   </url>
-
-  <url>
-    <loc>{{ base_url }}/projects/cyber-city</loc>
-    <lastmod>2022-02-01</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>{{ base_url }}/projects/movie-freaks</loc>
-    <lastmod>2022-02-01</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>{{ base_url }}/projects/e-commerce</loc>
-    <lastmod>2022-02-01</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>{{ base_url }}/projects/dino-game</loc>
-    <lastmod>2022-02-01</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>{{ base_url }}/projects/tower-war</loc>
-    <lastmod>2022-02-01</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
+  {% endfor %}
 
   <url>
     <loc>{{ base_url }}/blog</loc>
@@ -94,4 +66,5 @@
     <changefreq>daily</changefreq>
   </url>
   {% endfor %}
-</Urlset>
+
+</urlset>

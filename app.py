@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, Response, redirect, url_for
+from flask import Flask, jsonify, render_template, request, Response, redirect, url_for, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime, timedelta
@@ -16,6 +16,7 @@ login_manager.init_app(app)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+project_list = ['sorting-visualizer', 'movie-freaks', 'dino-game', 'cyber-city', 'tower-war', 'e-commerce']
 
 db = SQLAlchemy(app)
 
@@ -115,7 +116,10 @@ def sitemap():
     blogs = Blog.query.order_by(Blog.id.desc()).all()
     authors = Author.query.order_by(Author.id.desc()).all()
     entries = Entry.query.order_by(Entry.id.desc()).all()
-    return render_template('sitemap.xml', blogs=blogs, authors=authors, entries=entries, base_url="https://eolnuha.com")
+    xml_sitemap = render_template('sitemap.xml', projects=project_list, blogs=blogs, authors=authors, entries=entries, base_url="https://eolnuha.com")
+    response = make_response(xml_sitemap)
+    response.headers["Content-Type"] = "application/xml"
+    return response
 
 @app.route('/')
 def index():
@@ -123,7 +127,6 @@ def index():
 
 @app.route('/projects/<string:project>')
 def projects(project):
-    project_list = ['sorting-visualizer', 'movie-freaks', 'dino-game', 'cyber-city', 'tower-war', 'e-commerce']
     if project not in project_list:
         return render_template('404.html'), 404
     return render_template(f'projects/{project}.html')
