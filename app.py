@@ -6,6 +6,7 @@ from flask_cors import CORS
 import helpers
 from slugify import slugify
 from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 app.secret_key = "thiskeyissoscret"
@@ -113,10 +114,12 @@ def login():
 
 @app.route('/sitemap.xml')
 def sitemap():
+    host_components = urlparse(request.host_url)
+    base_url = host_components.scheme + "://" + host_components.netloc
     blogs = Blog.query.order_by(Blog.id.desc()).all()
     authors = Author.query.order_by(Author.id.desc()).all()
     entries = Entry.query.order_by(Entry.id.desc()).all()
-    xml_sitemap = render_template('sitemap.xml', projects=project_list, blogs=blogs, authors=authors, entries=entries, base_url="https://eolnuha.com")
+    xml_sitemap = render_template('sitemap.xml', projects=project_list, blogs=blogs, authors=authors, entries=entries, base_url=base_url)
     response = make_response(xml_sitemap)
     response.headers["Content-Type"] = "application/xml"
     return response
