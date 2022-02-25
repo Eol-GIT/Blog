@@ -1,19 +1,18 @@
 {% extends 'blog/base.html' %}
-{% block title %}Category | {{ category }}{% endblock %}
+{% block title %}Search Blogs | {{ query }}{% endblock %}
 {% block body %}
     <!-- Header -->
     <header class="" id="navbar">
         <nav-bar active=""></nav-bar>
     </header>
     
-    <div id="category-blogs">
-        <category-blogs 
-            entry-slug="{{ entry.slug }}"
-            category="{{ category }}">
-        </category-blogs>
+    <div id="search-blogs">
+        <search-blogs 
+            query="{{ query }}">
+        </search-blogs>
     </div>
 {% endblock %}
 {% block extrascripts %}
-    <script src="{{ url_for('static', filename='blog/components/category-blogs.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/search-blogs.js') }}"></script>
     <script src="{{ url_for('static', filename='blog/components/blogs-sidemenu.js') }}"></script>
 {% endblock %}

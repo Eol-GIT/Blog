@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block title %}Search Entries | {{ query }}{% endblock %}
+{% block body %}
+    <!-- Header -->
+    <header class="" id="navbar">
+        <nav-bar active=""></nav-bar>
+    </header>
+    
+    <div id="search-entries">
+        <search-entries 
+            query="{{ query }}">
+        </search-entries>
+    </div>
+{% endblock %}
+{% block extrascripts %}
+    <script src="{{ url_for('static', filename='blog/components/search-entries.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/entries-sidemenu.js') }}"></script>
+{% endblock %}

@@ -175,6 +175,15 @@ def categoryBlogs(slug, category):
 def authorDetails(slug):
     author = Author.query.filter_by(slug=slug).first_or_404()
     return render_template('blog/author-details.html', author=author, keywords=author.keywords)
+
+@app.route('/blog/search/blogs/<string:query>')
+def searchBlogs(query):
+    return render_template('blog/search-blogs.html', query=query)
+
+@app.route('/blog/search/entries/<string:query>')
+def searchEntries(query):
+    return render_template('blog/search-entries.html', query=query)
+
 """
 ================================ BLOG ADMIN =============================
 """
@@ -339,7 +348,7 @@ def editBlog(slug):
     blog.modified = datetime.now()
 
     db.session.commit()
-    return jsonify(f"{blog.slug} updated successfully!")
+    return Response(f"{blog.slug} updated successfully!", 200)
 
 @app.route('/rest/s1/entries', methods=["GET"])
 def getEntries():
@@ -386,7 +395,7 @@ def editEntry(slug):
     entry.modified = datetime.now()
 
     db.session.commit()
-    return jsonify(f"{entry.slug} updated successfully!")
+    return Response(f"{entry.slug} updated successfully!", 200)
 
 @app.route('/rest/s1/entries/<string:slug>/blogs', methods=["GET"])
 def getEntryBlogs(slug):
@@ -430,11 +439,6 @@ def editAuthor(slug):
     body = request.json["body"]
     keywords = request.json["keywords"]
 
-    user = Author.query.filter_by(email=email).first()
-
-    if user:
-        return Response("User with this email already exists!", 400)
-
     author = Author.query.filter_by(slug=slug).first_or_404()
     author.first_name = first_name
     author.last_name = last_name
@@ -448,7 +452,7 @@ def editAuthor(slug):
     author.modified = datetime.now()
 
     db.session.commit()
-    return jsonify(f"{author.slug} updated successfully!")
+    return Response(f"{author.slug} updated successfully!", 200)
 
 @app.route('/rest/s1/authors/<string:slug>/blogs', methods=["GET"])
 def getAuthorBlogs(slug):
@@ -522,8 +526,40 @@ def createComment():
     )
     db.session.add(comment)
     db.session.commit()
-    return jsonify(f"Comment created successfully!")
+    return Response("Comment created successfully!", 200)
+
+@app.route('/rest/s1/search/<string:search>/blogs')
+def getSearchedBlogs(search):
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+
+    if '*' in search or '_' in search: 
+        looking_for = search.replace('_', '__')\
+            .replace('*', '%')\
+            .replace('?', '_')
+    else:
+        looking_for = '%{0}%'.format(search)
+
+    paginated_items = Blog.query.filter(Blog.title.ilike(looking_for)).order_by(Blog.views.desc()).paginate(page=page, per_page=per_page)
+
+    return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
+
+@app.route('/rest/s1/search/<string:search>/entries')
+def getSearchedEntries(search):
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+
+    if '*' in search or '_' in search: 
+        looking_for = search.replace('_', '__')\
+            .replace('*', '%')\
+            .replace('?', '_')
+    else:
+        looking_for = '%{0}%'.format(search)
+
+    paginated_items = Entry.query.filter(Entry.title.ilike(looking_for)).order_by(Entry.views.desc()).paginate(page=page, per_page=per_page)
+
+    return jsonify(helpers.getPaginatedDict(helpers.getEntriesList(paginated_items.items), paginated_items))
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run()

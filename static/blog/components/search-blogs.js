@@ -1,45 +1,69 @@
 Vue.component('search-blogs', {
+    props: ["query"],
     data() {
         return {
-            currentPage: 1,
-            pageSize: 6,
-            query: "",
-            searchedBlogs: [],
-            recentBlogs: blogs.slice(Math.max(blogs.length - 4, 0)).reverse(),
+            page: 1,
+            pageSize: 12,
+            recentBlogs: [],
             blogs: [],
+            searchInput: "",
+            searchResults: []
         };
     },
     created(){
-        var url = new URL(window.location.href);
-        const query = url.searchParams.get("q");
-        this.query = query; 
-        if (!query){
-          window.location.replace('/404.shtml')
-        }
-        this.searchedBlogs = blogs.filter( e => e['title'].toLowerCase().includes(query.toLowerCase()));
-        this.paginateBlogs(this.currentPage, this.pageSize);
+        this.getSearchResults(this.page);
+        this.getRecentBlogs();
     },
     methods: {
-        paginateBlogs(currentPage, pageSize){
-            this.blogs = paginator(this.searchedBlogs.reverse(), currentPage, pageSize);
-            this.currentPage = this.blogs.page;
+        getSearchResults(page){
+            axios.get(`/rest/s1/search/${this.query}/blogs`, {params: {page: page, per_page: this.pageSize}}).then(
+                res => {
+                    this.blogs = res.data;
+                    this.page = page;
+                }
+            )
+        },
+        getRecentBlogs(){
+            axios.get(`/rest/s1/blogs`, {params: {page: 1, per_page: this.pageSize}}).then(
+                res => {
+                    this.recentBlogs = res.data.data;
+                }
+            )
+        },
+        searchBlogs(){
+            if (this.searchInput){
+                axios.get(`/rest/s1/search/${this.searchInput}/blogs`, {params: {per_page: 5}}).then(
+                    res => {
+                        this.searchResults = res.data.data;
+                    }
+                )
+            } else {
+                this.searchResults = []
+            }
         }
+    },
+    watch: {
+        searchInput: {
+          handler: function () {
+              this.searchBlogs();
+          },
+        },
     },
     template: `
     <div>
     <div class="heading-page header-text">
-      <section class="page-heading">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="text-content">
-                <h4>Blog Entries by query</h4>
-                <h2>{{query}}</h2>
-              </div>
+        <section class="page-heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                    <div class="text-content">
+                        <h4>Blogs by query</h4>
+                        <h2>{{query}}</h2>
+                    </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
     </div>
     
 
@@ -49,57 +73,96 @@ Vue.component('search-blogs', {
 
 
     <section class="blog-posts grid-system">
-      <div class="container">
-        <div class="row">
-        <div class="col-lg-8" id="blog-entries">
-            <div class="all-blog-posts">
-                <div class="row">
-                    <div v-if="searchedBlogs.length === 0" class="col-lg-12">
-                        <h3>No blogs have been found with the query: <i class="text-primary">{{query}}</i></h3>
-                        <hr>
-                        <p>These are some of our most recent blogs:</p>
-                    </div>
-                    <div class="col-lg-6" v-for="blog in searchedBlogs.length != 0 ? blogs.data : recentBlogs">
-                        <a :href="blog.url">
-                        <div class="blog-post">
-                            <div class="blog-thumb">
-                            <img :src="blog.img" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9" id="blog-entries">
+                    <div class="all-blog-posts">
+                        <div class="row">
+                            <div v-if="blogs.data.length === 0" class="col-lg-12">
+                                <h3>No blogs have been found with the query: <i class="text-primary">{{query}}</i></h3>
+                                <p>These are some of our most recent blogs:</p>
+                                <hr>
                             </div>
-                            <div class="down-content">
-                            <h4>{{blog.title}}</h4>
-                            <ul class="post-info">
-                                <li>{{blog.fromDate}}</li>
+                            <div class="col-lg-6" v-for="blog in blogs.data.length != 0 ? blogs.data : recentBlogs">
+                            <a :href="'/blog/entries/' + blog.entry.slug + '/' + blog.slug">
+                            <div class="blog-post">
+                                <div class="down-content">
+                                <a :href="'/blog/entries/' + blog.entry.slug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
+                                <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
+                                <ul class="post-info">
+                                    <li>{{blog.date}}</li>
+                                </ul>
+                                <hr class="devider">
+                                </div>
+                            </div>
+                            </a>
+                            </div>
+                            <div class="col-lg-12" v-if="blogs.data.length != 0">
+                            <ul class="page-numbers">
+                                <li v-if="blogs.has_prev">
+                                    <a @click="getSearchResults(blogs.prev_num)" href="#" onclick="return false;">
+                                        <i class="fa fa-angle-double-left"></i>
+                                    </a>
+                                </li>
+                                <li v-for="page in blogs.pages" :class="{'active': page === blogs.page}">
+                                    <a @click="getSearchResults(page)" href="#" onclick="return false;">{{page}}</a>
+                                </li>
+                                <li v-if="blogs.has_next">
+                                    <a @click="getSearchResults(blogs.next_num)" href="#" onclick="return false;">
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
                             </ul>
-                            <div v-html="markdown(blog.body)"></div>
                             </div>
                         </div>
-                        </a>
                     </div>
-                    <div class="col-lg-12">
-                    <ul class="page-numbers">
-                        <li v-if="blogs.pre_page">
-                            <a @click="paginateBlogs(currentPage - 1, blogs.per_page)" href="#" onclick="return false;">
-                                <i class="fa fa-angle-double-left"></i>
-                            </a>
-                        </li>
-                        <li v-for="page in blogs.total_pages" :class="{'active': page === blogs.page}">
-                            <a @click="paginateBlogs(page, blogs.per_page)" href="#" onclick="return false;">{{page}}</a>
-                        </li>
-                        <li v-if="blogs.next_page">
-                            <a @click="paginateBlogs(currentPage + 1, blogs.per_page)" href="#" onclick="return false;">
-                                <i class="fa fa-angle-double-right"></i>
-                            </a>
-                        </li>
-                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <div class="sidebar">
+                        <div class="row">
+                        <div class="col-lg-12 p-0">
+                            <div class="sidebar-item search">
+                                <form @submit.prevent="location.href = '/blog/search/blogs/' + searchInput;">
+                                    <input type="text" class="searchText" placeholder="Search Blogs..." autocomplete="off" v-model="searchInput" @change="searchBlogs">
+                                </form>
+                                <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
+                                    <div v-for="result in searchResults">
+                                        <a :href="'/blog/entries/' + result.entry.slug + '/' + result.slug" class="text-dark">
+                                            <h5>{{result.title}}</h5>
+                                            <small class="text-muted">{{result.views}} views</small>
+                                        </a>
+                                        <hr>
+                                    </div>
+                                    <a :href="'/blog/search/blogs/' + searchInput"><button class="btn btn-sm btn-primary w-100">View All</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item recent-posts">
+                            <div class="sidebar-heading">
+                                <h2>Recent Blogs</h2>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                    <li v-for="blog in recentBlogs">
+                                        <a :href="'/blog/entries/' + blog.entry.slug + '/' + blog.slug">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5>{{blog.title}}</h5>
+                                                    <span>{{blog.date}}</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-          <div class="col-lg-4" id="sidebar">
-            <side-bar></side-bar>
-          </div>
-        </div>
-      </div>
     </section>
     </div>
     `

@@ -24,7 +24,7 @@ Vue.component('entries', {
             <a :href="'/blog/entries/' + entry.slug">
             <div class="blog-post">
                 <div class="blog-thumb">
-                <img :src="'/static/' + entry.img" alt="">
+                <img :src="'/static/' + entry.img" :alt="entry.slug">
                 </div>
                 <div class="down-content">
                 <h4>{{entry.title}}</h4>
