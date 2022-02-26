@@ -542,7 +542,8 @@ def getSearchedBlogs(search):
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
             .replace('*', '%')\
-            .replace('?', '_')
+            .replace('?', '_')\
+            .replace('%20', ' ')
     else:
         looking_for = '%{0}%'.format(search)
 
@@ -558,7 +559,8 @@ def getSearchedEntries(search):
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
             .replace('*', '%')\
-            .replace('?', '_')
+            .replace('?', '_')\
+            .replace('%20', ' ')
     else:
         looking_for = '%{0}%'.format(search)
 
@@ -568,4 +570,4 @@ def getSearchedEntries(search):
 
 if __name__ == '__main__':
     db.create_all()
-    app.run()
+    app.run(debug=True)
