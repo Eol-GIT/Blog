@@ -71,7 +71,7 @@ Vue.component('sidemenu', {
                     <div class="row">
                         <div class="col-12">
                             <h5>{{blog.title}}</h5>
-                            <span>{{blog.date}}</span>
+                            <span>{{blog.date}} | <small class="text-muted">{{blog.views}} views</small></span>
                         </div>
                     </div>
                 </a></li>

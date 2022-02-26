@@ -70,7 +70,15 @@ Vue.component('sidemenu', {
                 <li v-for="entry in entries"><a :href="'/blog/entries/' + entry.slug">
                     <div class="row">
                         <div class="col-12">
-                            <h5>{{entry.title}}</h5>
+                            <div class="d-flex">
+                                <div class="w-25 mr-2">
+                                    <img :src="'/static/' + entry.img" :alt="entry.slug" class="w-100">
+                                </div>
+                                <div>
+                                    <h5>{{entry.title}}</h5>
+                                    <small class="text-muted">{{entry.views}} views</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </a></li>
