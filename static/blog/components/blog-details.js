@@ -140,7 +140,9 @@ Vue.component('blog-details', {
 					</ul>
 				</div>
 			</div>
-			<button class="btn btn-sm btn-outline-primary w-100" v-if="comments.has_next" @click="getComments(pageSize + pageSize)">{{loadText}}</button>
+            <div class="submit-comment">
+			    <button class="" v-if="comments.has_next" @click="getComments(pageSize + pageSize)">{{loadText}}</button>
+            </div>
       	</div>
 		<div class="col-lg-12">
           <div class="sidebar-item submit-comment">

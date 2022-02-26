@@ -558,6 +558,11 @@ ul.page-numbers li a:hover {
 	color: rgb(162, 218, 255);
 }
 
+ul.page-numbers li a.disabled {
+	pointer-events: none;
+	color: #7a7a7a9c;
+}
+
 .blog-posts .sidebar-heading h2 {
 	font-size: 18px;
 	text-transform: uppercase;
@@ -1009,11 +1014,6 @@ footer p a:hover {
 	}
 	.owl-banner .item .item-content h4 {
 		font-size: 20px;
-	}
-}
-@media (max-width: 768px) {
-	.owl-banner .owl-nav {
-		display: none;
 	}
 }
 

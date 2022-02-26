@@ -64,16 +64,16 @@ Vue.component('category-blogs', {
                     </div>
                     <div class="col-lg-12">
                       <ul class="page-numbers">
-                        <li v-if="blogs.has_prev">
-                            <a @click="paginatedBlogs(blogs.prev_num)" href="#" onclick="return false;">
+                        <li>
+                            <a @click="paginatedBlogs(blogs.prev_num)" href="#" onclick="return false;" :class="{'disabled': !blogs.has_prev}">
                                 <i class="fa fa-angle-double-left"></i>
                             </a>
                         </li>
                         <li v-for="page in blogs.pages" :class="{'active': page === blogs.page}">
                             <a @click="paginatedBlogs(page)" href="#" onclick="return false;">{{page}}</a>
                         </li>
-                        <li v-if="blogs.has_next">
-                            <a @click="paginatedBlogs(blogs.next_num)" href="#" onclick="return false;">
+                        <li>
+                            <a @click="paginatedBlogs(blogs.next_num)" href="#" onclick="return false;" :class="{'disabled': !blogs.has_next}">
                                 <i class="fa fa-angle-double-right"></i>
                             </a>
                         </li>
