@@ -500,7 +500,7 @@ def getCategories():
 @app.route('/rest/s1/categories/<string:category>', methods=["GET"])
 def getCategoryBlogs(category):
     page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 5, type=int)
+    per_page = request.args.get('per_page', 10, type=int)
 
     if request.args.get('entry'):
         query = Blog.query.filter(Blog.entry.has(slug=request.args.get('entry')))
