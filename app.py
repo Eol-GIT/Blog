@@ -184,11 +184,11 @@ def authorDetails(slug):
 
 @app.route('/blog/search/blogs/<string:query>')
 def searchBlogs(query):
-    return render_template('blog/search-blogs.html', query=query)
+    return render_template('blog/search-blogs.html', query=query.replace('%20', ' '))
 
 @app.route('/blog/search/entries/<string:query>')
 def searchEntries(query):
-    return render_template('blog/search-entries.html', query=query)
+    return render_template('blog/search-entries.html', query=query.replace('%20', ' '))
 
 """
 ================================ BLOG ADMIN =============================
@@ -570,4 +570,4 @@ def getSearchedEntries(search):
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run()
