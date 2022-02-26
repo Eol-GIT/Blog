@@ -1,3 +1,4 @@
+from distutils.log import debug
 from flask import Flask, jsonify, render_template, request, Response, redirect, url_for, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy 
@@ -184,11 +185,15 @@ def authorDetails(slug):
 
 @app.route('/blog/search/blogs/<string:query>')
 def searchBlogs(query):
-    return render_template('blog/search-blogs.html', query=query.replace('%20', ' '))
+    query = query.replace('+', ' ')\
+            .replace('%20', ' ')
+    return render_template('blog/search-blogs.html', query=query)
 
 @app.route('/blog/search/entries/<string:query>')
 def searchEntries(query):
-    return render_template('blog/search-entries.html', query=query.replace('%20', ' '))
+    query = query.replace('+', ' ')\
+            .replace('%20', ' ')
+    return render_template('blog/search-entries.html', query=query)
 
 """
 ================================ BLOG ADMIN =============================
@@ -536,14 +541,15 @@ def createComment():
 
 @app.route('/rest/s1/search/<string:search>/blogs')
 def getSearchedBlogs(search):
+    search = search.replace('+', ' ')\
+            .replace('%20', ' ')
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
 
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
             .replace('*', '%')\
-            .replace('?', '_')\
-            .replace('%20', ' ')
+            .replace('?', '_')
     else:
         looking_for = '%{0}%'.format(search)
 
@@ -553,14 +559,15 @@ def getSearchedBlogs(search):
 
 @app.route('/rest/s1/search/<string:search>/entries')
 def getSearchedEntries(search):
+    search = search.replace('+', ' ')\
+            .replace('%20', ' ')
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
 
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
             .replace('*', '%')\
-            .replace('?', '_')\
-            .replace('%20', ' ')
+            .replace('?', '_')
     else:
         looking_for = '%{0}%'.format(search)
 

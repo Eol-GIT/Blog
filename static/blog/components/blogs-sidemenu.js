@@ -23,7 +23,7 @@ Vue.component('sidemenu', {
     methods: {
         searchBlogs(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/${this.searchInput}/blogs`, {params: {per_page: 5}}).then(
+                axios.get(`/rest/s1/search/${this.searchInput.replaceAll(' ', '+')}/blogs`, {params: {per_page: 5}}).then(
                     res => {
                         this.searchResults = res.data.data;
                     }
@@ -45,7 +45,7 @@ Vue.component('sidemenu', {
         <div class="row">
         <div class="col-lg-12 p-0">
             <div class="sidebar-item search">
-                <form @submit.prevent="location.href = '/blog/search/blogs/' + searchInput;">
+                <form @submit.prevent="location.href = '/blog/search/blogs/' + searchInput.replaceAll(' ', '+');">
                     <input type="text" class="searchText" placeholder="Search Blogs..." autocomplete="off" v-model="searchInput" @change="searchBlogs">
                 </form>
                 <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
@@ -56,7 +56,7 @@ Vue.component('sidemenu', {
                         </a>
                         <hr>
                     </div>
-                    <a :href="'/blog/search/blogs/' + searchInput"><button class="btn btn-sm btn-primary w-100">View All</button></a>
+                    <a :href="'/blog/search/blogs/' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
                 </div>
             </div>
         </div>
