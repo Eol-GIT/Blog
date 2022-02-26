@@ -113,6 +113,8 @@ def login():
         return redirect(url_for('admin'))
     return render_template('admin/login.html', )
 
+@app.route('/sitemap')
+@app.route('/sitemap/')
 @app.route('/sitemap.xml')
 def sitemap():
     host_components = urlparse(request.host_url)
