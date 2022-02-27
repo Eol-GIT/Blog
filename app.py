@@ -503,6 +503,8 @@ def getCategories():
 
 @app.route('/rest/s1/categories/<string:category>', methods=["GET"])
 def getCategoryBlogs(category):
+    category = category.replace('+', ' ')\
+            .replace('%20', ' ')
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 10, type=int)
 
