@@ -1,4 +1,3 @@
-from distutils.log import debug
 from flask import Flask, jsonify, render_template, request, Response, redirect, url_for, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy 
@@ -176,6 +175,8 @@ def blogDetails(entry, blog):
 
 @app.route('/blog/entries/<string:slug>/category/<string:category>')
 def categoryBlogs(slug, category):
+    category = category.replace('+', ' ')\
+            .replace('%20', ' ')
     entry = Entry.query.filter_by(slug=slug).first_or_404()
 
     return render_template('blog/category-blogs.html', category=category, entry=entry, keywords=entry.keywords)
@@ -184,6 +185,8 @@ def categoryBlogs(slug, category):
 @app.route('/blog/<string:slug>')
 def authorDetails(slug):
     author = Author.query.filter_by(slug=slug).first_or_404()
+    author.views = author.views + 1
+    db.session.commit()
     return render_template('blog/author-details.html', author=author, keywords=author.keywords)
 
 @app.route('/blog/search/blogs/<string:query>')
