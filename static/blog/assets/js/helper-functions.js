@@ -24,27 +24,6 @@ const curseWords = [
     "snatch","snowballing","sodomize","sodomy","spastic","spic","splooge","splooge moose","spooge","spread legs","spunk","strap on","strapon","strappado","strip club","style doggy","suck","sucks","suicide girls","sultry women","swastika","swinger","tainted love","taste my","tea bagging",
     "threesome","throating","thumbzilla","tied up","tight white","tit","tits","titties","titty","tongue in a","topless","tosser","towelhead","tranny","tribadism","tub girl","tubgirl","tushy","twat","twink","twinkie","two girls one cup","undressing","upskirt","urethra play","urophilia","vagina","venus mound","viagra","vibrator","violet wand","vorarephilia","voyeur","voyeurweb","voyuer","vulva","wank","wetback","wet dream","white power","whore","worldsex","wrapping men","wrinkled starfish","xx","xxx","yaoi","yellow showers","yiffy","zoophilia","ðŸ–•"
 ]
-function paginator(items, current_page, per_page_items) {
-	let page = current_page || 1,
-	per_page = per_page_items || 10,
-	offset = (page - 1) * per_page,
-
-	paginatedItems = items.slice(offset).slice(0, per_page_items),
-	total_pages = Math.ceil(items.length / per_page);
-
-	return {
-		page: page,
-		per_page: per_page,
-		pre_page: page - 1 ? page - 1 : null,
-		next_page: (total_pages > page) ? page + 1 : null,
-		total: items.length,
-		total_pages: total_pages,
-		data: paginatedItems
-	};
-}
-// function replaceAll(str, find, replace) {
-//   return str.replace(new RegExp(find, 'g'), replace);
-// }
 function markdown(text){
     var converter = new showdown.Converter();
     converter.setOption('simpleLineBreaks', true);
@@ -70,26 +49,4 @@ function getConsent() {
       }
     }
     return "";
-}
-
-function categories(length){
-  let categoryList = []
-  for(var i = 0; i < blogs.length; i++) {
-      if (!categoryList.includes(blogs[i].category)){
-          categoryList.push(blogs[i].category)
-      }
-  }
-  return length ? categoryList.slice(0, length) : categoryList;
-}
-
-function tags(length){
-  let tagList = []
-  for(var i = 0; i < blogs.length; i++) {
-      for(var j = 0; j < blogs[i].tags.length; j++) {
-          if (!tagList.includes(blogs[i].tags[j])){
-              tagList.push(blogs[i].tags[j])
-          }
-      }
-  }
-  return length ? tagList.slice(0, length) : tagList;
 }

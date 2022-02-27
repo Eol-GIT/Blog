@@ -1,6 +1,9 @@
 {% extends 'admin/base.html' %}
 {% block title %}Admin Panel | Create Blog{% endblock %}
 {% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='blog/assets/css/templatemo-stand-blog.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <a href="/admin" class="h1 m-1" style="position: absolute; top: 0px; left: 0px">
     <i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v p-1"></i><i class="fa fa-ellipsis-v"></i>
 </a>
@@ -8,4 +11,16 @@
     <create-blog></create-blog>
 </div>
 <script src="{{ url_for('static', filename='admin/components/create-blog.js') }}"></script>
+<script>
+function markdown(text){
+    var converter = new showdown.Converter();
+    converter.setOption('simpleLineBreaks', true);
+    converter.setOption('emoji', true);
+    converter.setOption('ghCodeBlocks', true);
+    converter.setOption('tables', true);
+    converter.setOption('tasklists', true);
+    converter.setOption('smoothLivePreview', true);
+    return converter.makeHtml(text);
+}
+</script>
 {% endblock %}

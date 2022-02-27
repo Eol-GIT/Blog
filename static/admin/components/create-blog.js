@@ -86,6 +86,9 @@ Vue.component('create-blog', {
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <h3 v-if="body" class="mt-4">Blog Preview
+        <hr></h3>
+        <div class="markdown mb-5" v-html="markdown(body)"></div>
         </div>
     </div>
     `
