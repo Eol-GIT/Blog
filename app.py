@@ -138,6 +138,7 @@ def projects(project):
     return render_template(f'projects/{project}.html')
 
 @app.route('/blog')
+@app.route('/blog/')
 def blog():
     per_page = request.args.get('per_page', 6, type=int)
     entries = helpers.getEntriesList(Entry.query.order_by(Entry.views.desc()).limit(per_page).all())
