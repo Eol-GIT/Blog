@@ -98,21 +98,21 @@ Vue.component('search-blogs', {
                             </a>
                             </div>
                             <div class="col-lg-12" v-if="blogs.data.length != 0">
-                            <ul class="page-numbers">
-                                <li v-if="blogs.has_prev">
-                                    <a @click="getSearchResults(blogs.prev_num)" href="#" onclick="return false;">
-                                        <i class="fa fa-angle-double-left"></i>
-                                    </a>
-                                </li>
-                                <li v-for="page in blogs.pages" :class="{'active': page === blogs.page}">
-                                    <a @click="getSearchResults(page)" href="#" onclick="return false;">{{page}}</a>
-                                </li>
-                                <li v-if="blogs.has_next">
-                                    <a @click="getSearchResults(blogs.next_num)" href="#" onclick="return false;">
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                                <ul class="page-numbers">
+                                    <li>
+                                        <a @click="getSearchResults(blogs.prev_num)" href="#" onclick="return false;" :class="{'disabled': !blogs.has_prev}">
+                                            <i class="fa fa-angle-double-left"></i>
+                                        </a>
+                                    </li>
+                                    <li v-for="page in blogs.pages" :class="{'active': page === blogs.page}">
+                                        <a @click="getSearchResults(page)" href="#" onclick="return false;">{{page}}</a>
+                                    </li>
+                                    <li>
+                                        <a @click="getSearchResults(blogs.next_num)" href="#" onclick="return false;" :class="{'disabled': !blogs.has_next}">
+                                            <i class="fa fa-angle-double-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@ Vue.component('search-blogs', {
                                     <div v-for="result in searchResults">
                                         <a :href="'/blog/entries/' + result.entry.slug + '/' + result.slug" class="text-dark">
                                             <h5>{{result.title}}</h5>
-                                            <small class="text-muted">{{result.views}} views</small>
+                                            <small class="text-muted">{{nFormatter(result.views, 1)}} views</small>
                                         </a>
                                         <hr>
                                     </div>
@@ -149,7 +149,7 @@ Vue.component('search-blogs', {
                                             <div class="row">
                                                 <div class="col-12">
                                                     <h5>{{blog.title}}</h5>
-                                                    <span>{{blog.date}}</span>
+                                                    <small class="text-muted">{{blog.date}} | {{nFormatter(blog.views, 1)}} views</small>
                                                 </div>
                                             </div>
                                         </a>

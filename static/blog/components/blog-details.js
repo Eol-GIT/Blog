@@ -105,7 +105,7 @@ Vue.component('blog-details', {
                             </div>
                             <div class="p-1">
                                 <a :href="'/blog/' + blog.author.slug" class="h5">{{blog.author.firstName}} {{blog.author.lastName}}</a><br>
-                                <small>Posted on:</small> {{blog.date}}<br>
+                                <small>Posted on: {{blog.date}} | Views: {{nFormatter(blog.views, 1)}}</small><br>
                             </div>
                         </div>
                         <div class="p-2">

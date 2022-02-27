@@ -52,7 +52,7 @@ Vue.component('sidemenu', {
                     <div v-for="result in searchResults">
                         <a :href="'/blog/entries/' + result.entry.slug + '/' + result.slug" class="text-dark">
                             <h5>{{result.title}}</h5>
-                            <small class="text-muted">{{result.views}} views</small>
+                            <small class="text-muted">{{nFormatter(result.views, 1)}} views</small>
                         </a>
                         <hr>
                     </div>
@@ -71,7 +71,7 @@ Vue.component('sidemenu', {
                     <div class="row">
                         <div class="col-12">
                             <h5>{{blog.title}}</h5>
-                            <span>{{blog.date}} | <small class="text-muted">{{blog.views}} views</small></span>
+                            <small class="text-muted">{{blog.date}} | {{nFormatter(blog.views, 1)}} views</small>
                         </div>
                     </div>
                 </a></li>

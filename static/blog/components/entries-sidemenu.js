@@ -50,7 +50,7 @@ Vue.component('sidemenu', {
                                 </div>
                                 <div>
                                     <h5>{{result.title}}</h5>
-                                    <small class="text-muted">{{result.views}} views</small>
+                                    <small class="text-muted">{{nFormatter(result.views, 1)}} views</small>
                                 </div>
                             </div>
                         </a>
@@ -76,7 +76,7 @@ Vue.component('sidemenu', {
                                 </div>
                                 <div>
                                     <h5>{{entry.title}}</h5>
-                                    <small class="text-muted">{{entry.views}} views</small>
+                                    <small class="text-muted">{{nFormatter(entry.views, 1)}} views</small>
                                 </div>
                             </div>
                         </div>
