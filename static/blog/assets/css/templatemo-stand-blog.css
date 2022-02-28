@@ -1122,7 +1122,7 @@ blockquote {
 #cookiescript_badge {display: none !important;}
 #cookiescript_injected {display: none !important;}
 .devider {display: inline-block;border: 0;font-size: 0;line-height: 0;height: 3px;max-width: 120px;width: 100%;margin: 0;background: linear-gradient(to right, #09f 50%, #0099ff50 120%);}
-code {
+pre code {
     color: lightgrey !important;
     padding: 0.25rem 0.5rem;
     background-color: #2b313a;
@@ -1135,6 +1135,7 @@ pre {
     border-radius: 6px;
 	color: lightgrey;
     background-color: #2b313a;
+	border-left: 4px solid #007bff;
 }
 pre code {padding: 0;}
 .markdown ul {
