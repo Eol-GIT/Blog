@@ -2,6 +2,7 @@ Vue.component('sidemenu', {
     data() {
         return {
             entries: [],
+            topEntries: [],
             searchResults: [],
             searchInput: ""
         };
@@ -10,6 +11,11 @@ Vue.component('sidemenu', {
         axios.get('/rest/s1/entries', {params: {per_page: 5}}).then(
             res => {
                 this.entries = res.data.data;
+            }
+        )
+        axios.get('/rest/s1/top-entries', {params: {per_page: 5}}).then(
+            res => {
+                this.topEntries = res.data;
             }
         )
     },
@@ -63,11 +69,37 @@ Vue.component('sidemenu', {
         <div class="col-lg-12">
             <div class="sidebar-item recent-posts">
             <div class="sidebar-heading">
-                <h2>Blog Entries</h2>
+                <h2>Recent Entries</h2>
             </div>
             <div class="content">
                 <ul>
                 <li v-for="entry in entries"><a :href="'/blog/entries/' + entry.slug">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="w-25 mr-2">
+                                    <img :src="'/static/' + entry.img" :alt="entry.slug" class="w-100">
+                                </div>
+                                <div>
+                                    <h5>{{entry.title}}</h5>
+                                    <small class="text-muted">{{nFormatter(entry.views, 1)}} views</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="sidebar-item recent-posts">
+            <div class="sidebar-heading">
+                <h2>Top Entries</h2>
+            </div>
+            <div class="content">
+                <ul>
+                <li v-for="entry in topEntries"><a :href="'/blog/entries/' + entry.slug">
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex">
