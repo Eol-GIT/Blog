@@ -83,7 +83,7 @@ Vue.component('contact-us', {
                 <div class="col-lg-4">
                   <div class="sidebar-item contact-information">
                     <div class="sidebar-heading">
-                      <h2>contact information</h2>
+                      <h2>Contact Information</h2>
                     </div>
                     <div class="content">
                       <ul>

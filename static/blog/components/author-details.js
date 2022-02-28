@@ -40,7 +40,7 @@ Vue.component('author-details', {
     <div>
     <div class="heading-page">
         <div class="author-profile-container">
-            <div class="profile">
+            <div class="profile pb-0 mb-0">
                 <div class="profile-image">
                     <img :src="'/static/' + author.img" :alt="author.slug" width="152" height="152">
                 </div>
@@ -67,7 +67,7 @@ Vue.component('author-details', {
         <!-- End of container -->
     </div>
 
-    <section class="blog-posts grid-system">
+    <section class="blog-posts grid-system mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
