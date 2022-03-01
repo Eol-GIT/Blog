@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block title %}Search Authors | {{ query }}{% endblock %}
+{% block body %}
+    <!-- Header -->
+    <header class="" id="navbar">
+        <nav-bar active=""></nav-bar>
+    </header>
+    
+    <div id="search-authors">
+        <search-authors 
+            query="{{ query }}">
+        </search-authors>
+    </div>
+{% endblock %}
+{% block extrascripts %}
+    <script src="{{ url_for('static', filename='blog/components/search-authors.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/authors-sidemenu.js') }}"></script>
+{% endblock %}

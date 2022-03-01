@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template, request, Response, redirect, url_for, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import or_
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime, timedelta
 from flask_cors import CORS
@@ -185,6 +186,9 @@ def categoryBlogs(slug, category):
 
     return render_template('blog/category-blogs.html', category=category, entry=entry, keywords=entry.keywords)
 
+@app.route('/blog/authors')
+def authors():
+    return render_template('blog/authors.html')
 
 @app.route('/blog/<string:slug>')
 def authorDetails(slug):
@@ -205,6 +209,11 @@ def searchEntries(query):
             .replace('%20', ' ')
     return render_template('blog/search-entries.html', query=query)
 
+@app.route('/blog/search/authors/<string:query>')
+def searchAuthors(query):
+    query = query.replace('+', ' ')\
+            .replace('%20', ' ')
+    return render_template('blog/search-authors.html', query=query)
 """
 ================================ BLOG ADMIN =============================
 """
@@ -435,6 +444,13 @@ def getAuthors():
     paginated_items = Author.query.order_by(Author.id.desc()).paginate(page=page, per_page=per_page)
     return jsonify(helpers.getPaginatedDict(helpers.getAuthorsList(paginated_items.items), paginated_items))
 
+@app.route('/rest/s1/top-authors', methods=["GET"])
+def getTopAuthors():
+    per_page = request.args.get('per_page', 10, type=int)
+    authors = Author.query.order_by(Author.views.desc()).limit(per_page).all()
+
+    return jsonify(helpers.getAuthorsList(authors))
+
 @app.route('/rest/s1/authors/<string:slug>', methods=["GET"])
 def getAuthorDetails(slug):
     return jsonify(
@@ -586,6 +602,28 @@ def getSearchedEntries(search):
     paginated_items = Entry.query.filter(Entry.title.ilike(looking_for)).order_by(Entry.views.desc()).paginate(page=page, per_page=per_page)
 
     return jsonify(helpers.getPaginatedDict(helpers.getEntriesList(paginated_items.items), paginated_items))
+
+@app.route('/rest/s1/search/<string:search>/authors')
+def getSearchedAuthors(search):
+    search = search.replace('+', ' ')\
+            .replace('%20', ' ')
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+
+    if '*' in search or '_' in search: 
+        looking_for = search.replace('_', '__')\
+            .replace('*', '%')\
+            .replace('?', '_')
+    else:
+        looking_for = '%{0}%'.format(search)
+
+    paginated_items = Author.query.filter(or_(
+        Author.first_name.ilike(looking_for),
+        Author.last_name.ilike(looking_for)
+        ))\
+        .order_by(Author.views.desc()).paginate(page=page, per_page=per_page)
+
+    return jsonify(helpers.getPaginatedDict(helpers.getAuthorsList(paginated_items.items), paginated_items))
 
 if __name__ == '__main__':
     db.create_all()

@@ -2,6 +2,7 @@ Vue.component('entries', {
     data() {
         return {
             page: 1,
+            pageSize: 6,
             entries: []
         };
     },
@@ -10,7 +11,7 @@ Vue.component('entries', {
     },
     methods: {
         paginatedEntries(page){
-            axios.get('/rest/s1/entries', {params: {page: page}}).then(
+            axios.get('/rest/s1/entries', {params: {page: page, per_page: this.pageSize}}).then(
                 res => {
                     this.entries = res.data;
                 }

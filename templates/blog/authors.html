@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+{% block title %}Blog | Our Team{% endblock %}
+{% block body %}
+    <!-- Header -->
+    <header class="" id="navbar">
+        <nav-bar active=""></nav-bar>
+    </header>
+    
+    <div class="heading-page header-text">
+        <section class="page-heading">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-content">
+                  <h2>Our Team</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+
+    <div id="banner">
+        <banner></banner>
+    </div>
+
+    <section class="blog-posts grid-system">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9" id="authors">
+                    <authors></authors>
+                </div>
+                <div class="col-lg-3" id="sidemenu">
+                    <sidemenu></sidemenu>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block extrascripts %}
+    <script src="{{ url_for('static', filename='blog/components/authors.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/authors-sidemenu.js') }}"></script>
+{% endblock %}
