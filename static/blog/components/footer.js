@@ -12,7 +12,7 @@ Vue.component('footer-section', {
                     <div class="col-md-4 mb-md-0 mb-4">
                         <h4 class="footer-heading">About</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="d-block text-secondary">Out story</a></li>
+                            <li><a href="/blog/about-us" class="d-block text-secondary">Out story</a></li>
                             <li><a href="#" class="d-block text-secondary">Awards</a></li>
                             <li><a href="#" class="d-block text-secondary">Our Team</a></li>
                             <li><a href="#" class="d-block text-secondary">Career</a></li>
@@ -21,16 +21,16 @@ Vue.component('footer-section', {
                     <div class="col-md-4 mb-md-0 mb-4">
                         <h4 class="footer-heading">Company</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="d-block text-secondary">Our services</a></li>
+                            <li><a href="/blog/entries" class="d-block text-secondary">Our services</a></li>
                             <li><a href="#" class="d-block text-secondary">Clients</a></li>
-                            <li><a href="#" class="d-block text-secondary">Contact</a></li>
+                            <li><a href="/blog/contact-us" class="d-block text-secondary">Contact</a></li>
                             <li><a href="#" class="d-block text-secondary">Press</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 mb-md-0 mb-4">
                         <h4 class="footer-heading">Resources</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="d-block text-secondary">FAQ</a></li>
+                            <li><a href="/blog/faq" class="d-block text-secondary">FAQ</a></li>
                             <li><a href="#" class="d-block text-secondary">Newsletter</a></li>
                             <li><a href="#" class="d-block text-secondary">Privacy Policy</a></li>
                         </ul>
@@ -48,7 +48,7 @@ Vue.component('footer-section', {
                 </div>
             </div>
         </div>
-        <div class="row mt-5 pt-4 border-top text-left">
+        <div class="row mt-5 pt-4 border-top footer-icons">
             <div class="col-md-6 col-lg-8 mb-md-0 mb-4">
                 <p class="copyright mb-0">Copyright ©<script>document.write(new Date().getFullYear());</script>2022 All rights reserved.</p>
             </div>

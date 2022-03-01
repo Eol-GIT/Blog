@@ -153,6 +153,10 @@ def about():
 def contact():
     return render_template('blog/contact.html')
 
+@app.route('/blog/faq')
+def faq():
+    return render_template('blog/faq.html')
+
 @app.route('/blog/entries')
 def entries():
     return render_template('blog/entries.html')

@@ -1,0 +1,180 @@
+{% extends 'blog/base.html' %}
+{% block title %}Blog | Frequently Asked Questions{% endblock %}
+{% block body %}
+<style>
+    :root {
+  --color-text: hsl(248, 10%, 40%);
+  --color-text-muted: hsl(248, 10%, 40%);
+  --color-purple: #09f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+</style>
+<!-- Header -->
+<header class="" id="navbar">
+    <nav-bar active=""></nav-bar>
+</header>
+
+<div class="heading-page header-text">
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-content">
+                        <h2>Frequently Asked Questions</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="accordion container">
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>What kind of articles does blog.eolnuha.com publish?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>We are striving to complete most of the programming topics including Python, Javascript, CSS, Git, Java and a lot more. 
+                After we complete this, we will make our blog more generic posting about world news, sports, and entertainment. Stay tuned...
+            </p>
+        </div>
+    </div>
+
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>Can I become an author at blog.eolnuha.com?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>The short answer is YES you can. To become an author please <a href="/blog/contact-us">contact us</a> with a first and last name, email, 
+                phone number and a description of who you are and why you wan't to become an author at our platform. After you do this our team will 
+                contact you showing you in details for the next steps on becoming an author.
+            </p>
+        </div>
+    </div>
+
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I post a comment?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>You can post comments in every article/blog that you have good or bad feedback on. To post a comment, you have to go to the blog that you want to comment on
+                and scroll until the end of the blog (the bottom of the webpage). We ask for a first and last name because we don't require you to login in order to interact with our platform.
+                After that you can post your comment on that blog. Note that the comment is markdown, so you can style the blog with standard markdown syntax.
+            </p>
+        </div>
+    </div>
+
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I figure out what to learn?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>The most important thing is that you want to learn something that interests you, because once you start
+                learning, you’ll be with this topic for a while. Choosing something just because it’s popular or what
+                others are doing isn’t the way to go because if you don’t have a true interest in it, you’ll lose the
+                motivation to learn! Spend some time seriously looking into the different tech career paths before
+                choosing one to go down.</p>
+        </div>
+    </div>
+
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>Which programming language is the best to
+                learn?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>I usually tell most people to start by learning HTML and CSS, then move into learning JavaScript. The
+                reason is that JavaScript is used everywhere: frontend, backend, and even to build mobile apps. It has
+                many use cases, which is why I think it’s smart to learn.</p>
+        </div>
+    </div>
+
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>Is it possible to do both graphic design
+                and coding?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>If you have an interest in coding and graphic design, then there’s nothing to say you shouldn’t learn
+                skills in both areas. They often work hand-in-hand, so having knowledge and skills in both areas could
+                be desirable for certain career paths. You could also think about pursuing something in between like UI
+                design, which is a very in-demand career right now!
+                <br><br>
+                In general, having design skills along with coding skills is helpful. But it’s also okay to do one over
+                the other. My advice would be to just get started! You can always change directions later… as long as
+                you’re changing directions to the final destination you’re looking for!
+            </p>
+        </div>
+    </div>
+
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>Should I learn Python 2 or Python 3?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>Now, in 2022, it’s a no-brainer: Python 3 is definitely the way to go. There are still some situations
+                where picking up Python 2 might be advantageous, or you may just want to learn a little of the history
+                and the differences between Python 2 and 3 for curiosity’s sake, but job-wise, Python 3 is the clear
+                winner.</p>
+        </div>
+    </div>
+
+    <div class="accordion__item">
+        <button class="accordion__btn">
+
+            <span class="accordion__caption"><i class="far fa-lightbulb"></i>Should I learn skills in several
+                areas?</span>
+            <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+
+        <div class="accordion__content">
+            <p>Personally, I’d say choose a path and stick to it! Learning too many things at once will slow you down.
+                Here are a few ideas of things you can choose to focus on, and a little bit about each one.</p>
+        </div>
+    </div>
+</div>
+<script>
+    // select all accordion items
+    const accItems = document.querySelectorAll(".accordion__item");
+
+    // add a click event for all items
+    accItems.forEach((acc) => acc.addEventListener("click", toggleAcc));
+
+    function toggleAcc() {
+        // remove active class from all items exept the current item (this)
+        accItems.forEach((item) => item != this ? item.classList.remove("accordion__item--active") : null
+        );
+
+        // toggle active class on current item
+        if (this.classList != "accordion__item--active") {
+            this.classList.toggle("accordion__item--active");
+        }
+    }
+</script>
+{% endblock %}
