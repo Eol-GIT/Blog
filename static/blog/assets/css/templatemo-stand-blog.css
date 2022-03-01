@@ -1126,8 +1126,37 @@ blockquote {
 	display: inline;
   }
 
-.cookie-banner{bottom: 0px; left: 0px; right: 0px; z-index: 10001;position: fixed;margin: 0px !important;}
-@media screen and (min-width: 970px) {.cookie-banner{ width: 500px !important; bottom: 20px; left: 20px; right: 20px;}}
+.cookie-banner{
+	bottom: 0px; 
+	left: 0px; 
+	right: 0px; 
+	z-index: 10001;
+	position: fixed;
+	margin: 0px !important;
+}
+.cookie-banner-body{
+	padding: 1rem; 
+}
+.cookie-banner-body p {
+	font-size: 15px;
+}
+@media screen and (min-width: 970px) {
+	.cookie-banner{ 
+		width: 500px !important; 
+		bottom: 20px; 
+		left: 20px; 
+		right: 20px;
+	} 
+	.cookie-banner-body{
+		padding: 3rem; 
+	}
+	.cookie-banner-body p {
+		font-size: 20px;
+	}
+	.cookie-button {
+		width: 100%;
+	}
+}
 #cookiescript_badge {display: none !important;}
 #cookiescript_injected {display: none !important;}
 .devider {display: inline-block;border: 0;font-size: 0;line-height: 0;height: 3px;max-width: 120px;width: 100%;margin: 0;background: linear-gradient(to right, #09f 50%, #0099ff50 120%);}
