@@ -114,7 +114,14 @@ Vue.component('blog-details', {
                         </div>
                     <hr class="devider">
                    <div class="markdown" v-html="markdown(blog.body)"></div>
-                  </div>
+                   <div class="d-flex flex-row-reverse mt-3">
+                      <div class="pr-1"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" :data-text="'Check out ' + blog.title + ' an article from Eol Nuha'" data-hashtags="blog,eolnuha,100DaysOfCode">Tweet</a></div>
+                      <div class="pr-1"><div class="fb-share-button" :data-href="'/blog/entries/' + blog.entry.slug + '/' + blog.slug" data-layout="button" data-size="small"></div></div>
+                      <div class="pr-1"><script type="IN/Share" data-url="https://www.linkedin.com"></script></div>
+                    </div>
+                   
+                   
+                   </div>
                 </div>
               </div>
             </div>
