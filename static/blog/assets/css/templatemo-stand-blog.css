@@ -1135,12 +1135,15 @@ blockquote {
 	margin: 0px !important;
 }
 .cookie-banner-body{
-	padding: 1rem; 
+	padding: 15px; 
 }
 .cookie-banner-body p {
-	font-size: 15px;
+	font-size: 13px;
 }
-@media screen and (min-width: 970px) {
+.cookie-banner svg {
+	display: none;
+}
+@media screen and (min-width: 640px) {
 	.cookie-banner{ 
 		width: 500px !important; 
 		bottom: 20px; 
@@ -1148,13 +1151,16 @@ blockquote {
 		right: 20px;
 	} 
 	.cookie-banner-body{
-		padding: 3rem; 
+		padding: 20px; 
 	}
 	.cookie-banner-body p {
-		font-size: 20px;
+		font-size: 15px;
 	}
 	.cookie-button {
 		width: 100%;
+	}
+	.cookie-banner svg {
+		display: block;
 	}
 }
 #cookiescript_badge {display: none !important;}
