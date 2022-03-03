@@ -1138,6 +1138,7 @@ blockquote {
 	padding: 15px; 
 }
 .cookie-banner-body p {
+	margin-bottom: 10px;
 	font-size: 13px;
 }
 .cookie-banner svg {
@@ -1145,7 +1146,7 @@ blockquote {
 }
 @media screen and (min-width: 640px) {
 	.cookie-banner{ 
-		width: 500px !important; 
+		width: 450px !important; 
 		bottom: 20px; 
 		left: 20px; 
 		right: 20px;

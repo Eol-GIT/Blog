@@ -12,7 +12,7 @@ Vue.component('banner', {
                 </div>
                 <div class="col-lg-4">
                   <div class="main-button">
-                    <a rel="nofollow" href="https://eolnuha.com">Visit Now!</a>
+                    <a rel="nofollow" href="/">Visit Now!</a>
                   </div>
                 </div>
               </div>

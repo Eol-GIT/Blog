@@ -139,8 +139,9 @@ footer {padding: 50px;background-color: #000;height: auto;color: #fff;}
 
 .card {background-image: url(../images/cta-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
 .cookie-banner{bottom: 0px; left: 0px; right: 0px; z-index: 10001;position: fixed;margin: 0px !important;}
-.cookie-banner-body{padding: 1rem;}
-.cookie-banner-body p {font-size: 15px;}
-@media screen and (min-width: 970px) {.cookie-banner{ width: 500px !important; bottom: 20px; left: 20px; right: 20px;}.cookie-banner-body{padding: 3rem; }.cookie-banner-body p {font-size: 20px;}.cookie-button {width: 100%;}}
+.cookie-banner-body{padding: 15px;}
+.cookie-banner-body p {font-size: 13px;}
+.cookie-banner svg {display: none;}
+@media screen and (min-width: 640px) {.cookie-banner{ width: 450px !important; bottom: 20px; left: 20px; right: 20px;}.cookie-banner-body{padding: 20px; }.cookie-banner-body p {font-size: 15px;}.cookie-button {width: 100%;}.cookie-banner svg {display: block;}}
 #cookiescript_badge {display: none !important;}
 #cookiescript_injected {display: none !important;}
