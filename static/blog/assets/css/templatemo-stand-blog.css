@@ -1612,15 +1612,3 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	transform: translateX(0px);
 	max-height: 100vh;
 }
-
-/* Blog share buttons styling */
-.twitter-share-button {
-	background-color: #1d9bf0;
-	border-radius: 3px !important;
-}
-.fb-share-button span {
-	vertical-align: top !important;
-}
-.IN-widget {
-	vertical-align: top !important;
-}
