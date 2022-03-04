@@ -24,7 +24,7 @@ Vue.component('search-blogs', {
             )
         },
         getRecentBlogs(){
-            axios.get(`/rest/s1/blogs`, {params: {page: 1, per_page: 5}}).then(
+            axios.get(`/rest/s1/blogs`, {params: {page: 1, per_page: 6}}).then(
                 res => {
                     this.recentBlogs = res.data.data;
                 }
