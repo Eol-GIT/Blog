@@ -2,6 +2,7 @@ from flask import Flask, jsonify, render_template, request, Response, redirect, 
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import or_
 from flask_sqlalchemy import SQLAlchemy 
+from flask_migrate import Migrate
 from datetime import datetime, timedelta
 from flask_cors import CORS
 import helpers
@@ -21,6 +22,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 project_list = ['sorting-visualizer', 'movie-freaks', 'dino-game', 'cyber-city', 'tower-war', 'e-commerce']
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -38,6 +40,7 @@ class Author(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(200))
     last_name = db.Column(db.String(200))
+    username = db.Column(db.String(200), unique=True)
     slug = db.Column(db.String(200), unique=True)
     email = db.Column(db.String(200), unique=True)
     password = db.Column(db.String(200))
@@ -258,10 +261,12 @@ def createEntry():
     return render_template('admin/create-entry.html')
 
 @app.route('/admin/create-author', methods=["POST", "GET"])
+@login_required
 def createAuthor():
     if request.method == "POST":
         first_name = request.json["firstName"]
         last_name = request.json["lastName"]
+        username = request.json["username"]
         email = request.json["email"]
         password = request.json["password"]
         img = request.json["img"]
@@ -278,6 +283,7 @@ def createAuthor():
         author = Author(
             first_name=first_name, 
             last_name=last_name, 
+            username=username, 
             email=email, 
             password=generate_password_hash(password, method='sha256'), 
             slug=slugify(first_name + " " + last_name), 
@@ -469,6 +475,7 @@ def deleteAuthor(slug):
 def editAuthor(slug):
     first_name = request.json["firstName"]
     last_name = request.json["lastName"]
+    username = request.json["username"]
     email = request.json["email"]
     img = request.json["img"]
     location = request.json["location"]
@@ -479,6 +486,7 @@ def editAuthor(slug):
     author = Author.query.filter_by(slug=slug).first_or_404()
     author.first_name = first_name
     author.last_name = last_name
+    author.username = username
     author.email = email
     author.slug = slugify(first_name + " " + last_name)
     author.img = img
@@ -618,6 +626,7 @@ def getSearchedAuthors(search):
         looking_for = '%{0}%'.format(search)
 
     paginated_items = Author.query.filter(or_(
+        Author.username.ilike(looking_for),
         Author.first_name.ilike(looking_for),
         Author.last_name.ilike(looking_for)
         ))\
@@ -627,4 +636,4 @@ def getSearchedAuthors(search):
 
 if __name__ == '__main__':
     db.create_all()
-    app.run()
+    app.run(debug=True)

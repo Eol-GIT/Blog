@@ -104,7 +104,7 @@ Vue.component('blog-details', {
                                 <a :href="'/blog/' + blog.author.slug"><img class="rounded-circle" :src="'/static/' + blog.author.img" height="50" width="50"/></a>
                             </div>
                             <div class="p-1">
-                                <a :href="'/blog/' + blog.author.slug" class="h5">{{blog.author.firstName}} {{blog.author.lastName}}</a><br>
+                                <a :href="'/blog/' + blog.author.slug" class="h5">{{blog.author.username}}</a><br>
                                 <small>Posted on: {{blog.date}} | Views: {{nFormatter(blog.views, 1)}}</small><br>
                             </div>
                         </div>

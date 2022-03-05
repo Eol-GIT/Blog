@@ -81,7 +81,7 @@ Vue.component('sidemenu', {
                                     <img :src="'/static/' + author.img" :alt="author.slug" class="w-100">
                                 </div>
                                 <div>
-                                    <h5>{{author.firstName}} {{author.lastName}}</h5>
+                                    <h5>{{author.username}}</h5>
                                     <small class="text-muted">{{nFormatter(author.views, 1)}} views</small>
                                 </div>
                             </div>

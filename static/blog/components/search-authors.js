@@ -70,7 +70,7 @@ Vue.component('search-authors', {
                                     <img :src="'/static/' + author.img" :alt="author.slug">
                                     </div>
                                     <div class="down-content">
-                                    <h4>{{author.firstName}} {{author.lastName}}</h4>
+                                    <h4>{{author.username}}</h4>
                                     <div v-html="markdown(author.body)"></div>
                                     </div>
                                 </div>
