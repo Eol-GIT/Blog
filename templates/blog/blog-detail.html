@@ -1,7 +1,6 @@
 {% extends 'blog/base.html' %}
 {% block title %}{{ entry.title }} | {{ blog.title }}{% endblock %}
 {% block body %}
-    <script src="{{ url_for('static', filename='blog/assets/js/addtoany.js') }}"></script>
     <!-- Header -->
     <header class="" id="navbar">
         <nav-bar active=""></nav-bar>
@@ -19,4 +18,5 @@
 {% block extrascripts %}
     <script src="{{ url_for('static', filename='blog/components/blog-details.js') }}"></script>
     <script src="{{ url_for('static', filename='blog/components/blogs-sidemenu.js') }}"></script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
 {% endblock %}
