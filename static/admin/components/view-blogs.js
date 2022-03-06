@@ -50,8 +50,8 @@ Vue.component('view-blogs', {
                 <tbody>
                     <tr v-for="blog in blogs.data">
                     <th scope="row">{{blog.id}}</th>
-                    <td>{{blog.title}}</td>
-                    <td>{{blog.category}}</td>
+                    <td><a :href="'/blog/entries/' + blog.entry.slug + '/' + blog.slug">{{blog.title}}</a></td>
+                    <td><a :href="'/blog/entries/' + blog.entry.slug + '/category/' + blog.category">{{blog.category}}</td>
                     <td><a :href="'/admin/entries/' + blog.entry.slug">{{blog.entry.title}}</a></td>
                     <td><a :href="'/admin/authors/' + blog.author.slug">{{blog.author.firstName}} {{blog.author.lastName}}</a></td>
                     <td>
