@@ -22,9 +22,15 @@ Vue.component('sidemenu', {
     methods: {
         searchEntries(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/${this.searchInput.replaceAll(' ', '+')}/entries`, {params: {per_page: 5}}).then(
+                axios.get(`/rest/s1/search/${this.searchInput.replaceAll(' ', '+')}/entries`, {params: {per_page: 5}})
+                .then(
                     res => {
                         this.searchResults = res.data.data;
+                    }
+                )
+                .catch(
+                    err => {
+                        toastr.error("There was an issue, please try again later", "Error!")
                     }
                 )
             } else {
@@ -34,9 +40,9 @@ Vue.component('sidemenu', {
     },
     watch: {
         searchInput: {
-          handler: function () {
-              this.searchEntries();
-          },
+            handler: function () {
+                this.searchEntries();
+            },
         },
     },
     template: `

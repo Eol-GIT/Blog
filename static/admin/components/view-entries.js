@@ -16,14 +16,17 @@ Vue.component('view-entries', {
                 })
         },
         deleteEntry(slug){
-            axios.post(`/rest/s1/entries/${slug}/delete`)
-                .then(res => {
-                    this.getEntries(this.page);
-                    toastr.success("Entry deleted successfully!", "Success!")
-                })
-                .catch(err => {
-                    toastr.error(err, "Error!")
-                })
+            var isConfirmed = confirm(`Are you sure you want to delete ${slug}?`)
+            if (isConfirmed) {
+                axios.post(`/rest/s1/entries/${slug}/delete`)
+                    .then(res => {
+                        this.getEntries(this.page);
+                        toastr.success("Entry deleted successfully!", "Success!")
+                    })
+                    .catch(err => {
+                        toastr.error(err, "Error!")
+                    })
+            }
         }
     },
     template: `    

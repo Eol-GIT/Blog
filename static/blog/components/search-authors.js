@@ -14,10 +14,16 @@ Vue.component('search-authors', {
     },
     methods: {
         getSearchResults(page){
-            axios.get(`/rest/s1/search/${this.query}/authors`, {params: {page: page, per_page: this.pageSize}}).then(
+            axios.get(`/rest/s1/search/${this.query}/authors`, {params: {page: page, per_page: this.pageSize}})
+            .then(
                 res => {
                     this.authors = res.data;
                     this.page = page;
+                }
+            )
+            .catch(
+                err => {
+                    toastr.error("There was an issue, please try again later", "Error!")
                 }
             )
         },

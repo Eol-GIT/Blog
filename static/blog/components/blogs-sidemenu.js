@@ -23,11 +23,17 @@ Vue.component('sidemenu', {
     methods: {
         searchBlogs(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/${this.searchInput.replaceAll(' ', '+')}/blogs`, {params: {per_page: 5}}).then(
-                    res => {
-                        this.searchResults = res.data.data;
-                    }
-                )
+                axios.get(`/rest/s1/search/${this.searchInput.replaceAll(' ', '+')}/blogs`, {params: {per_page: 5}})
+                    .then(
+                        res => {
+                            this.searchResults = res.data.data;
+                        }
+                    )
+                    .catch(
+                        err => {
+                            toastr.error("There was an issue, please try again later", "Error!")
+                        }
+                    )
             } else {
                 this.searchResults = []
             }
@@ -35,9 +41,9 @@ Vue.component('sidemenu', {
     },
     watch: {
         searchInput: {
-          handler: function () {
-              this.searchBlogs();
-          },
+            handler: function () {
+                this.searchBlogs();
+            },
         },
     },
     template: `
@@ -67,14 +73,14 @@ Vue.component('sidemenu', {
             </div>
             <div class="content">
                 <ul>
-                <li v-for="blog in blogs"><a :href="'/blog/entries/' + blog.entry.slug + '/' + blog.slug">
-                    <div class="row">
-                        <div class="col-12">
-                            <h5>{{blog.title}}</h5>
-                            <small class="text-muted">{{blog.date}} | {{nFormatter(blog.views, 1)}} views</small>
+                    <li v-for="blog in blogs"><a :href="'/blog/entries/' + blog.entry.slug + '/' + blog.slug">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5>{{blog.title}}</h5>
+                                <small class="text-muted">{{blog.date}} | {{nFormatter(blog.views, 1)}} views</small>
+                            </div>
                         </div>
-                    </div>
-                </a></li>
+                    </a></li>
                 </ul>
             </div>
             </div>

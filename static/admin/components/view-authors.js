@@ -16,14 +16,17 @@ Vue.component('view-authors', {
                 })
         },
         deleteAuthor(slug){
-            axios.post(`/rest/s1/authors/${slug}/delete`)
-                .then(res => {
-                    this.getAuthors(this.page);
-                    toastr.success("Author deleted successfully!", "Success!")
-                })
-                .catch(err => {
-                    toastr.error(err, "Error!")
-                })
+            var isConfirmed = confirm(`Are you sure you want to delete ${slug}?`)
+            if (isConfirmed) {
+                axios.post(`/rest/s1/authors/${slug}/delete`)
+                    .then(res => {
+                        this.getAuthors(this.page);
+                        toastr.success("Author deleted successfully!", "Success!")
+                    })
+                    .catch(err => {
+                        toastr.error(err, "Error!")
+                    })
+            }
         }
     },
     template: `    
