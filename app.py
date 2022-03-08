@@ -286,7 +286,7 @@ def createAuthor():
             username=username, 
             email=email, 
             password=generate_password_hash(password, method='sha256'), 
-            slug=slugify(first_name + " " + last_name), 
+            slug=slugify(username), 
             img='blog/assets/images/authors/' + img, 
             location=location, 
             social=social, 
