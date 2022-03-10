@@ -200,10 +200,14 @@ def authorDetails(slug):
     db.session.commit()
     return render_template('blog/author-details.html', author=author, keywords=author.keywords)
 
-@app.route('/blog/search/blogs/<string:query>')
-def searchBlogs(query):
-    query = query.replace('+', ' ')\
+@app.route('/blog/search/blogs')
+def searchBlogs():
+    query = request.args.get('search')
+    if query:
+        query = query.replace('+', ' ')\
             .replace('%20', ' ')
+    else:
+        query = "*"
     return render_template('blog/search-blogs.html', query=query)
 
 @app.route('/blog/search/entries/<string:query>')
@@ -488,7 +492,7 @@ def editAuthor(slug):
     author.last_name = last_name
     author.username = username
     author.email = email
-    author.slug = slugify(first_name + " " + last_name)
+    author.slug = slugify(username)
     author.img = img
     author.location = location
     author.social = social
@@ -575,12 +579,15 @@ def createComment():
     db.session.commit()
     return Response("Comment created successfully!", 200)
 
-@app.route('/rest/s1/search/<string:search>/blogs')
-def getSearchedBlogs(search):
-    search = search.replace('+', ' ')\
-            .replace('%20', ' ')
+@app.route('/rest/s1/search/blogs')
+def getSearchedBlogs():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
+    search = request.args.get('search')
+    if not search:
+        return jsonify([])
+    search = search.replace('+', ' ')\
+            .replace('%20', ' ')
 
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
@@ -595,7 +602,6 @@ def getSearchedBlogs(search):
         Blog.keywords.ilike(looking_for),
         ))\
         .order_by(Blog.views.desc()).paginate(page=page, per_page=per_page)
-
     return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
 
 @app.route('/rest/s1/search/<string:search>/entries')

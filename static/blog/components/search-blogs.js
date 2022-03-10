@@ -16,7 +16,11 @@ Vue.component('search-blogs', {
     },
     methods: {
         getSearchResults(page){
-            axios.get(`/rest/s1/search/${this.query}/blogs`, {params: {page: page, per_page: this.pageSize}}).then(
+            axios.get(`/rest/s1/search/blogs`, {params: {
+                page: page, 
+                per_page: this.pageSize, 
+                search: this.query
+            }}).then(
                 res => {
                     this.blogs = res.data;
                     this.page = page;
@@ -32,14 +36,20 @@ Vue.component('search-blogs', {
         },
         searchBlogs(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/${this.searchInput.replaceAll(' ', '+')}/blogs`, {params: {per_page: 5}}).then(
+                axios.get(`/rest/s1/search/blogs`, {params: {
+                    per_page: 5, 
+                    search: this.searchInput.replaceAll(' ', '+')
+                }}).then(
                     res => {
                         this.searchResults = res.data.data;
                     }
                 )
             } else {
-                this.searchResults = []
+                this.emptyResults();
             }
+        },
+        emptyResults(){
+            this.searchResults = [];
         }
     },
     watch: {
@@ -122,7 +132,7 @@ Vue.component('search-blogs', {
                         <div class="row">
                         <div class="col-lg-12 p-0">
                             <div class="sidebar-item search">
-                                <form @submit.prevent="location.href = '/blog/search/blogs/' + searchInput.replaceAll(' ', '+');">
+                                <form @submit.prevent="location.href = '/blog/search/blogs?search=' + searchInput.replaceAll(' ', '+');">
                                     <input type="text" class="searchText" placeholder="Search Blogs..." autocomplete="off" v-model="searchInput" @change="searchBlogs">
                                 </form>
                                 <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
@@ -133,7 +143,7 @@ Vue.component('search-blogs', {
                                         </a>
                                         <hr>
                                     </div>
-                                    <a :href="'/blog/search/blogs/' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
+                                    <a :href="'/blog/search/blogs?search=' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
                                 </div>
                             </div>
                         </div>
