@@ -202,9 +202,9 @@ def authorDetails(slug):
 
 @app.route('/blog/search/blogs')
 def searchBlogs():
-    query = request.args.get('search').strip()
+    query = request.args.get('search')
     if query:
-        query = query.replace('+', ' ')\
+        query = query.strip().replace('+', ' ')\
             .replace('%20', ' ')
     else:
         query = "*"
@@ -212,9 +212,9 @@ def searchBlogs():
 
 @app.route('/blog/search/entries')
 def searchEntries():
-    query = request.args.get('search').strip()
+    query = request.args.get('search')
     if query:
-        query = query.replace('+', ' ')\
+        query = query.strip().replace('+', ' ')\
             .replace('%20', ' ')
     else:
         query = "*"
@@ -587,9 +587,9 @@ def createComment():
 def getSearchedBlogs():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
-    search = request.args.get('search').strip()
+    search = request.args.get('search')
     if search:
-        search = search.replace('+', ' ')\
+        search = search.strip().replace('+', ' ')\
             .replace('%20', ' ')
     else: 
         search = "*"
@@ -613,9 +613,9 @@ def getSearchedBlogs():
 def getSearchedEntries():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
-    search = request.args.get('search').strip()
+    search = request.args.get('search')
     if search:
-        search = search.replace('+', ' ')\
+        search = search.strip().replace('+', ' ')\
             .replace('%20', ' ')
     else: 
         search = "*"
@@ -635,9 +635,9 @@ def getSearchedEntries():
 def getSearchedAuthors():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
-    search = request.args.get('search').strip()
+    search = request.args.get('search')
     if search:
-        search = search.replace('+', ' ')\
+        search = search.strip().replace('+', ' ')\
             .replace('%20', ' ')
     else: 
         search = "*"
