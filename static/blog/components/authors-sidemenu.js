@@ -22,14 +22,26 @@ Vue.component('sidemenu', {
     methods: {
         searchAuthors(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/${this.searchInput.replaceAll(' ', '+')}/authors`, {params: {per_page: 5}}).then(
+                axios.get(`/rest/s1/search/authors`, {params: {
+                    per_page: 5,
+                    search: this.searchInput.trim().replaceAll(' ', '+')
+                }})
+                .then(
                     res => {
                         this.searchResults = res.data.data;
                     }
                 )
+                .catch(
+                    err => {
+                        toastr.error("There was an issue, please try again later", "Error!", {preventDuplicates: true})
+                    }
+                )
             } else {
-                this.searchResults = []
+                this.emptyResults();
             }
+        },
+        emptyResults(){
+            this.searchResults = [];
         }
     },
     watch: {
@@ -44,7 +56,7 @@ Vue.component('sidemenu', {
         <div class="row">
         <div class="col-lg-12 p-0">
             <div class="sidebar-item search">
-                <form @submit.prevent="location.href = '/blog/search/authors/' + searchInput.replaceAll(' ', '+');">
+                <form @submit.prevent="location.href = '/blog/search/authors?search=' + searchInput.replaceAll(' ', '+');">
                     <input type="text" class="searchText" placeholder="Search Authors..." autocomplete="off" v-model="searchInput" @change="searchAuthors">
                 </form>
                 <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
@@ -62,7 +74,7 @@ Vue.component('sidemenu', {
                         </a>
                         <hr>
                     </div>
-                    <a :href="'/blog/search/authors/' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
+                    <a :href="'/blog/search/authors?search=' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
                 </div>
             </div>
         </div>

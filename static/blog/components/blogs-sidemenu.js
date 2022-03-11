@@ -23,7 +23,7 @@ Vue.component('sidemenu', {
     methods: {
         searchBlogs(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/blogs`, {params: {per_page: 5, search: this.searchInput.replaceAll(' ', '+')}})
+                axios.get(`/rest/s1/search/blogs`, {params: {per_page: 5, search: this.searchInput.trim().replaceAll(' ', '+')}})
                     .then(
                         res => {
                             this.searchResults = res.data.data;

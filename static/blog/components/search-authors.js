@@ -14,7 +14,11 @@ Vue.component('search-authors', {
     },
     methods: {
         getSearchResults(page){
-            axios.get(`/rest/s1/search/${this.query}/authors`, {params: {page: page, per_page: this.pageSize}})
+            axios.get(`/rest/s1/search/authors`, {params: {
+                page: page, 
+                per_page: this.pageSize,
+                search: this.query
+            }})
             .then(
                 res => {
                     this.authors = res.data;
@@ -23,7 +27,7 @@ Vue.component('search-authors', {
             )
             .catch(
                 err => {
-                    toastr.error("There was an issue, please try again later", "Error!")
+                    toastr.error("There was an issue, please try again later", "Error!", {preventDuplicates: true})
                 }
             )
         },
@@ -84,16 +88,16 @@ Vue.component('search-authors', {
                             </div>
                             <div class="col-lg-12" v-if="authors.data.length != 0">
                             <ul class="page-numbers">
-                                <li v-if="authors.has_prev">
-                                    <a @click="getSearchResults(authors.prev_num)" href="#" onclick="return false;">
+                                <li>
+                                    <a @click="getSearchResults(authors.prev_num)" href="#" onclick="return false;" :class="{'disabled': !authors.has_prev}">
                                         <i class="fa fa-angle-double-left"></i>
                                     </a>
                                 </li>
                                 <li v-for="page in authors.pages" :class="{'active': page === authors.page}">
                                     <a @click="getSearchResults(page)" href="#" onclick="return false;">{{page}}</a>
                                 </li>
-                                <li v-if="authors.has_next">
-                                    <a @click="getSearchResults(authors.next_num)" href="#" onclick="return false;">
+                                <li>
+                                    <a @click="getSearchResults(authors.next_num)" href="#" onclick="return false;" :class="{'disabled': !authors.has_next}">
                                         <i class="fa fa-angle-double-right"></i>
                                     </a>
                                 </li>

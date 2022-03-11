@@ -14,7 +14,11 @@ Vue.component('search-entries', {
     },
     methods: {
         getSearchResults(page){
-            axios.get(`/rest/s1/search/${this.query}/entries`, {params: {page: page, per_page: this.pageSize}}).then(
+            axios.get(`/rest/s1/search/entries`, {params: {
+                page: page, 
+                per_page: this.pageSize, 
+                search: this.query
+            }}).then(
                 res => {
                     this.entries = res.data;
                     this.page = page;
@@ -78,16 +82,16 @@ Vue.component('search-entries', {
                             </div>
                             <div class="col-lg-12" v-if="entries.data.length != 0">
                             <ul class="page-numbers">
-                                <li v-if="entries.has_prev">
-                                    <a @click="getSearchResults(entries.prev_num)" href="#" onclick="return false;">
+                                <li>
+                                    <a @click="getSearchResults(entries.prev_num)" href="#" onclick="return false;" :class="{'disabled': !entries.has_prev}">
                                         <i class="fa fa-angle-double-left"></i>
                                     </a>
                                 </li>
                                 <li v-for="page in entries.pages" :class="{'active': page === entries.page}">
                                     <a @click="getSearchResults(page)" href="#" onclick="return false;">{{page}}</a>
                                 </li>
-                                <li v-if="entries.has_next">
-                                    <a @click="getSearchResults(entries.next_num)" href="#" onclick="return false;">
+                                <li>
+                                    <a @click="getSearchResults(entries.next_num)" href="#" onclick="return false;" :class="{'disabled': !entries.has_next}">
                                         <i class="fa fa-angle-double-right"></i>
                                     </a>
                                 </li>

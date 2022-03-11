@@ -38,7 +38,7 @@ Vue.component('search-blogs', {
             if (this.searchInput){
                 axios.get(`/rest/s1/search/blogs`, {params: {
                     per_page: 5, 
-                    search: this.searchInput.replaceAll(' ', '+')
+                    search: this.searchInput.trim().replaceAll(' ', '+')
                 }}).then(
                     res => {
                         this.searchResults = res.data.data;

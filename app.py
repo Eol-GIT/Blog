@@ -202,7 +202,7 @@ def authorDetails(slug):
 
 @app.route('/blog/search/blogs')
 def searchBlogs():
-    query = request.args.get('search')
+    query = request.args.get('search').strip()
     if query:
         query = query.replace('+', ' ')\
             .replace('%20', ' ')
@@ -210,10 +210,14 @@ def searchBlogs():
         query = "*"
     return render_template('blog/search-blogs.html', query=query)
 
-@app.route('/blog/search/entries/<string:query>')
-def searchEntries(query):
-    query = query.replace('+', ' ')\
+@app.route('/blog/search/entries')
+def searchEntries():
+    query = request.args.get('search').strip()
+    if query:
+        query = query.replace('+', ' ')\
             .replace('%20', ' ')
+    else:
+        query = "*"
     return render_template('blog/search-entries.html', query=query)
 
 @app.route('/blog/search/authors/<string:query>')
@@ -583,11 +587,12 @@ def createComment():
 def getSearchedBlogs():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
-    search = request.args.get('search')
-    if not search:
-        return jsonify([])
-    search = search.replace('+', ' ')\
+    search = request.args.get('search').strip()
+    if search:
+        search = search.replace('+', ' ')\
             .replace('%20', ' ')
+    else: 
+        search = "*"
 
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
@@ -604,12 +609,16 @@ def getSearchedBlogs():
         .order_by(Blog.views.desc()).paginate(page=page, per_page=per_page)
     return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
 
-@app.route('/rest/s1/search/<string:search>/entries')
-def getSearchedEntries(search):
-    search = search.replace('+', ' ')\
-            .replace('%20', ' ')
+@app.route('/rest/s1/search/entries')
+def getSearchedEntries():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
+    search = request.args.get('search').strip()
+    if search:
+        search = search.replace('+', ' ')\
+            .replace('%20', ' ')
+    else: 
+        search = "*"
 
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
@@ -622,12 +631,16 @@ def getSearchedEntries(search):
 
     return jsonify(helpers.getPaginatedDict(helpers.getEntriesList(paginated_items.items), paginated_items))
 
-@app.route('/rest/s1/search/<string:search>/authors')
-def getSearchedAuthors(search):
-    search = search.replace('+', ' ')\
-            .replace('%20', ' ')
+@app.route('/rest/s1/search/authors')
+def getSearchedAuthors():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 5, type=int)
+    search = request.args.get('search').strip()
+    if search:
+        search = search.replace('+', ' ')\
+            .replace('%20', ' ')
+    else: 
+        search = "*"
 
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
