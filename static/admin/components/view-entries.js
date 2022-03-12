@@ -10,7 +10,7 @@ Vue.component('view-entries', {
     },
     methods: {
         getEntries(page){
-            axios.get('/rest/s1/entries', {params:{page: page, per_page: 20}})
+            ApiService.getEntries({params:{page: page, per_page: 20}})
                 .then(res => {
                     this.entries = res.data;
                 })
@@ -18,7 +18,7 @@ Vue.component('view-entries', {
         deleteEntry(slug){
             var isConfirmed = confirm(`Are you sure you want to delete ${slug}?`)
             if (isConfirmed) {
-                axios.post(`/rest/s1/entries/${slug}/delete`)
+                ApiService.deleteEntry(slug)
                     .then(res => {
                         this.getEntries(this.page);
                         toastr.success("Entry deleted successfully!", "Success!")

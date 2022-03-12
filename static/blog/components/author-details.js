@@ -14,13 +14,13 @@ Vue.component('author-details', {
     },
     methods: {
         getAuthorDetails(){
-            axios.get(`/rest/s1/authors/${this.slug}`).then(
+            ApiService.getAuthorDetails(this.slug).then(
                 res => {this.author = res.data}
             )
         },
         getAuthorBlogs(pageSize){
             this.buttonText = "Loading...";
-            axios.get(`/rest/s1/authors/${this.slug}/blogs`, {params: {page: 1, per_page: pageSize}})
+            ApiService.getAuthorBlogs(this.slug, {params: {page: 1, per_page: pageSize}})
             .then(
                 res => {
                     this.blogs = res.data;

@@ -11,7 +11,7 @@ Vue.component('entries', {
     },
     methods: {
         paginatedEntries(page){
-            axios.get('/rest/s1/entries', {params: {page: page, per_page: this.pageSize}}).then(
+            ApiService.getEntries({params: {page: page, per_page: this.pageSize}}).then(
                 res => {
                     this.entries = res.data;
                 }

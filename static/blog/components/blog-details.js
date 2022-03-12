@@ -13,7 +13,7 @@ Vue.component('blog-details', {
 		};
 	},
 	created() {
-		axios.get(`/rest/s1/blogs/${this.blogSlug}`).then(res => { this.blog = res.data })
+		ApiService.getBlogDetails(this.blogSlug).then(res => { this.blog = res.data })
 		this.getComments(this.pageSize);
 
 	},
@@ -36,7 +36,7 @@ Vue.component('blog-details', {
 	methods: {
 		getComments(pageSize){
 			this.loadText = "Loading...";
-			axios.get('/rest/s1/comments', {params: {per_page: pageSize, blog: this.blogSlug}})
+			ApiService.getComments({params: {per_page: pageSize, blog: this.blogSlug}})
 				.then(res => {
 					this.comments = res.data;
 					this.pageSize = pageSize;
@@ -51,7 +51,7 @@ Vue.component('blog-details', {
 		},
 		createComment(){
 			this.submitText = "Posting...";
-			axios.post('/rest/s1/comments/create', {
+			ApiService.createComment({
 				firstName: this.firstName,
 				lastName: this.lastName,
 				body: this.body,
@@ -138,7 +138,8 @@ Vue.component('blog-details', {
       	<div class="col-lg-12" v-if="comments.total != 0">
 			<div class="sidebar-item comments">
 				<div class="sidebar-heading">
-					<h2>{{comments.total}} comments</h2>
+					<h2 v-if="comments.total === 1">{{comments.total}} comment</h2>
+					<h2 v-else>{{comments.total}} comments</h2>
 				</div>
 				<div class="content">
 					<ul>

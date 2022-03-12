@@ -180,7 +180,6 @@ def blogDetails(entry, blog):
     db.session.commit()
     return render_template('blog/blog-detail.html', blog=blog, entry=entry, keywords=blog.keywords)
 
-
 @app.route('/blog/entries/<string:slug>/category/<string:category>')
 def categoryBlogs(slug, category):
     category = category.replace('+', ' ')\
@@ -220,10 +219,14 @@ def searchEntries():
         query = "*"
     return render_template('blog/search-entries.html', query=query)
 
-@app.route('/blog/search/authors/<string:query>')
-def searchAuthors(query):
-    query = query.replace('+', ' ')\
+@app.route('/blog/search/authors')
+def searchAuthors():
+    query = request.args.get('search')
+    if query:
+        query = query.strip().replace('+', ' ')\
             .replace('%20', ' ')
+    else:
+        query = "*"
     return render_template('blog/search-authors.html', query=query)
 """
 ================================ BLOG ADMIN =============================

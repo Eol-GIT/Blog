@@ -12,12 +12,12 @@ Vue.component('create-blog', {
         };
     },
     created(){
-        axios.get('/rest/s1/authors', {params: {per_page: 10000}}).then(
+        ApiService.getAuthors({params: {per_page: 10000}}).then(
             res => {
                 this.authors = res.data.data;
             }
         )
-        axios.get('/rest/s1/entries', {params: {per_page: 10000}}).then(
+        ApiService.getEntries({params: {per_page: 10000}}).then(
             res => {
                 this.entries = res.data.data;
             }

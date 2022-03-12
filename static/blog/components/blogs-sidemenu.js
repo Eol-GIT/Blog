@@ -9,12 +9,12 @@ Vue.component('sidemenu', {
         };
     },
     created(){
-        axios.get('/rest/s1/blogs', {params: {per_page: 5, entry: this.entrySlug}}).then(
+        ApiService.getBlogs({params: {per_page: 5, entry: this.entrySlug}}).then(
             res => {
                 this.blogs = res.data.data;
             }
         )
-        axios.get('/rest/s1/categories', {params: {per_page: 5, entry: this.entrySlug}}).then(
+        ApiService.getCategories({params: {per_page: 5, entry: this.entrySlug}}).then(
             res => {
                 this.categories = res.data;
             }
@@ -23,7 +23,7 @@ Vue.component('sidemenu', {
     methods: {
         searchBlogs(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/blogs`, {params: {per_page: 5, search: this.searchInput.trim().replaceAll(' ', '+')}})
+                ApiService.searchBlogs({params: {per_page: 5, search: this.searchInput.trim().replaceAll(' ', '+')}})
                     .then(
                         res => {
                             this.searchResults = res.data.data;

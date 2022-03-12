@@ -10,7 +10,7 @@ Vue.component('view-authors', {
     },
     methods: {
         getAuthors(page){
-            axios.get('/rest/s1/authors', {params:{page: page, per_page: 20}})
+            ApiService.getAuthors({params:{page: page, per_page: 20}})
                 .then(res => {
                     this.authors = res.data;
                 })
@@ -18,7 +18,7 @@ Vue.component('view-authors', {
         deleteAuthor(slug){
             var isConfirmed = confirm(`Are you sure you want to delete ${slug}?`)
             if (isConfirmed) {
-                axios.post(`/rest/s1/authors/${slug}/delete`)
+                ApiService.deleteAuthor(slug)
                     .then(res => {
                         this.getAuthors(this.page);
                         toastr.success("Author deleted successfully!", "Success!")

@@ -14,7 +14,7 @@ Vue.component('search-entries', {
     },
     methods: {
         getSearchResults(page){
-            axios.get(`/rest/s1/search/entries`, {params: {
+            ApiService.searchEntries({params: {
                 page: page, 
                 per_page: this.pageSize, 
                 search: this.query
@@ -26,7 +26,7 @@ Vue.component('search-entries', {
             )
         },
         getRecentEntries(){
-            axios.get(`/rest/s1/entries`, {params: {page: 1, per_page: this.pageSize}}).then(
+            ApiService.getEntries({params: {page: 1, per_page: this.pageSize}}).then(
                 res => {
                     this.recentEntries = res.data.data;
                 }

@@ -5,7 +5,7 @@ Vue.component('entries-home', {
         };
     },
     created(){
-        axios.get('/rest/s1/entries', {params: {per_page: 3}}).then(
+        ApiService.getEntries({params: {per_page: 3}}).then(
             res => {
                 this.entries = res.data.data;
             }

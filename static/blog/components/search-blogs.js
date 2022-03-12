@@ -16,7 +16,7 @@ Vue.component('search-blogs', {
     },
     methods: {
         getSearchResults(page){
-            axios.get(`/rest/s1/search/blogs`, {params: {
+            ApiService.searchBlogs({params: {
                 page: page, 
                 per_page: this.pageSize, 
                 search: this.query
@@ -28,7 +28,7 @@ Vue.component('search-blogs', {
             )
         },
         getRecentBlogs(){
-            axios.get(`/rest/s1/blogs`, {params: {page: 1, per_page: 6}}).then(
+            ApiService.getBlogs({params: {page: 1, per_page: 6}}).then(
                 res => {
                     this.recentBlogs = res.data.data;
                 }
@@ -36,7 +36,7 @@ Vue.component('search-blogs', {
         },
         searchBlogs(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/blogs`, {params: {
+                ApiService.searchBlogs({params: {
                     per_page: 5, 
                     search: this.searchInput.trim().replaceAll(' ', '+')
                 }}).then(

@@ -14,7 +14,7 @@ Vue.component('search-authors', {
     },
     methods: {
         getSearchResults(page){
-            axios.get(`/rest/s1/search/authors`, {params: {
+            ApiService.searchAuthors({params: {
                 page: page, 
                 per_page: this.pageSize,
                 search: this.query
@@ -32,7 +32,7 @@ Vue.component('search-authors', {
             )
         },
         getRecentAuthors(){
-            axios.get(`/rest/s1/authors`, {params: {page: 1, per_page: this.pageSize}}).then(
+            ApiService.getAuthors({params: {page: 1, per_page: this.pageSize}}).then(
                 res => {
                     this.recentAuthors = res.data.data;
                 }

@@ -10,13 +10,13 @@ Vue.component('edit-author', {
     },
     methods: {
         getAuthorDetails(){
-            axios.get(`/rest/s1/authors/${this.slug}`)
+            ApiService.getAuthorDetails(this.slug)
                 .then(res => {
                     this.author = res.data
                 })
         },
         updateAuthor(){
-            axios.post(`/rest/s1/authors/${this.slug}/update`, {
+            ApiService.updateAuthor(this.slug, {
                 firstName: this.author.firstName,
                 lastName: this.author.lastName,
                 username: this.author.username,

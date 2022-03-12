@@ -8,12 +8,12 @@ Vue.component('sidemenu', {
         };
     },
     created(){
-        axios.get('/rest/s1/authors', {params: {per_page: 5}}).then(
+        ApiService.getAuthors({params: {per_page: 5}}).then(
             res => {
                 this.authors = res.data.data;
             }
         )
-        axios.get('/rest/s1/top-authors', {params: {per_page: 5}}).then(
+        ApiService.getTopAuthors({params: {per_page: 5}}).then(
             res => {
                 this.topAuthors = res.data;
             }
@@ -22,7 +22,7 @@ Vue.component('sidemenu', {
     methods: {
         searchAuthors(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/authors`, {params: {
+                ApiService.searchAuthors({params: {
                     per_page: 5,
                     search: this.searchInput.trim().replaceAll(' ', '+')
                 }})

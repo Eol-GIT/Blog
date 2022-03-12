@@ -11,7 +11,7 @@ Vue.component('authors', {
     },
     methods: {
         paginatedAuthors(page){
-            axios.get('/rest/s1/authors', {params: {page: page, per_page: this.pageSize}}).then(
+            ApiService.getAuthors({params: {page: page, per_page: this.pageSize}}).then(
                 res => {
                     this.authors = res.data;
                 }

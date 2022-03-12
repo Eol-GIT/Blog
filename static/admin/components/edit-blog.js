@@ -9,12 +9,12 @@ Vue.component('edit-blog', {
     },
     created(){
         this.getBlogDetails();
-        axios.get('/rest/s1/authors', {params: {per_page: 10000}}).then(
+        ApiService.getAuthors({params: {per_page: 10000}}).then(
             res => {
                 this.authors = res.data.data;
             }
         )
-        axios.get('/rest/s1/entries', {params: {per_page: 10000}}).then(
+        ApiService.getEntries({params: {per_page: 10000}}).then(
             res => {
                 this.entries = res.data.data;
             }
@@ -22,13 +22,13 @@ Vue.component('edit-blog', {
     },
     methods: {
         getBlogDetails(){
-            axios.get(`/rest/s1/blogs/${this.slug}`)
+            ApiService.getBlogDetails(this.slug)
                 .then(res => {
                     this.blog = res.data
                 })
         },
         updateBlog(){
-            axios.post(`/rest/s1/blogs/${this.slug}/update`, {
+            ApiService.updateBlog(this.slug, {
                 title: this.blog.title,
                 category: this.blog.category,
                 author: this.blog.author.id,

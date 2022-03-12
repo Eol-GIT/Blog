@@ -11,7 +11,7 @@ Vue.component('category-blogs', {
     },
     methods: {
         paginatedBlogs(page){
-            axios.get(`/rest/s1/categories/${this.category}`, {params: {page: page, entry: this.entrySlug}}).then(
+            ApiService.getCategoryBlogs(this.category, {params: {page: page, entry: this.entrySlug}}).then(
                 res => {
                     this.blogs = res.data;
                 }

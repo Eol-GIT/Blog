@@ -11,7 +11,7 @@ Vue.component('entry-blogs', {
     },
     methods: {
         paginatedBlogs(page){
-            axios.get(`/rest/s1/entries/${this.entrySlug}/blogs`, {params: {page: page}}).then(
+            ApiService.getEntryBlogs(this.entrySlug, {params: {page: page}}).then(
                 res => {
                     this.blogs = res.data;
                 }

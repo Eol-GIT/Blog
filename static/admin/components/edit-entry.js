@@ -10,13 +10,13 @@ Vue.component('edit-entry', {
     },
     methods: {
         getEntryDetails(){
-            axios.get(`/rest/s1/entries/${this.slug}`)
+            ApiService.getEntryDetails(this.slug)
                 .then(res => {
                     this.entry = res.data
                 })
         },
         updateEntry(){
-            axios.post(`/rest/s1/entries/${this.slug}/update`, {
+            ApiService.updateEntry(this.slug, {
                 title: this.entry.title,
                 img: this.entry.img,
                 body: this.entry.body,

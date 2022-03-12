@@ -10,7 +10,7 @@ Vue.component('view-blogs', {
     },
     methods: {
         getBlogs(page){
-            axios.get('/rest/s1/blogs', {params:{page: page, per_page: 20}})
+            ApiService.getBlogs({params:{page: page, per_page: 20}})
                 .then(res => {
                     this.blogs = res.data;
                 })
@@ -18,7 +18,7 @@ Vue.component('view-blogs', {
         deleteBlog(slug){
             var isConfirmed = confirm(`Are you sure you want to delete ${slug}?`)
             if (isConfirmed) {
-                axios.post(`/rest/s1/blogs/${slug}/delete`)
+                ApiService.deleteBlog(slug)
                     .then(res => {
                         this.getBlogs(this.page);
                         toastr.success("Blog deleted successfully!", "Success!")

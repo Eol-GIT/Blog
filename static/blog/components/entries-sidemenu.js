@@ -8,12 +8,12 @@ Vue.component('sidemenu', {
         };
     },
     created(){
-        axios.get('/rest/s1/entries', {params: {per_page: 5}}).then(
+        ApiService.getEntries({params: {per_page: 5}}).then(
             res => {
                 this.entries = res.data.data;
             }
         )
-        axios.get('/rest/s1/top-entries', {params: {per_page: 5}}).then(
+        ApiService.getTopEntries({params: {per_page: 5}}).then(
             res => {
                 this.topEntries = res.data;
             }
@@ -22,7 +22,7 @@ Vue.component('sidemenu', {
     methods: {
         searchEntries(){
             if (this.searchInput){
-                axios.get(`/rest/s1/search/entries`, {params: {
+                ApiService.searchEntries({params: {
                     per_page: 5, 
                     search: this.searchInput.trim().replaceAll(' ', '+')
                 }})
