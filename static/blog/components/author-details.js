@@ -52,7 +52,7 @@ Vue.component('author-details', {
                 <div class="profile-stats">
                     <ul>
                         <li><span class="profile-stat-count">{{ blogs.total }}</span> <span v-if="blogs.total === 1">Blog</span><span v-else>Blogs</span></li>
-                        <li><span class="profile-stat-count">{{ nFormatter(blogs.totalViews, 1) }}</span> Total Views</li>
+                        <li><span class="profile-stat-count" data-toggle="tooltip" data-placement="bottom" :title="blogs.totalViews">{{ nFormatter(blogs.totalViews, 1) }}</span> Total Views</li>
                     </ul>
                 </div>
                 <div class="profile-bio">

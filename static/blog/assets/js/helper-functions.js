@@ -65,3 +65,13 @@ function nFormatter(num, digits) {
   });
   return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function(element){
+      new bootstrap.Tooltip(element, {
+          delay: {show: 200, hide: 0}
+      });
+      return new bootstrap.Tooltip(element);
+  });
+});
