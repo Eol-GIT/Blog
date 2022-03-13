@@ -362,11 +362,21 @@ def getBlogs():
 
 @app.route('/rest/s1/blogs/<string:slug>', methods=["GET"])
 def getBlogDetails(slug):
-    return jsonify(
-        helpers.getBlogsList(
-            Blog.query.filter_by(slug=slug).all()
-            )[0]
-        )
+    blog = Blog.query.filter_by(slug=slug).first_or_404()
+    query = Blog.query.filter(Blog.entry.has(slug=blog.entry.slug))\
+                .filter_by(category = blog.category)
+    next_blog = query.order_by(Blog.id)\
+                .filter(Blog.id > blog.id).first()
+    prev_blog = query.order_by(Blog.id.desc())\
+                .filter(Blog.id < blog.id).first()
+    blog_details = helpers.getBlogsList(Blog.query.filter_by(slug=slug).all())[0]
+    if prev_blog:
+        blog_details["prev_blog"] = {"id": prev_blog.id, "title": prev_blog.title, "slug": prev_blog.slug}
+    if next_blog:
+        blog_details["next_blog"] = {"id": next_blog.id, "title": next_blog.title, "slug": next_blog.slug}
+
+    return jsonify(blog_details)
+
 @app.route('/rest/s1/blogs/<string:slug>/delete', methods=["POST"])
 def deleteBlog(slug):
     blog = Blog.query.filter_by(slug=slug).delete()

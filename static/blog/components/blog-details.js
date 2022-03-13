@@ -125,6 +125,22 @@ Vue.component('blog-details', {
                         <a class="a2a_button_reddit"></a>
                         </div>
                     </div>
+                    <div class="row mt-3">
+                        <div class="col-md text-break mt-3">
+                            <a :href="'/' + blog.entry.slug + '/' + blog.prev_blog.slug" v-if="blog.prev_blog">
+                                <button class="btn btn-light text-primary prev-next-blog-btn">
+                                    ❮ {{blog.prev_blog.title}}
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-md text-break mt-3">
+                            <a :href="'/' + blog.entry.slug + '/' + blog.next_blog.slug" v-if="blog.next_blog">
+                                <button class="btn btn-light text-primary prev-next-blog-btn">
+                                    {{blog.next_blog.title}} ❯
+                                </button>
+                            </a>
+                        </div>
+                    </div>
                    </div>
                 </div>
               </div>
@@ -153,7 +169,7 @@ Vue.component('blog-details', {
 				</div>
 			</div>
             <div class="submit-comment">
-			    <button class="" v-if="comments.has_next" @click="getComments(pageSize + pageSize)">{{loadText}}</button>
+			    <button class="cursor-pointer" v-if="comments.has_next" @click="getComments(pageSize + pageSize)">{{loadText}}</button>
             </div>
       	</div>
 		<div class="col-lg-12">
