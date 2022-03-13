@@ -41,6 +41,7 @@ Vue.component('view-authors', {
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Last</th>
+                    <th scope="col">Username</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                     </tr>
@@ -50,6 +51,7 @@ Vue.component('view-authors', {
                     <th scope="row">{{author.id}}</th>
                     <td>{{author.firstName}}</td>
                     <td>{{author.lastName}}</td>
+                    <td><a :href="'/blog/' + author.slug">{{author.username}}</a></td>
                     <td>
                         <a :href="'/admin/authors/' + author.slug">
                             <button class="btn btn-sm btn-primary">Edit</button>

@@ -21,7 +21,7 @@ Vue.component('category-blogs', {
     template: `
     <div>
     <div class="heading-page header-text">
-      <h6 class="pl-2 text-capitalize"><a :href="'/blog/entries/' + entrySlug">{{ entrySlug }}</a> > <a :href="category">{{category}}</a></h6>
+      <h6 class="pl-2 text-capitalize"><a :href="'/' + entrySlug">{{ entrySlug }}</a> > <a :href="category">{{category}}</a></h6>
       <section class="page-heading">
         <div class="container">
           <div class="row">
@@ -49,10 +49,10 @@ Vue.component('category-blogs', {
             <div class="all-blog-posts">
                 <div class="row">
                     <div class="col-lg-6" v-for="blog in blogs.data">
-                      <a :href="'/blog/entries/' + entrySlug + '/' + blog.slug">
+                      <a :href="'/' + entrySlug + '/' + blog.slug">
                       <div class="blog-post">
                           <div class="down-content">
-                          <a :href="'/blog/entries/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
+                          <a :href="'/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
                           <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
                           <ul class="post-info">
                               <li>{{blog.date}}</li>

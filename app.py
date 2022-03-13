@@ -161,18 +161,18 @@ def contact():
 def faq():
     return render_template('blog/faq.html')
 
-@app.route('/blog/entries')
+@app.route('/blog/entries/')
 def entries():
     return render_template('blog/entries.html')
 
-@app.route('/blog/entries/<string:slug>')
+@app.route('/<string:slug>/')
 def blogEntry(slug):
     entry = Entry.query.filter_by(slug=slug).first_or_404()
     entry.views = entry.views + 1
     db.session.commit()
     return render_template('blog/entry.html', entry=entry, keywords=entry.keywords)
 
-@app.route('/blog/entries/<string:entry>/<string:blog>')
+@app.route('/<string:entry>/<string:blog>')
 def blogDetails(entry, blog):
     entry = Entry.query.filter_by(slug=entry).first_or_404()
     blog = Blog.query.filter_by(slug=blog).first_or_404()
@@ -180,7 +180,7 @@ def blogDetails(entry, blog):
     db.session.commit()
     return render_template('blog/blog-detail.html', blog=blog, entry=entry, keywords=blog.keywords)
 
-@app.route('/blog/entries/<string:slug>/category/<string:category>')
+@app.route('/<string:slug>/category/<string:category>')
 def categoryBlogs(slug, category):
     category = category.replace('+', ' ')\
             .replace('%20', ' ')
@@ -188,7 +188,7 @@ def categoryBlogs(slug, category):
 
     return render_template('blog/category-blogs.html', category=category, entry=entry, keywords=entry.keywords)
 
-@app.route('/blog/authors')
+@app.route('/blog/authors/')
 def authors():
     return render_template('blog/authors.html')
 
@@ -199,7 +199,7 @@ def authorDetails(slug):
     db.session.commit()
     return render_template('blog/author-details.html', author=author, keywords=author.keywords)
 
-@app.route('/blog/search/blogs')
+@app.route('/search/blogs')
 def searchBlogs():
     query = request.args.get('search')
     if query:
@@ -209,7 +209,7 @@ def searchBlogs():
         query = "*"
     return render_template('blog/search-blogs.html', query=query)
 
-@app.route('/blog/search/entries')
+@app.route('/search/entries')
 def searchEntries():
     query = request.args.get('search')
     if query:
@@ -219,7 +219,7 @@ def searchEntries():
         query = "*"
     return render_template('blog/search-entries.html', query=query)
 
-@app.route('/blog/search/authors')
+@app.route('/search/authors')
 def searchAuthors():
     query = request.args.get('search')
     if query:

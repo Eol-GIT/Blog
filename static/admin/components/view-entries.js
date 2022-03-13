@@ -48,7 +48,7 @@ Vue.component('view-entries', {
                 <tbody>
                     <tr v-for="entry in entries.data">
                     <th scope="row">{{entry.id}}</th>
-                    <td><a :href="'/blog/entries/' + entry.slug">{{entry.title}}</a></td>
+                    <td><a :href="'/' + entry.slug">{{entry.title}}</a></td>
                     <td><img :src="'/static/' + entry.img" height="35"></td>
                     <td>
                         <a :href="'/admin/entries/' + entry.slug">

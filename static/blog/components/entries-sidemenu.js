@@ -56,12 +56,12 @@ Vue.component('sidemenu', {
         <div class="row">
         <div class="col-lg-12 p-0">
             <div class="sidebar-item search">
-                <form @submit.prevent="location.href = '/blog/search/entries?search=' + searchInput.replaceAll(' ', '+');">
+                <form @submit.prevent="location.href = '/search/entries?search=' + searchInput.replaceAll(' ', '+');">
                     <input type="text" class="searchText" placeholder="Search Entries..." autocomplete="off" v-model="searchInput" @change="searchEntries">
                 </form>
                 <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
                     <div v-for="result in searchResults">
-                        <a :href="'/blog/entries/' + result.slug" class="text-dark">
+                        <a :href="'/' + result.slug" class="text-dark">
                             <div class="d-flex">
                                 <div class="w-25 mr-2">
                                     <img :src="'/static/' + result.img" :alt="result.slug" class="w-100">
@@ -74,7 +74,7 @@ Vue.component('sidemenu', {
                         </a>
                         <hr>
                     </div>
-                    <a :href="'/blog/search/entries?search=' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
+                    <a :href="'/search/entries?search=' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@ Vue.component('sidemenu', {
             </div>
             <div class="content">
                 <ul>
-                <li v-for="entry in entries"><a :href="'/blog/entries/' + entry.slug">
+                <li v-for="entry in entries"><a :href="'/' + entry.slug">
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex">
@@ -111,7 +111,7 @@ Vue.component('sidemenu', {
             </div>
             <div class="content">
                 <ul>
-                <li v-for="entry in topEntries"><a :href="'/blog/entries/' + entry.slug">
+                <li v-for="entry in topEntries"><a :href="'/' + entry.slug">
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex">

@@ -22,7 +22,7 @@ Vue.component('entries', {
     <div class="all-blog-posts">
       <div class="row">
         <div class="col-lg-6" v-for="entry in entries.data">
-            <a :href="'/blog/entries/' + entry.slug">
+            <a :href="'/' + entry.slug">
             <div class="blog-post">
                 <div class="blog-thumb">
                 <img :src="'/static/' + entry.img" :alt="entry.slug">

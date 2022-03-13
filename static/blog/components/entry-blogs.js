@@ -22,10 +22,10 @@ Vue.component('entry-blogs', {
     <div class="all-blog-posts">
       <div class="row">
         <div class="col-lg-6" v-for="blog in blogs.data">
-            <a :href="'/blog/entries/' + entrySlug + '/' + blog.slug">
+            <a :href="'/' + entrySlug + '/' + blog.slug">
             <div class="blog-post">
                 <div class="down-content">
-                <a  :href="'/blog/entries/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
+                <a  :href="'/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
                 <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
                 <ul class="post-info">
                     <li>{{blog.date}}</li>

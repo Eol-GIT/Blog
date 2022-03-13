@@ -57,7 +57,7 @@
 
   {% for entry in entries %}
   <url>
-    <loc>{{ base_url }}/blog/entries/{{ entry.slug }}</loc>
+    <loc>{{ base_url }}/{{ entry.slug }}</loc>
     <lastmod>{{ entry.modified.strftime('%Y-%m-%d') }}</lastmod>
     <changefreq>daily</changefreq>
   </url>
@@ -73,7 +73,7 @@
 
   {% for blog in blogs %}
   <url>
-    <loc>{{ base_url }}/blog/entries/{{ blog.entry.slug }}/{{ blog.slug }}</loc>
+    <loc>{{ base_url }}/{{ blog.entry.slug }}/{{ blog.slug }}</loc>
     <lastmod>{{ blog.modified.strftime('%Y-%m-%d') }}</lastmod>
     <changefreq>daily</changefreq>
   </url>

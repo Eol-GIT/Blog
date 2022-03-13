@@ -5,7 +5,7 @@ Vue.component('slider-blogs', {
     <div class="container-fluid">
       <div class="owl-banner owl-carousel">
         <div class="item" v-for="entry in entries">
-          <a :href="'/blog/entries/' + entry.slug">
+          <a :href="'/' + entry.slug">
             <img :src="'/static/' + entry.img" alt="">
             <div class="item-content">
               <div class="main-content">
