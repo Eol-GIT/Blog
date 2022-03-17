@@ -617,7 +617,6 @@ def getSearchedBlogs():
     paginated_items = Blog.query.filter(or_(
         Blog.title.ilike(looking_for),
         Blog.body.ilike(looking_for),
-        Blog.keywords.ilike(looking_for),
         ))\
         .order_by(Blog.views.desc()).paginate(page=page, per_page=per_page)
     return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
