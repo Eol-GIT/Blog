@@ -555,7 +555,7 @@ def getCategoryBlogs(category):
     category = category.replace('+', ' ')\
             .replace('%20', ' ')
     page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 10, type=int)
+    per_page = request.args.get('per_page', 16, type=int)
 
     if request.args.get('entry'):
         query = Blog.query.filter(Blog.entry.has(slug=request.args.get('entry')))

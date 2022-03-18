@@ -3,7 +3,7 @@ Vue.component('search-blogs', {
     data() {
         return {
             page: 1,
-            pageSize: 10,
+            pageSize: 16,
             recentBlogs: [],
             blogs: [],
             searchInput: "",
