@@ -161,6 +161,10 @@ def contact():
 def faq():
     return render_template('blog/faq.html')
 
+@app.route('/blog/privacy-policy')
+def privacyPolicy():
+    return render_template('blog/privacy.html')
+
 @app.route('/blog/entries/')
 def entries():
     return render_template('blog/entries.html')

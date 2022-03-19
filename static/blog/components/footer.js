@@ -32,7 +32,7 @@ Vue.component('footer-section', {
                         <ul class="list-unstyled">
                             <li><a href="/blog/faq" class="d-block text-secondary">FAQ</a></li>
                             <li><a href="#" class="d-block text-secondary">Newsletter</a></li>
-                            <li><a href="#" class="d-block text-secondary">Privacy Policy</a></li>
+                            <li><a href="/blog/privacy-policy" class="d-block text-secondary">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
