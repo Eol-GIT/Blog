@@ -20,7 +20,7 @@
   {% endfor %}
 
   <url>
-    <loc>{{ base_url }}/blog</loc>
+    <loc>{{ base_url }}/blog/</loc>
     <lastmod>2022-02-01</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -63,7 +63,7 @@
 
   {% for entry in entries %}
   <url>
-    <loc>{{ base_url }}/{{ entry.slug }}</loc>
+    <loc>{{ base_url }}/{{ entry.slug }}/</loc>
     <lastmod>{{ entry.modified.strftime('%Y-%m-%d') }}</lastmod>
     <changefreq>daily</changefreq>
   </url>
