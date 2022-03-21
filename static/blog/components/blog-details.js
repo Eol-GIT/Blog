@@ -101,7 +101,9 @@ Vue.component('blog-details', {
                   <div class="down-content">
                         <div class="d-flex">
                             <div class="p-1">
-                                <a :href="'/blog/' + blog.author.slug"><img class="rounded-circle" :src="'/static/' + blog.author.img" height="50" width="50"/></a>
+                                <a :href="'/blog/' + blog.author.slug">
+                                  <img class="rounded-circle" :alt="blog.author.username + ' Avatar'" :src="'/static/' + blog.author.img" height="50" width="50"/>
+                                </a>
                             </div>
                             <div class="p-1">
                                 <a :href="'/blog/' + blog.author.slug" class="h5">{{blog.author.username}}</a><br>
