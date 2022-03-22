@@ -258,7 +258,8 @@ header .navbar {
 	right: 30px;
 	top: 25px;
 }
-.navbar .navbar-toggler-icon:after {
+
+.navbar-toggler[aria-expanded="false"] .navbar-toggler-icon:after {
 	content: '\f0c9';
 	color: #fff;
 	font-size: 18px;
@@ -266,6 +267,14 @@ header .navbar {
 	font-family: 'FontAwesome';
 }
 
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+	content: '\00d7';
+	color: #fff;
+	font-size: 30px;
+	line-height: 30px;
+	font-family: 'FontAwesome';
+	transition-duration: 0.2s;
+}
 
 
 /* Banner Style */
