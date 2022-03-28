@@ -41,7 +41,7 @@ Vue.component('blog-stats', {
                     </span>
                 </div>
                 <div>
-                    <h1 data-toggle="tooltip" data-placement="bottom" :title="blogs.totalViews">{{nFormatter(blogs.totalViews)}}</h1>
+                    <h1 data-toggle="tooltip" data-placement="bottom" :title="blogs.totalViews">{{nFormatter(blogs.totalViews, 1)}}</h1>
                 </div>
                 
             </div>
