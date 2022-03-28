@@ -360,9 +360,16 @@ def getBlogs():
     else:
         query = Blog.query
 
-    paginated_items = query.order_by(Blog.id.desc()).paginate(page=page, per_page=per_page)
+    total_views = 0
 
-    return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
+    paginated_items = query.order_by(Blog.id.desc()).paginate(page=page, per_page=per_page)
+    blogs = helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items)
+    for i in Blog.query.all():
+        total_views += i.views
+    
+    blogs["totalViews"] = total_views
+
+    return jsonify(blogs)
 
 @app.route('/rest/s1/blogs/<string:slug>', methods=["GET"])
 def getBlogDetails(slug):
