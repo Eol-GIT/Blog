@@ -1648,3 +1648,48 @@ pre code {padding: 0;}
 	transition: all .3s ease; 
 	margin-right: 10px;
 }
+
+.cex-sidemenu {
+	background-image: url("https://cex.io/rb/CEX-4-160x600.png");
+	background-repeat: no-repeat;
+	width: 160px;
+	height: 600px;
+	border: 0.5px #dee2e667 solid;
+	margin-top: 25px;
+}
+
+.cex-banner {
+	background-image: url("https://cex.io/rb/CEX-1-728x90.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 100%;
+	height: 150px;
+}
+
+@media (max-width: 992px) {
+	.cex-sidemenu {
+		background-image: url("https://cex.io/rb/CEX-4-728x90.png");
+		background-size: 100%;
+		width: 100%;
+		height: 100px;
+	}
+
+	.cex-banner {
+		background-image: url("https://cex.io/rb/CEX-1-468x60.png");
+		height: 100px;
+	}
+}
+
+@media (max-width: 481px) {
+	.cex-sidemenu {
+		background-image: url("https://cex.io/rb/CEX-4-336x280.png");
+		background-size: 100%;
+		width: 100%;
+		height: 350px;
+	}	
+
+	.cex-banner {
+		background-image: url("https://cex.io/rb/CEX-1-336x280.png");
+		height: 350px;
+	}
+}

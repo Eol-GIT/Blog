@@ -4,19 +4,7 @@ Vue.component('banner', {
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="main-content">
-              <div class="row">
-                <div class="col-lg-8">
-                  <span>It's Live</span>
-                  <h4>EOL NUHA'S OFFICIAL PORTFOLIO</h4>
-                </div>
-                <div class="col-lg-4">
-                  <div class="main-button">
-                    <a rel="nofollow" href="/">Visit Now!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <a href="https://cex.io/r/0/up145283861/0/" target="_blank"><div class="cex-banner"></div></a>
           </div>
         </div>
       </div>
