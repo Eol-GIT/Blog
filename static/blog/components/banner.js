@@ -1,6 +1,6 @@
 Vue.component('banner', {
     template: `
-    <section class="call-to-action">
+    <section class="call-to-action mt-3">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">

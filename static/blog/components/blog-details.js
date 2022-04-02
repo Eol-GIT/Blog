@@ -89,8 +89,12 @@ Vue.component('blog-details', {
       </div>
     </section>
     </div>
+    
+    <div id="banner">
+        <banner></banner>
+    </div>
 
-    <section class="blog-posts grid-system">
+    <section class="blog-posts grid-system mt-2">
     <div class="container">
       <div class="row">
         <div class="col-lg-10">
