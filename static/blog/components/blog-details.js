@@ -101,7 +101,7 @@ Vue.component('blog-details', {
           <div class="all-blog-posts">
             <div class="row">
               <div class="col-lg-12">
-                <div class="blog-post">
+                <div class="blog-post mb-0">
                   <div class="down-content">
                         <div class="d-flex">
                             <div class="p-1">
@@ -148,6 +148,11 @@ Vue.component('blog-details', {
                         </div>
                     </div>
                    </div>
+                </div>
+              </div>
+              <div class="col-lg-12 p-0">    
+                <div id="banner">
+                  <banner></banner>
                 </div>
               </div>
             </div>
