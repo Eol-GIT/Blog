@@ -76,7 +76,7 @@ Vue.component('blog-details', {
 	template: `
     <div>
     <div class="heading-page header-text">
-    <h6 class="pl-2 text-capitalize"><a :href="'/' + entrySlug">{{ entrySlug }}</a> > <a :href="blog.slug">{{blog.title}}</a></h6>
+    <h6 class="pl-2"><a :href="'/' + entrySlug">{{ blog.entry.title }}</a> > <a :href="blog.slug">{{blog.title}}</a></h6>
     <section class="page-heading">
       <div class="container">
         <div class="row">

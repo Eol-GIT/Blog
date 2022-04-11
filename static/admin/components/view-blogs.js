@@ -2,17 +2,19 @@ Vue.component('view-blogs', {
     data() {
         return {
             blogs: [],
-            page: 1
+            page: 1,
+            pageSize: 20
         };
     },
     created(){
-        this.getBlogs(this.page);
+        this.getBlogs(this.page, this.pageSize);
     },
     methods: {
-        getBlogs(page){
-            ApiService.getBlogs({params:{page: page, per_page: 20}})
+        getBlogs(page, pageSize){
+            ApiService.getBlogs({params:{page: page, per_page: pageSize}})
                 .then(res => {
                     this.blogs = res.data;
+                    this.pageSize = pageSize;
                 })
         },
         deleteBlog(slug){
@@ -64,19 +66,26 @@ Vue.component('view-blogs', {
                 </tbody>
             </table>
             <hr>
+            <div class="d-flex flex-row">
+                <div style="cursor: pointer;" @click="getBlogs(page, 10)" class="p-2" :class="{'text-primary': pageSize===10}"><u>10</u></div>
+                <div style="cursor: pointer;" @click="getBlogs(page, 20)" class="p-2" :class="{'text-primary': pageSize===20}"><u>20</u></div>
+                <div style="cursor: pointer;" @click="getBlogs(page, 50)" class="p-2" :class="{'text-primary': pageSize===50}"><u>50</u></div>
+                <div style="cursor: pointer;" @click="getBlogs(page, 100)" class="p-2" :class="{'text-primary': pageSize===100}"><u>100</u></div>
+                <div style="cursor: pointer;" @click="getBlogs(page, 500)" class="p-2" :class="{'text-primary': pageSize===500}"><u>500</u></div>
+            </div>
             <nav>
                 <ul class="pagination justify-content-center">
                     <li class="page-item" v-if="blogs.has_prev">
-                        <a class="page-link" @click="getBlogs(blogs.prev_num)" href="#" onclick="return false;">
+                        <a class="page-link" @click="getBlogs(blogs.prev_num, pageSize)" href="#" onclick="return false;">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
                     </li>
                     <li v-for="page in blogs.pages" class="page-item" :class="{'active': page === blogs.page}">
-                        <a @click="getBlogs(page)" href="#" onclick="return false;" class="page-link">{{page}}</a>
+                        <a @click="getBlogs(page, pageSize)" href="#" onclick="return false;" class="page-link">{{page}}</a>
                     </li>
                     <li class="page-item" v-if="blogs.has_next">
-                        <a class="page-link" @click="getBlogs(blogs.next_num)" href="#" onclick="return false;">
+                        <a class="page-link" @click="getBlogs(blogs.next_num, pageSize)" href="#" onclick="return false;">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </a>

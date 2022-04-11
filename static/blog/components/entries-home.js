@@ -27,8 +27,8 @@ Vue.component('entries-home', {
         </div>
         </a>
         </div>
-    <div class="col-lg-12">
-        <div class="main-button">
+    <div class="col-lg-12 p-0">
+        <div class="main-button mb-3">
         <a href="/blog/entries">View All Entries</a>
         </div>
     </div>
