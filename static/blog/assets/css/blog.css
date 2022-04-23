@@ -1193,8 +1193,20 @@ pre {
 	color: lightgrey;
     background-color: #2b313a;
 	border-left: 4px solid #007bff;
+	position: relative;
 }
 pre code {padding: 0;}
+
+.--copy {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background:#212931;
+	border: 1px solid lightgrey;
+	border-radius: 6px;
+	color: lightgrey;
+	cursor: pointer;
+}
 .markdown ul {
 	padding-left: 40px;
 }

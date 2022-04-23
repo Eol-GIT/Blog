@@ -1,3 +1,50 @@
+const CopyPlugin = {
+    install: function (Vue) {
+        Vue.mixin({
+            mounted: function () {
+                function enableCopy(selector = "pre", childSelector = "code", btnText = "Copy", btnTextSuccess = "Copied", activeClass = "--copy") {
+                    console.log("Hello")
+                    document.querySelectorAll(`${selector}:not(.added)`).forEach(node => {
+                        node.classList.add('added');
+                        let copyBtn = document.createElement("button");
+                        copyBtn.innerText = btnText;
+                        copyBtn.classList.add(activeClass);
+                        node.appendChild(copyBtn);
+                        copyBtn.addEventListener("click", async () => {
+                            if (navigator.clipboard) {
+                                let text = node.querySelector(childSelector).innerText;
+                                await navigator.clipboard.writeText(text);
+                            }
+                            copyBtn.innerText = btnTextSuccess;
+                            setTimeout(() => icon.innerText = btnText, 2000);
+                        })
+                    })
+                }
+                enableCopy("pre"); 
+            }
+        })
+    }
+}
+
+const TableContentsPlugin = {
+    install: function (Vue) {
+        Vue.mixin({
+            mounted: function () {
+                var navs = document.querySelectorAll('.navigator-child');
+        
+                [].forEach.call(navs, function (nav) {
+                    nav.addEventListener('click', () => {
+                        navs.forEach(function (nav) {
+                            nav.classList.remove('is-active');
+                        });
+                        nav.classList.toggle('is-active');
+                    })
+                })
+            }
+        })
+    }
+}
+
 Vue.component('blog-details', {
 	props: ["blogSlug", "entrySlug"],
 	data() {
@@ -16,22 +63,6 @@ Vue.component('blog-details', {
 		ApiService.getBlogDetails(this.blogSlug).then(res => { this.blog = res.data })
 		this.getComments(this.pageSize);
 
-	},
-	mounted() {
-		// Table of contents add and remove is-active
-		var navs = document.querySelectorAll('.navigator-child');
-
-		[].forEach.call(navs, function (nav) {
-			nav.addEventListener('click', () => {
-				// remove is-active from all elements
-				navs.forEach(function (nav) {
-					nav.classList.remove('is-active');
-				});
-
-				// apply is-active only at selected item
-				nav.classList.toggle('is-active');
-			})
-		})
 	},
 	methods: {
 		getComments(pageSize){
@@ -238,3 +269,5 @@ Vue.component('blog-details', {
     `
 })
 new Vue({ el: "#blog-details" });
+Vue.use(CopyPlugin);
+Vue.use(TableContentsPlugin);
