@@ -3,7 +3,6 @@ const CopyPlugin = {
         Vue.mixin({
             mounted: function () {
                 function enableCopy(selector = "pre", childSelector = "code", btnText = "Copy", btnTextSuccess = "Copied", activeClass = "--copy") {
-                    console.log("Hello")
                     document.querySelectorAll(`${selector}:not(.added)`).forEach(node => {
                         node.classList.add('added');
                         let copyBtn = document.createElement("button");
@@ -268,6 +267,6 @@ Vue.component('blog-details', {
 </div>
     `
 })
-new Vue({ el: "#blog-details" });
 Vue.use(CopyPlugin);
 Vue.use(TableContentsPlugin);
+new Vue({ el: "#blog-details" });
