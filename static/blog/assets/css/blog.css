@@ -57,7 +57,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .main-button a:hover {
-	background-color: #007bff;
+	background-color: #09f;
 }
 
 .heading-page {
@@ -446,7 +446,7 @@ header .navbar {
 }
 
 .blog-posts .down-content span:hover {
-	color: #007bff;
+	color: #09f;
 	transition-duration: 0.3s;
 }
 
@@ -696,7 +696,7 @@ ul.page-numbers li a.disabled {
 }
 
 .blog-posts .submit-comment button:hover {
-	background-color: #007bff;
+	background-color: #09f;
 }
 
 /* Sidebar */
@@ -946,7 +946,7 @@ footer p a:hover {
 }
 
 .contact-us .contact-form button:hover {
-	background-color: #007bff;
+	background-color: #09f;
 }
 
 .contact-us .contact-information {
@@ -1192,7 +1192,7 @@ pre {
     border-radius: 6px;
 	color: lightgrey;
     background-color: #2b313a;
-	border-left: 4px solid #007bff;
+	border-left: 4px solid #09f;
 	position: relative;
 }
 pre code {padding: 0;}
@@ -1205,11 +1205,24 @@ pre code {padding: 0;}
 	border: 1px solid lightgrey;
 	border-radius: 6px;
 	color: lightgrey;
-	cursor: pointer;
+	outline: none;
+	transition-duration: 0.3s;
 }
+
+.--copy:hover {
+	color: #09f;
+	border-color: #09f;
+	transition-duration: 0.3s;
+}
+
+.--copy:focus {
+	outline: none;
+}
+
 .markdown ul {
 	padding-left: 40px;
 }
+
 .markdown span {
 	font-size: inherit !important;
 	text-transform: none !important;
