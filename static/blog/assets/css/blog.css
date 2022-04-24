@@ -434,6 +434,7 @@ header .navbar {
 .blog-posts .down-content {
 	padding: 20px;
 	border: 1px solid #eee;
+	height: calc(100% - 30px);
 }
 
 .blog-posts .down-content span {
