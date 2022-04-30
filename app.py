@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, Response, redirect, url_for, make_response
+from flask import Flask, jsonify, render_template, request, Response, redirect, url_for, make_response, send_file
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import or_
 from flask_sqlalchemy import SQLAlchemy 
@@ -9,6 +9,8 @@ import helpers
 from slugify import slugify
 from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user
 from urllib.parse import urlparse
+from PIL import Image, ImageDraw, ImageFont
+import textwrap
 
 app = Flask(__name__)
 app.secret_key = "thiskeyissoscret"
@@ -349,6 +351,32 @@ def adminBlogDetails(slug):
 """
 ================================ REST ENDPOINTS =============================
 """
+@app.route('/rest/s1/banner/<string:slug>')
+def getimg(slug):
+    blog = Blog.query.filter_by(slug=slug).first_or_404()
+    width = 1920
+    height = 1080
+    if len(blog.title) > 83:
+        message = blog.title[0:82] + "..."
+    else:
+        message = blog.title
+
+    wraped_txt = textwrap.wrap(message, width=22, break_long_words=True)
+    message = "\n".join(wraped_txt)
+
+    img = Image.new('RGB', (width, height), color='white')
+    img1 = Image.open('static/blog/assets/images/blog-fill.png')
+
+
+    imgDraw = ImageDraw.Draw(img)
+
+    img.paste(img1)
+    font = ImageFont.truetype("static/blog/assets/fonts/Raleway-Bold.ttf", size=150)
+    imgDraw.text((120, 100), message, fill=(0, 0, 0), font=font)
+    img.save('static/blog/assets/images/result1.png')
+
+    return send_file('static/blog/assets/images/result1.png', mimetype='image/gif')
+
 @app.route('/rest/s1/blogs', methods=["GET"])
 def getBlogs():
     page = request.args.get('page', 1, type=int)
