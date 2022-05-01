@@ -9,8 +9,6 @@ import helpers
 from slugify import slugify
 from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user
 from urllib.parse import urlparse
-from PIL import Image, ImageDraw, ImageFont
-import textwrap
 
 app = Flask(__name__)
 app.secret_key = "thiskeyissoscret"
@@ -351,6 +349,8 @@ def adminBlogDetails(slug):
 """
 ================================ REST ENDPOINTS =============================
 """
+
+"""
 @app.route('/rest/s1/banner/<string:slug>')
 def getimg(slug):
     blog = Blog.query.filter_by(slug=slug).first_or_404()
@@ -376,6 +376,7 @@ def getimg(slug):
     img.save('static/blog/assets/images/result1.png')
 
     return send_file('static/blog/assets/images/result1.png', mimetype='image/gif')
+"""
 
 @app.route('/rest/s1/blogs', methods=["GET"])
 def getBlogs():
