@@ -11,9 +11,10 @@ Vue.component('projects', {
     },
     template: `
         <div>
-        <h3 id="projects">{{i18next.t("bestProjectsText")}}</h3>
-        <hr class="devider">
-        <p>{{i18next.t("mainProjectsText")}}</p>
+        <div class="section-title">
+            <h1>{{i18next.t("bestProjectsText")}}</h1>
+            <p>{{i18next.t("mainProjectsText")}}</p>
+        </div>
         <div class="row">
             <div class="col-md"> <a href="projects/sorting-visualizer">
                 <div class="box-image"> <img src="static/portfolio/images/sorting-visualizer1.webp" width="100%" loading="lazy" alt="Sorting Visualizer Image">

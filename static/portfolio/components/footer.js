@@ -22,11 +22,6 @@ Vue.component('footer-component', {
                     this.author = res.data.author
                 }
             )
-            .catch(
-                (error) => {
-                    toastr.error(i18next.t("tryAgainLaterText"), i18next.t("thereWasAnIssueText"), toastDefaults)
-                }
-            )
         },
     },
     template: `

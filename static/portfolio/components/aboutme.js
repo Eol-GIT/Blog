@@ -1,17 +1,21 @@
 Vue.component('about-me', {
     template: `
         <div>
-            <h3 id="about-me">{{i18next.t("aboutMeText")}}</h3>
-            <hr class="devider">
+            <div class="section-title">
+                <h1>{{i18next.t("aboutMeText")}}</h1>
+                <p>{{i18next.t("aboutMeDescription")}}</p>
+            </div>
             <div class="row">
-                <div class="col-md">
-                    <h2 class="text-primary">{{i18next.t("aSoftwareDeveloperText")}}</h2>
-                    <p> {{i18next.t("aboutMeIntro")}} <a href="#contact">{{i18next.t("belowText")}}!</a></p> 
-                    <a href="static/portfolio/images/cv.pdf" download="cv"> 
-                        <button class="btn btn-outline-primary">{{i18next.t("downloadResumeText")}}</button> 
-                    </a> 
+                <div class="col-md d-flex flex-center-v">
+                    <div>
+                        <h2 class="text-center">{{i18next.t("aSoftwareDeveloperText")}}</h2>
+                        <p> {{i18next.t("aboutMeIntro")}} <a href="#contact">{{i18next.t("belowText")}}!</a></p> 
+                        <a href="static/portfolio/images/cv.pdf" download="cv" class="text-center d-block"> 
+                            <button class="resume-btn">{{i18next.t("downloadResumeText")}}</button> 
+                        </a> 
+                    </div>
                 </div>
-                <div class="col-md text-center my-3"> <img src="static/portfolio/images/profile-img.webp" class="about-me-image"></div>
+                <div class="col-md d-flex flex-center my-3"> <img src="static/portfolio/images/boypc.png" style="max-width: 90%"></div>
             </div>
         </div>
     `

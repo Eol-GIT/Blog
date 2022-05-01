@@ -65,9 +65,10 @@ Vue.component('skills', {
     },
     template: `
         <div>
-        <h3>{{i18next.t("whatICanDoText")}}</h3>
-        <hr class="devider">
-        <p>{{i18next.t("mainSkillsText")}}</p>
+        <div class="section-title">
+            <h1>{{i18next.t("whatICanDoText")}}</h1>
+            <p>{{i18next.t("mainSkillsText")}}</p>
+        </div>
         <div class="text-center skill-categories">
             <span class="border-bottom h4 px-2 cursor-pointer border-2" 
                 :class="{'border-primary text-primary border-4': category === 'frontend', }" @click="changeCategory('frontend')">Front-end</span>

@@ -80,7 +80,42 @@ header h1 {
 }
 
 section {
-    margin: 5% 10%;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 8rem;
+}
+
+@media (min-width: 576px) {
+    section {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    section {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    section {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    section {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1600px) {
+    section {
+        max-width: 1570px;
+    }
 }
 
 section>h3 {
@@ -224,90 +259,6 @@ section>h3 {
 }
 
 /*======================= SKILLS ==========================*/
-.skills {
-    font: 14px/18px sans-serif;
-    margin: 20px 0;
-}
-
-.skills li {
-    list-style: none;
-    margin: 15px 0 0;
-    cursor: pointer;
-    padding: 0 10px;
-}
-
-.skills li h3 {
-    font-size: 18px;
-    margin: 0;
-}
-
-.skills li p {
-    margin: 0;
-    font-size: 12px;
-}
-
-.iconic-bar-chart-bar-1 {
-    stroke: #09f;
-}
-
-.iconic-bar-chart-bar-2 {
-    stroke: rgba(0, 153, 255, 0.85);
-}
-
-.iconic-bar-chart-bar-3 {
-    stroke: rgba(0, 153, 255, 0.75);
-}
-
-.iconic-bar-chart-bar-4 {
-    stroke: rgba(0, 153, 255, 0.65);
-}
-
-.iconic-bar-chart-bar-5 {
-    stroke: rgba(0, 153, 255, 0.55);
-}
-
-.iconic-bar-chart-bar-shadow {
-    stroke: rgba(0, 0, 0, 0.33);
-}
-
-.iconic-bar-chart-bar {
-    -webkit-transform: scaleY(0);
-    -moz-transform: scaleY(0);
-    -ms-transform: scaleY(0);
-    -o-transform: scaleY(0);
-    transform: scaleY(0);
-    -webkit-transition: 0.4s ease;
-    -moz-transition: 0.4s ease;
-    -ms-transition: 0.4s ease;
-    -o-transition: 0.4s ease;
-    transition: 0.4s ease;
-    -webkit-transform-origin: 0 108px;
-    -moz-transform-origin: 0 108px;
-    -ms-transform-origin: 0 108px;
-    -o-transform-origin: 0 108px;
-    transform-origin: 0 108px;
-}
-
-.iconic-bar-chart-bar.active {
-    -webkit-transform: scaleY(1);
-    -moz-transform: scaleY(1);
-    -ms-transform: scaleY(1);
-    -o-transform: scaleY(1);
-    transform: scaleY(1);
-}
-
-.bar-chart-size {
-    width: 350px;
-    height: 350px;
-}
-
-@media screen and (max-width: 800px) {
-    .bar-chart-size {
-        width: 250px;
-        height: 250px;
-    }
-}
-
 .col-md a {
     text-decoration: none;
 }
@@ -317,7 +268,7 @@ section>h3 {
     position: relative;
     width: 100%;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 16px;
     margin: 20px 0px;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
     transition-duration: 0.3s;
@@ -474,17 +425,23 @@ div.box-image {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 25px;
     transition-duration: 0.3s;
+    border-radius: 16px;
+    font-size: 1.5rem;
+    color: #000;
 }
 
 div.box-image:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 153, 255, 0.2), 0 6px 20px 0 rgba(0, 153, 255, 0.19);
     transition-duration: 0.3s;
+    color: #09f;
 }
 
 .box-image>img {
     max-width: 100%;
     opacity: 0.85;
     transition-duration: 0.3s;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
 }
 
 .box-image>img:hover {
@@ -514,7 +471,7 @@ div.box-name {
 
 .job-dis-column {
     float: left;
-    width: 70%;
+    width: 65%;
     padding: 15px 5px;
 }
 
@@ -797,4 +754,161 @@ footer {
 
 #cookiescript_injected {
     display: none !important;
+}
+
+.section-title {
+    background: #F7F8FC;
+    padding: 25px;
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.section-title h1 {
+    margin: 0 5%;
+    margin-top: -70px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 3.5rem;
+    line-height: 5.2rem;
+    color: #252733;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+}
+
+.section-title h6 {
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #4B506D;
+    margin: 0;
+}
+
+.section-title h4 {
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 4.5rem;
+    color: #53CDF1;
+    margin: 0;
+}
+
+.section-title p {
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    color: #252733;
+    margin: 0;
+}
+
+.dark-mode-body .section-title {
+    background: rgb(15, 15, 15);
+    color: #FFFFFF;
+}
+
+.dark-mode-body .section-title h1 {
+    background: rgb(30, 30, 30);
+    color: #FFFFFF;
+}
+
+.dark-mode-body .section-title p {
+    color: #FFFFFF;
+}
+
+.resume-btn {
+    background: #09f;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    color: #FFFFFF;
+    border: none;
+    padding: 16px 70px;
+    outline: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.resume-btn:focus {
+    outline: none;
+}
+
+.resume-btn:hover {
+    opacity: 0.85;
+    transition-duration: 0.3s;
+}
+
+.about-us-card {
+    background: #F7F8FC;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.card-name {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #000;
+    margin-bottom: 0;
+}
+
+.card-position {
+    font-size: 1.5rem;
+    color: #4B506D;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.card-position a {
+    color: #09f;
+}
+
+.card-description {
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
+    color: #4B506D;
+    white-space: pre-line;
+}
+
+.dark-mode-body .about-us-card {
+    background: rgb(15, 15, 15);
+}
+
+.dark-mode-body .card-name {
+    color: #FFFFFF;
+}
+
+.dark-mode-body .card-position {
+    color: #ccc9c9;
+}
+
+.dark-mode-body .card-description {
+    color: #FFFFFF;
+}
+
+
+.form-input-style {
+    background: #FFFFFF;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    color: #09f;
+    border: none;
+    padding: 20px;
+    outline: none;
+    transition-duration: 0.3s;
+    width: 100%;
+}
+
+.dark-mode-body .form-input-style {
+    background: rgb(15, 15, 15);
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 12px;
+    }
 }

@@ -41,9 +41,10 @@ Vue.component('contact-form', {
     },
     template: `
         <div>
-            <h3>{{i18next.t("getInTouchText")}}</h3>
-            <hr class="devider">
-            <p>{{i18next.t("contactMeText")}}</p>
+            <div class="section-title">
+                <h1>{{i18next.t("getInTouchText")}}</h1>
+                <p>{{i18next.t("contactMeText")}}</p>
+            </div>
             <div class="row contact-border-right">
                 <div class="col border-right border-primary text-center py-5 cursor-pointer"> <i class="fa fa-phone"></i>
                     <a href="tel:+38349793208" class="mail-to-link" data-toggle="tooltip" data-placement="bottom" title="${i18next.t("clickToMakeCallText")}">
@@ -79,18 +80,18 @@ Vue.component('contact-form', {
                 <h4 class="text m-0">{{i18next.t("sendAnEmailText")}}</h4>
                 <form class="form p-3 m-0" id="form" @submit.prevent="sendEmail">
                     <div class="row">
-                        <input class="col-md my-2 mr-2 form-control" placeholder="${i18next.t("firstNameText")}" name="firstName" id="firstName" required v-model="firstName">
-                        <input class="col-md my-2 mr-2 form-control" placeholder="${i18next.t("lastNameText")}" name="lastName" id="lastName" required v-model="lastName">
+                        <input class="col-md my-2 mr-2 form-input-style" placeholder="${i18next.t("firstNameText")}" name="firstName" id="firstName" required v-model="firstName">
+                        <input class="col-md my-2 mr-2 form-input-style" placeholder="${i18next.t("lastNameText")}" name="lastName" id="lastName" required v-model="lastName">
                     </div>
                     <div class="row">
-                        <input class="col-md my-2 mr-2 form-control" placeholder="${i18next.t("emailText")}" name="email" id="email" required v-model="email">
-                        <input class="col-md my-2 mr-2 form-control" placeholder="${i18next.t("phoneText")}" name="phone" id="phone" required v-model="phone">
+                        <input class="col-md my-2 mr-2 form-input-style" placeholder="${i18next.t("emailText")}" name="email" id="email" required v-model="email">
+                        <input class="col-md my-2 mr-2 form-input-style" placeholder="${i18next.t("phoneText")}" name="phone" id="phone" required v-model="phone">
                     </div>
                     <div class="row">
-                        <textarea placeholder="${i18next.t("yourMessageText")}" rows="3" name="message" id="message" minlength="15" class="my-2 mr-2 form-control" v-model="message"></textarea>
+                        <textarea placeholder="${i18next.t("yourMessageText")}" rows="3" name="message" id="message" minlength="15" class="my-2 mr-2 form-input-style" v-model="message"></textarea>
                     </div>
                     <div class="row">
-                        <input class="btn btn-primary my-2 mr-2 w-100" type="submit" id="button" value="${i18next.t("sendText")}">
+                        <input class="resume-btn my-2 mr-2 w-100" type="submit" id="button" value="${i18next.t("sendText")}">
                     </div>
                 </form>
             </div>

@@ -1,19 +1,22 @@
 Vue.component('education', {
     template: `
         <div>
-        <h3>{{i18next.t("educationText")}}</h3>
-        <hr class="devider"><br> 
+        <div class="section-title">
+            <h1>{{i18next.t("educationText")}}</h1>
+            <p>{{i18next.t("educationDescriptionText")}}</p>
+        </div>
         <div class="row">
-            <div class="col-md">
-                <small class="text-primary">Sep 2018 - May 2021</small>
-                <h3 class="text-primary">{{i18next.t("gymnasiumOfNaturalSciencesText")}} - "Kuvendi i Arberit"</h3>
-                <p class="text-secondary"><strong>Kuvendi I Arberit</strong> {{i18next.t("kuvendiArberitIntro")}}</p>
+            <div class="col-md d-flex flex-center">
+                <img src="static/portfolio/images/boyflag.png" style="max-width: 90%" />
             </div>
-            <div class="col-md">    
-                <small class="text-primary">Oct 2021 - {{i18next.t("presentText")}}</small>
-                <h3 class="text-primary">{{i18next.t("ubtText")}} - UBT</h3>
-                <p class="text-secondary"><strong>UBT</strong> {{i18next.t("ubtIntro")}}
-                </p>
+            <div class="col-md d-flex flex-center-v">
+                <div>
+                    <h2 class="text-center">{{i18next.t("ubtText")}} - UBT</h2>
+                    <p><strong>UBT</strong> {{i18next.t("ubtIntro")}}</a></p> 
+                    <a href="https://www.ubt-uni.net/sq/ballina/" target="_blank" class="text-center d-block"> 
+                        <button class="resume-btn">{{i18next.t("visitWebText")}}</button> 
+                    </a> 
+                </div>
             </div>
         </div>
     </div>
