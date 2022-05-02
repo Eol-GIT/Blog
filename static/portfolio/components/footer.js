@@ -31,9 +31,9 @@ Vue.component('footer-component', {
                 <h4> {{i18next.t("myPortfolioText")}}</h4> <small class="text-secondary">eolnuha.com &copy;
                     copyright {{new Date().getFullYear()}}</small><br>
                     <span @click="eventBus.$emit('changeLanguage', 'en')" class="cursor-pointer h4 pb-2" 
-                        :class="{'border-bottom': ln === 'en'}" v-if="consent"><img src="/static/portfolio/images/en.png" width="35px"></span>
+                        :class="{'border-bottom': ln === 'en'}" v-if="consent"><img src="/static/portfolio/images/en.png" width="35px" alt="eng"></span>
                     <span @click="eventBus.$emit('changeLanguage', 'sq')" class="cursor-pointer h4 pb-2" 
-                        :class="{'border-bottom': ln === 'sq'}" v-if="consent"><img src="/static/portfolio/images/sq.png" width="35px"></span>
+                        :class="{'border-bottom': ln === 'sq'}" v-if="consent"><img src="/static/portfolio/images/sq.png" width="35px" alt="alb"></span>
             </div>
             <div class="col-md text-center">
                 <h4> {{i18next.t("findMeOtherSocialMediaText")}}</h4> 

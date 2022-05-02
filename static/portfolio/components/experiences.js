@@ -5,7 +5,7 @@ Vue.component('experiences', {
             <h1>{{i18next.t("experiencesText")}}</h1>
             <p>{{i18next.t("jobExperiencesText")}}</p>
         </div>
-        <div class="about-us-card mt-5 row">
+        <div class="experiences-card mt-5 row">
             <div class="job-pic-column d-flex flex-center">
                 <img src="static/portfolio/images/weborigo.svg" alt="weborigo"/>
             </div>
@@ -22,7 +22,7 @@ Vue.component('experiences', {
                 </p>
             </div>
         </div>
-        <div class="about-us-card mt-5 row">
+        <div class="experiences-card mt-5 row">
             <div class="job-pic-column d-flex flex-center">
                 <img src="static/portfolio/images/pythys.webp" alt="pythys"/>
             </div>
@@ -41,7 +41,7 @@ Vue.component('experiences', {
                 </div>
             </div>
         </div>
-        <div class="about-us-card mt-5 row">
+        <div class="experiences-card mt-5 row">
             <div class="job-pic-column d-flex flex-center">
                 <img src="static/portfolio/images/starlabs.png" alt="starlabs"/>
             </div>
@@ -60,7 +60,7 @@ Vue.component('experiences', {
                 </div>
             </div>
         </div>
-        <div class="about-us-card mt-5 row">
+        <div class="experiences-card mt-5 row">
             <div class="job-pic-column d-flex flex-center">
                 <img src="static/portfolio/images/upwork1.webp" alt="upwork"/>
             </div>

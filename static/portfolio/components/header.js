@@ -64,11 +64,11 @@ Vue.component('header-component', {
         <div class="flag-menu-parent" tab-index="0" v-if="consent">
             <div class="flag-active">
                 <img :src="'/static/portfolio/images/' + activeLn + '.png'" data-toggle="tooltip" data-placement="left" 
-                    :title="i18next.t(activeLn + 'Language')">
+                    :title="i18next.t(activeLn + 'Language')" alt="language">
             </div>
             <div class="flag-menu">
                 <img v-for="ln in languages" :src="'/static/portfolio/images/' + ln + '.png'" data-toggle="tooltip" data-placement="left" 
-                    :title="i18next.t(ln + 'Language')" @click="eventBus.$emit('changeLanguage', ln)">  
+                    :title="i18next.t(ln + 'Language')" @click="eventBus.$emit('changeLanguage', ln)" alt="lang">  
             </div>
         </div>
         <div class="container">
@@ -84,7 +84,7 @@ Vue.component('header-component', {
                                     </pre>
                                 </div>
                                 <div class="col-md h-100">
-                                    <img src="static/portfolio/images/headerimg.webp" class="h-100">
+                                    <img src="static/portfolio/images/headerimg.webp" class="h-100"  alt="headerimg">
                                 </div>
                             </div>
                         </div>

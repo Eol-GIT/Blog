@@ -7,7 +7,7 @@ Vue.component('education', {
         </div>
         <div class="row">
             <div class="col-md d-flex flex-center">
-                <img src="static/portfolio/images/boyflag.png" style="max-width: 90%" />
+                <img src="static/portfolio/images/boyflag.png" style="max-width: 90%" alt="boyflag"/>
             </div>
             <div class="col-md d-flex flex-center-v">
                 <div>

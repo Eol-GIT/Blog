@@ -15,7 +15,7 @@ Vue.component('about-me', {
                         </a> 
                     </div>
                 </div>
-                <div class="col-md d-flex flex-center my-3"> <img src="static/portfolio/images/boypc.png" style="max-width: 90%"></div>
+                <div class="col-md d-flex flex-center my-3"> <img src="static/portfolio/images/boypc.png" style="max-width: 90%" alt="boypc"></div>
             </div>
         </div>
     `

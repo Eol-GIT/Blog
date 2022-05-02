@@ -122,6 +122,77 @@ section>h3 {
     margin-bottom: 0;
 }
 
+.section-title {
+    background: #F7F8FC;
+    padding: 25px;
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 12px;
+    transition-duration: 0.3s;
+}
+
+.section-title h1 {
+    margin: 0 5%;
+    margin-top: -70px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 3.5rem;
+    line-height: 5.2rem;
+    color: #252733;
+    background: #FFFFFF;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    transition-duration: 0.3s;
+}
+
+.section-title h6 {
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #4B506D;
+    margin: 0;
+}
+
+.section-title h4 {
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 4.5rem;
+    color: #53CDF1;
+    margin: 0;
+}
+
+.section-title p {
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    color: #252733;
+    margin: 0;
+}
+
+.resume-btn {
+    background: #09f;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    color: #FFFFFF;
+    border: none;
+    padding: 16px 70px;
+    outline: none;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.resume-btn:focus {
+    outline: none;
+}
+
+.resume-btn:hover {
+    opacity: 0.85;
+    transition-duration: 0.3s;
+}
+
 .about-me-image {
     border-radius: 8px;
     height: 300px;
@@ -272,15 +343,6 @@ section>h3 {
     margin: 20px 0px;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
     transition-duration: 0.3s;
-}
-
-.dark-mode-body .my-skills {
-    background: #000;
-    box-shadow: 0 19px 38px rgba(255, 255, 255, 0.3);
-}
-
-.dark-mode-body .my-skills .text-uppercase {
-    color: white;
 }
 
 .my-skills-bar {
@@ -479,10 +541,38 @@ div.box-name {
     max-width: 90%;
 }
 
-.experience-box {
-    box-shadow: 0 4px 8px 0 rgba(0, 153, 255, 0.2), 0 6px 20px 0 rgba(0, 153, 255, 0.19);
-    padding: 30px;
-    margin: 5px;
+.experiences-card {
+    background: #F7F8FC;
+    border-radius: 16px;
+    padding: 10px;
+    transition-duration: 0.3s;
+}
+
+.card-name {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #000;
+    margin-bottom: 0;
+}
+
+.card-position {
+    font-size: 1.5rem;
+    color: #4B506D;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.card-position a {
+    color: #09f;
+}
+
+.card-description {
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
+    color: #4B506D;
+    white-space: pre-line;
 }
 
 @media screen and (max-width: 800px) {
@@ -558,77 +648,6 @@ footer {
     }
 }
 
-/*============================= DARK MODE =========================*/
-.mail-to-link {
-    color: #000;
-    text-decoration: none !important;
-}
-
-.mail-to-link:hover {
-    color: #000;
-}
-
-.dark-mode-body {
-    background-color: #000 !important;
-    transition-duration: 0.3s;
-}
-
-.dark-mode-body>* {
-    color: white !important;
-}
-
-.dark-mode-body .box-image {
-    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.6);
-}
-
-.dark-mode-body .box-image:hover {
-    box-shadow: 0 4px 8px 0 rgba(18, 156, 248, 0.5), 0 6px 20px 0 rgba(18, 156, 248, 0.6);
-}
-
-.dark-mode-body .iconic-bar-chart-bar-shadow {
-    stroke: rgba(255, 255, 255, 0.33);
-}
-
-.dark-mode-body .header-wavy {
-    stroke: #000;
-}
-
-.dark-mode-body .slanted {
-    background-color: #000;
-}
-
-.dark-mode-body .progressbar__text {
-    color: #ffff;
-}
-
-.dark-mode-body .intro-text {
-    color: #ffff;
-}
-
-.dark-mode-body #footer {
-    background-color: rgb(22, 22, 22) !important
-}
-
-.dark-mode-body .dark-mode-divider {
-    border-top: 0.2px solid white;
-}
-
-.dark-mode-body .mail-to-link {
-    color: #ffffff;
-}
-
-.dark-mode-body .experience-box {
-    background: #000;
-}
-
-.fa-sun,
-.fa-moon {
-    bottom: 30px;
-    left: 30px;
-    z-index: 1001;
-    font-size: 40px;
-    cursor: pointer;
-}
 
 /*======================== Toast styles ===================================*/
 #toast-container>div {
@@ -756,49 +775,108 @@ footer {
     display: none !important;
 }
 
-.section-title {
-    background: #F7F8FC;
-    padding: 25px;
-    margin: 20px 0;
-    text-align: center;
-    border-radius: 12px;
-}
-
-.section-title h1 {
-    margin: 0 5%;
-    margin-top: -70px;
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 3.5rem;
-    line-height: 5.2rem;
-    color: #252733;
+.form-input-style {
     background: #FFFFFF;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-}
-
-.section-title h6 {
-    font-weight: 500;
-    font-size: 2rem;
-    line-height: 3rem;
-    color: #4B506D;
-    margin: 0;
-}
-
-.section-title h4 {
-    font-weight: 900;
-    font-size: 3rem;
-    line-height: 4.5rem;
-    color: #53CDF1;
-    margin: 0;
-}
-
-.section-title p {
-    font-weight: 400;
     font-size: 1.5rem;
     line-height: 2.2rem;
-    color: #252733;
-    margin: 0;
+    color: #09f;
+    border: none;
+    padding: 20px;
+    outline: none;
+    transition-duration: 0.3s;
+    width: 100%;
+}
+
+/*============================= DARK MODE =========================*/
+.mail-to-link {
+    color: #000;
+    text-decoration: none !important;
+}
+
+.mail-to-link:hover {
+    color: #000;
+}
+
+.dark-mode-body {
+    background-color: #000 !important;
+    transition-duration: 0.3s;
+}
+
+.dark-mode-body>* {
+    color: white !important;
+}
+
+.dark-mode-body .box-image {
+    box-shadow: 0 4px 8px 0 rgba(155, 155, 155, 0.2), 0 6px 20px 0 rgba(155, 155, 155, 0.2);
+    background: rgb(15, 15, 15);
+    color: #FFFFFF;
+}
+
+.dark-mode-body .box-image:hover {
+    box-shadow: 0 4px 8px 0 rgba(18, 156, 248, 0.5), 0 6px 20px 0 rgba(18, 156, 248, 0.6);
+}
+
+.dark-mode-body .header-wavy {
+    stroke: #000;
+}
+
+.dark-mode-body .slanted {
+    background-color: #000;
+}
+
+.dark-mode-body .progressbar__text {
+    color: #ffff;
+}
+
+.dark-mode-body .intro-text {
+    color: #ffff;
+}
+
+.dark-mode-body #footer {
+    background-color: rgb(15, 15, 15) !important;
+}
+
+.dark-mode-body .dark-mode-divider {
+    border-top: 0.2px solid white;
+}
+
+.dark-mode-body .mail-to-link {
+    color: #ffffff;
+}
+
+.dark-mode-body .experience-box {
+    background: #000;
+}
+
+.dark-mode-body .experiences-card {
+    background: rgb(15, 15, 15);
+}
+
+.dark-mode-body .card-name {
+    color: #FFFFFF;
+}
+
+.dark-mode-body .card-position {
+    color: #ccc9c9;
+}
+
+.dark-mode-body .card-description {
+    color: #FFFFFF;
+}
+
+.dark-mode-body .form-input-style {
+    background: rgb(15, 15, 15);
+}
+
+.dark-mode-body .my-skills {
+    background: #000;
+    box-shadow: 0 19px 38px rgba(155, 155, 155, 0.2);
+}
+
+.dark-mode-body .my-skills .text-uppercase {
+    color: white;
 }
 
 .dark-mode-body .section-title {
@@ -815,97 +893,15 @@ footer {
     color: #FFFFFF;
 }
 
-.resume-btn {
-    background: #09f;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.16);
-    border-radius: 16px;
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 2.2rem;
-    color: #FFFFFF;
-    border: none;
-    padding: 16px 70px;
-    outline: none;
+.fa-sun,
+.fa-moon {
+    bottom: 30px;
+    left: 30px;
+    z-index: 1001;
+    font-size: 40px;
     cursor: pointer;
-    transition-duration: 0.3s;
 }
 
-.resume-btn:focus {
-    outline: none;
-}
-
-.resume-btn:hover {
-    opacity: 0.85;
-    transition-duration: 0.3s;
-}
-
-.about-us-card {
-    background: #F7F8FC;
-    border-radius: 16px;
-    padding: 10px;
-}
-
-.card-name {
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 3rem;
-    color: #000;
-    margin-bottom: 0;
-}
-
-.card-position {
-    font-size: 1.5rem;
-    color: #4B506D;
-    opacity: 0.7;
-    margin: 0;
-}
-
-.card-position a {
-    color: #09f;
-}
-
-.card-description {
-    font-weight: 400;
-    font-size: 1.3rem;
-    line-height: 2.2rem;
-    color: #4B506D;
-    white-space: pre-line;
-}
-
-.dark-mode-body .about-us-card {
-    background: rgb(15, 15, 15);
-}
-
-.dark-mode-body .card-name {
-    color: #FFFFFF;
-}
-
-.dark-mode-body .card-position {
-    color: #ccc9c9;
-}
-
-.dark-mode-body .card-description {
-    color: #FFFFFF;
-}
-
-
-.form-input-style {
-    background: #FFFFFF;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 16px;
-    font-size: 1.5rem;
-    line-height: 2.2rem;
-    color: #09f;
-    border: none;
-    padding: 20px;
-    outline: none;
-    transition-duration: 0.3s;
-    width: 100%;
-}
-
-.dark-mode-body .form-input-style {
-    background: rgb(15, 15, 15);
-}
 
 @media (max-width: 768px) {
     html {
