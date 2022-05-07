@@ -26,6 +26,7 @@ Vue.component('footer-component', {
     },
     template: `
         <div>
+        <div class="container">
         <div class="row pb-3">
             <div class="col-md text-center">
                 <h4> {{i18next.t("myPortfolioText")}}</h4> <small class="text-secondary">eolnuha.com &copy;
@@ -44,7 +45,6 @@ Vue.component('footer-component', {
                 <a href="https://stackoverflow.com/users/14683130/eol-nuha"> <i class="fab fa-stack-overflow"></i> </a>
             </div>
         </div>
-        <div class="container">
             <hr style="border-top: 0.2px solid rgba(255, 255, 255, 0.281); margin-left: -15px;">
             <div class="card text-white bg-dark">
                 <h5 class="card-header text-primary">{{i18next.t("itsLiveText")}}</h5>
