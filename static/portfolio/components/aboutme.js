@@ -9,7 +9,7 @@ Vue.component('about-me', {
                 <div class="col-md d-flex flex-center-v">
                     <div>
                         <h2 class="text-center">{{i18next.t("aSoftwareDeveloperText")}}</h2>
-                        <p> {{i18next.t("aboutMeIntro")}} <a href="#contact">{{i18next.t("belowText")}}!</a></p> 
+                        <p style="font-size: 16px"> {{i18next.t("aboutMeIntro")}} <a href="#contact">{{i18next.t("belowText")}}!</a></p> 
                         <a href="static/portfolio/images/cv.pdf" download="cv" class="text-center d-block"> 
                             <button class="resume-btn">{{i18next.t("downloadResumeText")}}</button> 
                         </a> 
