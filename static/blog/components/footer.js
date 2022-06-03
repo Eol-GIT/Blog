@@ -55,7 +55,7 @@ Vue.component('footer-section', {
             <div class="col-md-6 col-lg-4 text-md-right">
                 <ul class="social-icons border-bottom-0">
                     <li class="h2"><a href="https://www.facebook.com/eol.nuha/"><i class="fa fa-facebook"></i></a></li>
-                    <li class="h2"><a href="https://twitter.com/EolProgramming"><i class="fa fa-twitter"></i></a></li>
+                    <li class="h2"><a href="https://twitter.com/EolNuhaBlogs"><i class="fa fa-twitter"></i></a></li>
                     <li class="h2"><a href="https://www.linkedin.com/in/eolnuha/"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>

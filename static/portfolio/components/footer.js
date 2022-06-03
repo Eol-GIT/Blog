@@ -39,7 +39,7 @@ Vue.component('footer-component', {
             <div class="col-md text-center">
                 <h4> {{i18next.t("findMeOtherSocialMediaText")}}</h4> 
                 <a href="https://www.facebook.com/eol.nuha/"> <i class="fa fa-facebook"></i> </a> 
-                <a href="https://twitter.com/Eolnuha"> <i class="fa fa-twitter"></i> </a> 
+                <a href="https://twitter.com/EolNuhaBlogs"> <i class="fa fa-twitter"></i> </a> 
                 <a href="https://github.com/EolNuha"> <i class="fa fa-github"></i> </a>
                 <a href="https://www.linkedin.com/in/eolnuha/"> <i class="fa fa-linkedin"></i> </a>
                 <a href="https://stackoverflow.com/users/14683130/eol-nuha"> <i class="fab fa-stack-overflow"></i> </a>
@@ -57,7 +57,7 @@ Vue.component('footer-component', {
             <div class="row">
                 <div class="col-lg p-0 mt-2">
                     <p class="text-primary text-left">Twitter Feed:</p>
-                    <blockquote class="twitter-tweet" data-lang="en" data-theme="dark"><p lang="en" dir="ltr">Please join PI and use eolnuha as the person that invited you or click the link below. Thank you<a href="https://t.co/qPoDOZpD2c">https://t.co/qPoDOZpD2c</a></p>&mdash; Programming with Eol (@EolProgramming) <a href="https://twitter.com/EolProgramming/status/1461707863852781569?ref_src=twsrc%5Etfw">November 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet" data-lang="en" data-theme="dark"><p lang="en" dir="ltr">Please join PI and use eolnuha as the person that invited you or click the link below. Thank you<a href="https://t.co/qPoDOZpD2c">https://t.co/qPoDOZpD2c</a></p>&mdash; Programming with Eol (@EolProgramming) <a href="https://twitter.com/EolNuhaBlogs/status/1461707863852781569?ref_src=twsrc%5Etfw">November 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="col-lg atomi">
                     <small>{{i18next.t("randomQuoteText")}}:</small>
