@@ -1654,6 +1654,7 @@ pre code {padding: 0;}
 	width: 100%;
 	border: 1px solid #eee;
 	border-radius: 0;
+	white-space: normal;
 }
 
 .stats-col {
