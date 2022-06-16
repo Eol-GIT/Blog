@@ -11,9 +11,6 @@ Vue.component('nav-bar', {
             <ul class="navbar-nav ml-auto">
               <li class="nav-item" :class="{'active': active === 'home'}">
                 <a class="nav-link" href="/blog">Home</a>
-              </li> 
-              <li class="nav-item" :class="{'active': active === 'about'}">
-                <a class="nav-link" href="/blog/about-us">About Us</a>
               </li>
               <li class="nav-item" :class="{'active': active === 'entries'}">
                 <a class="nav-link" href="/blog/entries">Blog Entries</a>

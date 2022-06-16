@@ -106,7 +106,7 @@ Vue.component('blog-details', {
 	template: `
     <div>
     <div class="heading-page header-text">
-        <h6 class="pl-2">
+        <h6 class="pl-2" style="font-size: 16px;">
             <a :href="'/' + entrySlug">{{ blog.entry.title }}</a> > <a :href="blog.slug">{{blog.title}}</a>
         </h6>
         <section class="page-heading">
@@ -122,11 +122,7 @@ Vue.component('blog-details', {
         </section>
     </div>
 
-    <div id="banner">
-        <banner></banner>
-    </div>
-
-    <section class="blog-posts grid-system mt-2">
+    <section class="blog-posts grid-system mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10">
@@ -144,8 +140,8 @@ Vue.component('blog-details', {
                                             </div>
                                             <div class="py-1 pl-1">
                                                 <a :href="'/blog/' + blog.author.slug"
-                                                    class="h5">{{blog.author.username}}</a><br>
-                                                <small>Posted on: {{blog.date}} | Views: {{nFormatter(blog.views,
+                                                    class="h5" style="font-size: 1.4rem;">{{blog.author.username}}</a><br>
+                                                <small style="font-size: 14px;">Posted on: {{blog.date}} | Views: {{nFormatter(blog.views,
                                                     1)}}</small><br>
                                             </div>
                                         </div>
