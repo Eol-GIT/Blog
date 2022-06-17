@@ -48,7 +48,7 @@ Vue.component('blog-stats', {
             <div class="col-md m-2 stats-col">
                 <div>
                     <span>
-                        Entries
+                        Tutorials
                     </span>
                 </div>
                 <div>

@@ -91,7 +91,7 @@ Vue.component('author-details', {
                 </div>
                 </div>
             </div>
-            <button class="btn btn-outline-primary w-100 rounded-0" v-if="blogs.has_next" @click="getAuthorBlogs(pageSize + 12)" id="load-blogs">{{buttonText}}</button>
+            <button class="author-btn" v-if="blogs.has_next" @click="getAuthorBlogs(pageSize + 12)" id="load-blogs">{{buttonText}}</button>
         </div>
     </section>
     </div>

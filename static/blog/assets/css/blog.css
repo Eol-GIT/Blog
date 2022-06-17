@@ -487,7 +487,7 @@ header .navbar {
 }
 
 .blog-posts .down-content span:hover {
-	color: #09f;
+	color: rgba(0, 153, 255, 0.75);
 	transition-duration: 0.3s;
 }
 
@@ -1494,6 +1494,29 @@ pre code {
 
 /*==================== Author Profile Styling =========================*/
 
+.author-btn {
+	border: none;
+	border-radius: 8px;
+	display: inline-block;
+    background-color: #09f;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    transition: all .3s;
+	width: 100%;
+	cursor: pointer;
+}
+
+.author-btn:focus {
+	outline: none;
+}
+
+.author-btn:hover {
+	background-color: rgba(0, 153, 255, 0.9);
+}
+
 .visually-hidden {
 	position: absolute !important;
 	height: 1px;
@@ -1854,6 +1877,7 @@ pre code {
 	box-shadow: 0px 0px 15px 5px #dee2e667;
 	text-align: center;
 	transition: all .3s ease;
+	border-radius: 8px;
 }
 
 .stats-col span {

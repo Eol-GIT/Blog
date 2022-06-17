@@ -75,3 +75,15 @@ document.addEventListener("DOMContentLoaded", function(){
       return new bootstrap.Tooltip(element);
   });
 });
+
+$(document).ready(function () {
+  var anchorElement = $("button.navbar-toggler");
+  $(anchorElement).closest("header").css("border-radius", '0 0 40px 40px')
+  anchorElement.click(function(){
+  if (anchorElement.attr("aria-expanded") == "true") {
+    $(anchorElement).closest("header").css("border-radius", '0 0 40px 40px')
+  } else {
+    $(anchorElement).closest("header").css("border-radius", '0')
+  }
+});
+});
