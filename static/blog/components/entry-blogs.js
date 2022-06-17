@@ -35,7 +35,7 @@ Vue.component('entry-blogs', {
             </div>
             </a>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12 mb-4">
           <ul class="page-numbers">
             <li>
                 <a @click="paginatedBlogs(blogs.prev_num)" href="#" onclick="return false;" :class="{'disabled': !blogs.has_prev}">

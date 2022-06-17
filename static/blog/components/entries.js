@@ -34,7 +34,7 @@ Vue.component('entries', {
             </div>
             </a>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12 mb-4">
             <ul class="page-numbers">
                 <li>
                     <a @click="paginatedEntries(entries.prev_num)" href="#" onclick="return false;" :class="{'disabled': !entries.has_prev}">
