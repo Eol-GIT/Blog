@@ -1,0 +1,182 @@
+{% extends 'blog/base.html' %}
+{% block title %}Support/Donate | Eol Nuha Blogs{% endblock %}
+{% block body %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<style>
+    p {
+        word-break: break-word;
+    }
+
+    .d-flex {
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    .btn-copy {
+        border: 1.5px solid #bdc8d9;
+        color: #26374c;
+        background-color: #ffffff;
+        width: 40px;
+        line-height: 40px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 22px;
+        cursor: pointer;
+        outline: none;
+        transition-duration: 0.3s;
+    }
+
+    .btn-copy:hover {
+        color: #ffffff;
+        background-color: #26374c;
+        transition-duration: 0.3s;
+    }
+
+    .btn-copy:hover svg {
+        fill: white;
+        transition-duration: 0.3s;
+    }
+
+    button:focus {
+        outline: none;
+    }
+    .donate-list {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+        padding-left: 20px;
+    }
+
+    .donate-list li {
+        font-size: 20px;
+    } 
+</style>
+<!-- Header -->
+<header id="navbar">
+    <nav-bar active="donate"></nav-bar>
+</header>
+
+<div class="heading-page header-text">
+</div>
+
+<div class="container mt-4">
+    <h1 class="display-4 font-weight-bold mb-4">Support Eol Nuha Blogs</h1>
+    <div class="d-flex align-items-center">
+        <img src="{{ url_for('static', filename='blog/assets/images/btc.svg') }}" width="70px">
+        <div>
+            <h3 class="font-weight-bold">Bitcoing Address</h3>
+            <p>3DinNKUxctn32ZZz5vb8tqKbmnC4xqZf8M</p>
+        </div>
+        <button class="fa btn-copy" data-clipboard-text="3DinNKUxctn32ZZz5vb8tqKbmnC4xqZf8M" data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z" />
+            </svg>
+        </button>
+    </div>
+    <div class="d-flex align-items-center">
+        <img src="{{ url_for('static', filename='blog/assets/images/eth.svg') }}" width="70px">
+        <div>
+            <h3 class="font-weight-bold">Ethereum Address</h3>
+            <p>0xf8e9ef9065a0c0c74f12444fcda02ef42324315a</p>
+        </div>
+        <button class="fa btn-copy" data-clipboard-text="0xf8e9ef9065a0c0c74f12444fcda02ef42324315a"
+            data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z" />
+            </svg>
+        </button>
+    </div>
+    <div class="d-flex align-items-center">
+        <img src="{{ url_for('static', filename='blog/assets/images/zil.svg') }}" width="70px">
+        <div>
+            <h3 class="font-weight-bold">Zilliqa Address</h3>
+            <p>zil1uw4xklj0jgct7hsytqysfeh7my73pf7jj5rjea</p>
+        </div>
+        <button class="fa btn-copy" data-clipboard-text="zil1uw4xklj0jgct7hsytqysfeh7my73pf7jj5rjea"
+            data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z" />
+            </svg>
+        </button>
+    </div>
+    <div class="d-flex align-items-center">
+        <img src="{{ url_for('static', filename='blog/assets/images/xrp.svg') }}" width="70px">
+        <div>
+            <h3 class="font-weight-bold">XRP Address</h3>
+            <p>rE1sdh25BJQ3qFwngiTBwaq3zPGGYcrjp1</p>
+        </div>
+        <button class="fa btn-copy" data-clipboard-text="rE1sdh25BJQ3qFwngiTBwaq3zPGGYcrjp1" data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z" />
+            </svg>
+        </button>
+    </div>
+    <div class="d-flex align-items-center">
+        <img src="{{ url_for('static', filename='blog/assets/images/sol.svg') }}" width="70px">
+        <div>
+            <h3 class="font-weight-bold">Solana Address</h3>
+            <p>HRgrB2jGLZgFt8wmuT9P4erbZyQohiojFJBsQ2mx9tDS</p>
+        </div>
+        <button class="fa btn-copy" data-clipboard-text="HRgrB2jGLZgFt8wmuT9P4erbZyQohiojFJBsQ2mx9tDS"
+            data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                    d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z" />
+            </svg>
+        </button>
+    </div>
+    <hr>
+    <h2>Why donate to Eol Nuha Blogs?</h2>
+    <p>Support and donations are what keep Eol Nuha Blogs running and operating. All the money we receive from the
+        community goes towards:
+    </p>
+
+    <ul class="donate-list">
+        <li>Funding our staff, which provides full-time staff to maintain and create content.</li>
+        <li>Operating fees and hardware (paying for hosting, domains, and emails).</li>
+        <li>Providing financial assistance to advertise our website and our services.</li>
+    </ul>
+
+    <p>By donating to Eol Nuha Blogs, you are helping us in continuing to create amazing content for all of you. Thank you!</p>
+</div>
+<script>
+
+    $('button').tooltip({
+        trigger: 'click',
+        placement: 'bottom'
+    });
+
+    function setTooltip(btn, message) {
+        $(btn).tooltip('hide')
+            .attr('data-original-title', message)
+            .tooltip('show');
+    }
+
+    function hideTooltip(btn) {
+        setTimeout(function () {
+            $(btn).attr('data-original-title', '').tooltip('hide');
+        }, 1000);
+    }
+
+    var clipboard = new Clipboard('button');
+
+    clipboard.on('success', function (e) {
+        setTooltip(e.trigger, 'Copied!');
+        hideTooltip(e.trigger);
+    });
+
+    clipboard.on('error', function (e) {
+        setTooltip(e.trigger, 'Failed!');
+        hideTooltip(e.trigger);
+    });
+</script>
+{% endblock %}

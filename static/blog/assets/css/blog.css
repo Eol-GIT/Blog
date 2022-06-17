@@ -725,6 +725,7 @@ ul.page-numbers li a.disabled {
 	outline: none;
 	padding: 0px 15px;
 	margin-bottom: 30px;
+	border-radius: 8px;
 }
 
 .blog-posts .submit-comment textarea {
@@ -741,6 +742,7 @@ ul.page-numbers li a.disabled {
 	max-height: 220px;
 	max-width: 100%;
 	min-width: 160px;
+	border-radius: 8px;
 }
 
 .blog-posts .submit-comment input::placeholder,
@@ -985,6 +987,7 @@ footer p a:hover {
 	outline: none;
 	padding: 0px 15px;
 	margin-bottom: 30px;
+	border-radius: 8px;
 }
 
 .contact-us .contact-form textarea {
@@ -1001,6 +1004,7 @@ footer p a:hover {
 	max-height: 220px;
 	max-width: 100%;
 	min-width: 160px;
+	border-radius: 8px;
 }
 
 .contact-us .contact-form input::placeholder,

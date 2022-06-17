@@ -165,6 +165,10 @@ def faq():
 def privacyPolicy():
     return render_template('blog/privacy.html')
 
+@app.route('/support-donate/')
+def donate():
+    return render_template('blog/donate.html')
+
 @app.route('/blog/tutorials/')
 def entries():
     return render_template('blog/entries.html')
