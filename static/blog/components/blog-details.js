@@ -122,7 +122,7 @@ Vue.component('blog-details', {
         </section>
     </div>
 
-    <section class="blog-posts grid-system mt-5">
+    <section class="blog-posts grid-system mt-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10">
@@ -184,12 +184,7 @@ Vue.component('blog-details', {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 p-0">
-                                <div id="banner">
-                                    <banner></banner>
-                                </div>
-                            </div>
-                            <div class="col-lg-12" v-if="comments.total != 0">
+                            <div class="col-lg-12 mt-4" v-if="comments.total != 0">
                                 <div class="sidebar-item comments">
                                     <div class="sidebar-heading">
                                         <h2 v-if="comments.total === 1">{{comments.total}} comment</h2>
@@ -212,7 +207,7 @@ Vue.component('blog-details', {
                                         @click="getComments(pageSize + pageSize)">{{loadText}}</button>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mt-4">
                                 <div class="sidebar-item submit-comment mt-0">
                                     <div class="sidebar-heading">
                                         <h2>Your comment</h2>

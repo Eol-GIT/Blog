@@ -84,7 +84,7 @@ h6 {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-image: url(../images/heading-bg.jpg);
-	border-radius: 6px;
+	border-radius: 8px;
 }
 
 .page-heading .text-content h4 {
@@ -199,6 +199,7 @@ header {
 	-moz-transition: all 0.3s ease-in-out 0s;
 	-o-transition: all 0.3s ease-in-out 0s;
 	transition: all 0.3s ease-in-out 0s;
+	border-radius: 0 0 40px 40px;
 }
 
 header .navbar {
@@ -213,7 +214,7 @@ header .navbar {
 	top: 0;
 	height: 80px;
 	position: fixed;
-	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
 }
 
 .background-header .navbar-brand h2 {
@@ -298,6 +299,7 @@ header .navbar {
 	position: absolute;
 	right: 30px;
 	top: 25px;
+	border-radius: 8px;
 }
 
 .navbar-toggler[aria-expanded="false"] .navbar-toggler-icon:after {
@@ -410,6 +412,7 @@ header .navbar {
 	text-align: center;
 	line-height: 60px;
 	background-color: rgba(250, 250, 250, 0.3);
+	border-radius: 8px;
 }
 
 
@@ -463,12 +466,14 @@ header .navbar {
 .blog-posts .blog-thumb img {
 	width: 100%;
 	overflow: hidden;
+	border-radius: 8px 8px 0 0;
 }
 
 .blog-posts .down-content {
 	padding: 20px;
 	border: 1px solid #eee;
 	height: calc(100% - 30px);
+	border-radius: 8px;
 }
 
 .blog-posts .down-content span {
@@ -572,6 +577,7 @@ header .navbar {
 	padding: 0px;
 	width: 100%;
 	text-align: center;
+	border-radius: 8px;
 }
 
 ul.page-numbers {
@@ -594,6 +600,7 @@ ul.page-numbers li a {
 	border: 1px solid #eee;
 	font-weight: 500;
 	transition: all 0.3s;
+	border-radius: 8px;
 }
 
 ul.page-numbers li.active a {
@@ -751,6 +758,7 @@ ul.page-numbers li a.disabled {
 	transition: all .3s;
 	border: none;
 	outline: none;
+	border-radius: 8px;
 }
 
 .blog-posts .submit-comment button:hover {
@@ -791,6 +799,7 @@ ul.page-numbers li a.disabled {
 	color: #7a7a7a;
 	outline: none;
 	padding: 0px 15px;
+	border-radius: 8px;
 }
 
 .sidebar .search input::placeholder {
@@ -869,6 +878,10 @@ ul.page-numbers li a.disabled {
 	background-color: #09f;
 	border-color: #09f;
 	color: #fff;
+}
+
+.sidebar img {
+	border-radius: 8px;
 }
 
 
@@ -1327,7 +1340,7 @@ pre {
 	line-height: 1.4;
 	padding: 1.3rem 1.5rem;
 	margin: 0.85rem 0;
-	border-radius: 6px;
+	border-radius: 8px;
 	color: lightgrey;
 	background-color: #2b313a;
 	border-left: 4px solid #09f;
@@ -1344,7 +1357,7 @@ pre code {
 	right: 5px;
 	background: #212931;
 	border: 1px solid lightgrey;
-	border-radius: 6px;
+	border-radius: 8px;
 	color: lightgrey;
 	outline: none;
 	transition-duration: 0.3s;
@@ -1831,6 +1844,7 @@ pre code {
 	border-radius: 0;
 	white-space: normal;
 	font-size: 16px;
+	border-radius: 8px;
 }
 
 .stats-col {
