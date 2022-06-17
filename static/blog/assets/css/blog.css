@@ -317,6 +317,7 @@ header .navbar {
 	line-height: 30px;
 	font-family: 'FontAwesome';
 	transition-duration: 0.2s;
+	font-weight: 900;
 }
 
 
@@ -1018,6 +1019,7 @@ footer p a:hover {
 	transition: all .3s;
 	border: none;
 	outline: none;
+	border-radius: 8px;
 }
 
 .contact-us .contact-form button:hover {

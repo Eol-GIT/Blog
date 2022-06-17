@@ -165,7 +165,7 @@ def faq():
 def privacyPolicy():
     return render_template('blog/privacy.html')
 
-@app.route('/blog/entries/')
+@app.route('/blog/tutorials/')
 def entries():
     return render_template('blog/entries.html')
 
@@ -213,7 +213,7 @@ def searchBlogs():
         query = "*"
     return render_template('blog/search-blogs.html', query=query)
 
-@app.route('/search/entries')
+@app.route('/search/tutorials/')
 def searchEntries():
     query = request.args.get('search')
     if query:

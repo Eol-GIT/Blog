@@ -56,8 +56,8 @@ Vue.component('sidemenu', {
         <div class="row">
         <div class="col-lg-12 p-0">
             <div class="sidebar-item search">
-                <form @submit.prevent="location.href = '/search/entries?search=' + searchInput.replaceAll(' ', '+');">
-                    <input type="text" class="searchText" placeholder="Search Entries..." autocomplete="off" v-model="searchInput" @change="searchEntries">
+                <form @submit.prevent="location.href = '/search/tutorials?search=' + searchInput.replaceAll(' ', '+');">
+                    <input type="text" class="searchText" placeholder="Search Tutorials..." autocomplete="off" v-model="searchInput" @change="searchEntries">
                 </form>
                 <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
                     <div v-for="result in searchResults">
@@ -74,14 +74,14 @@ Vue.component('sidemenu', {
                         </a>
                         <hr>
                     </div>
-                    <a :href="'/search/entries?search=' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
+                    <a :href="'/search/tutorials?search=' + searchInput.replaceAll(' ', '+')"><button class="btn btn-sm btn-primary w-100">View All</button></a>
                 </div>
             </div>
         </div>
         <div class="col-lg-12">
             <div class="sidebar-item recent-posts">
             <div class="sidebar-heading">
-                <h2>Recent Entries</h2>
+                <h2>Recent Tutorials</h2>
             </div>
             <div class="content">
                 <ul>
@@ -107,7 +107,7 @@ Vue.component('sidemenu', {
         <div class="col-lg-12">
             <div class="sidebar-item recent-posts">
             <div class="sidebar-heading">
-                <h2>Top Entries</h2>
+                <h2>Top Tutorials</h2>
             </div>
             <div class="content">
                 <ul>

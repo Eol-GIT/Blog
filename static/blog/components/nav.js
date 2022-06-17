@@ -13,7 +13,7 @@ Vue.component('nav-bar', {
                 <a class="nav-link" href="/blog">Home</a>
               </li>
               <li class="nav-item" :class="{'active': active === 'entries'}">
-                <a class="nav-link" href="/blog/entries">Tutorials</a>
+                <a class="nav-link" href="/blog/tutorials/">Tutorials</a>
               </li>
               <li class="nav-item" :class="{'active': active === 'contact'}">
                 <a class="nav-link" href="/blog/contact-us">Contact Us</a>

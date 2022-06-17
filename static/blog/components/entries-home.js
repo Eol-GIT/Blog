@@ -29,7 +29,7 @@ Vue.component('entries-home', {
         </div>
     <div class="col-lg-12 p-0">
         <div class="main-button mb-3">
-        <a href="/blog/entries">View All Entries</a>
+        <a href="/blog/tutorials/">View All Tutorials</a>
         </div>
     </div>
     </div>

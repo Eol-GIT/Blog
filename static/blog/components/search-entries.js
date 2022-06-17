@@ -41,7 +41,7 @@ Vue.component('search-entries', {
                 <div class="row">
                     <div class="col-lg-12">
                     <div class="text-content">
-                        <h4>Entries by query</h4>
+                        <h4>Tutorials by query</h4>
                         <h2>{{query}}</h2>
                     </div>
                     </div>
@@ -57,8 +57,8 @@ Vue.component('search-entries', {
                     <div class="all-blog-posts">
                         <div class="row">
                             <div v-if="entries.data.length === 0" class="col-lg-12">
-                                <h3>No entries have been found with the query: <i class="text-primary">{{query}}</i></h3>
-                                <p>These are some of our most recent entries:</p>
+                                <h3>No tutorials have been found with the query: <i class="text-primary">{{query}}</i></h3>
+                                <p>These are some of our most recent tutorials:</p>
                                 <hr>
                             </div>
                             <div class="col-lg-6" v-for="entry in entries.data.length != 0 ? entries.data : recentEntries">
