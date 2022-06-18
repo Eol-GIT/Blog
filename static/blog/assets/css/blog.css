@@ -79,11 +79,8 @@ h6 {
 .page-heading {
 	margin: 0px 10px;
 	padding: 120px 0px;
-	text-align: left;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-image: url(../images/heading-bg.jpg);
+	text-align: left;  
+	background: linear-gradient(#2b313a, #2b313a, #1c1f24);
 	border-radius: 8px;
 }
 
@@ -1935,4 +1932,8 @@ pre code {
 	.cex-banner {
 		height: 60px;
 	}
+}
+
+.btn-primary {
+	background-color: #09f !important;
 }
