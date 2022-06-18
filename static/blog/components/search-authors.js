@@ -80,7 +80,7 @@ Vue.component('search-authors', {
                                 </div>
                                 </a>
                             </div>
-                            <div class="col-lg-12" v-if="authors.data.length != 0">
+                            <div class="col-lg-12 mb-4" v-if="authors.data.length != 0">
                             <ul class="page-numbers">
                                 <li>
                                     <a @click="getSearchResults(authors.prev_num)" href="#" onclick="return false;" :class="{'disabled': !authors.has_prev}">

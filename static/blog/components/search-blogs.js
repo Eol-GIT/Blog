@@ -101,7 +101,7 @@ Vue.component('search-blogs', {
                             </div>
                             </a>
                             </div>
-                            <div class="col-lg-12" v-if="blogs.data.length != 0">
+                            <div class="col-lg-12 mb-4" v-if="blogs.data.length != 0">
                                 <ul class="page-numbers">
                                     <li>
                                         <a @click="getSearchResults(blogs.prev_num)" href="#" onclick="return false;" :class="{'disabled': !blogs.has_prev}">

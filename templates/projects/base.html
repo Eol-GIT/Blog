@@ -9,7 +9,15 @@
   <title>{% block title %}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
   <meta name="google-site-verification" content="frJ1iTP8J6nnDrllgLvnmDvupEWQRDwI4sC5nfTHemE" />
-  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='portfolio/images/headerimg.webp') }}">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='blog/assets/images/blog-headerimg.png') }}">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Eol Nuha | Portfolio" />
+  <meta name="twitter:description" content="This is the official Portfolio of Eol Nuha - a Software Developer" />
+  <meta name="twitter:image" content="{% block twitterbanner %}https://eolnuha.com/static/blog/assets/images/twitter-image1.jpg{% endblock %}"/>
+  <meta property="og:image" content="{{ self.twitterbanner() }}"/>
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1904" />
+  <meta property="og:image:height" content="1080" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
