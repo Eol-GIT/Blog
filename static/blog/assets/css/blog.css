@@ -79,7 +79,7 @@ h6 {
 .page-heading {
 	margin: 0px 10px;
 	padding: 120px 0px;
-	text-align: left;  
+	text-align: left;
 	background: linear-gradient(#2b313a, #2b313a, #1c1f24);
 	border-radius: 8px;
 }
@@ -1397,15 +1397,16 @@ pre code {
 	border: 1px solid #dee2e6;
 }
 
-.markdown table th, .markdown table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border: 1px solid #dee2e6;
+.markdown table th,
+.markdown table td {
+	padding: 0.75rem;
+	vertical-align: top;
+	border: 1px solid #dee2e6;
 }
 
 .markdown table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
 }
 
 /*Table of contents style*/
@@ -1499,13 +1500,13 @@ pre code {
 	border: none;
 	border-radius: 8px;
 	display: inline-block;
-    background-color: #09f;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 12px 20px;
-    text-transform: uppercase;
-    transition: all .3s;
+	background-color: #09f;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 500;
+	padding: 12px 20px;
+	text-transform: uppercase;
+	transition: all .3s;
 	width: 100%;
 	cursor: pointer;
 }
@@ -1936,4 +1937,10 @@ pre code {
 
 .btn-primary {
 	background-color: #09f !important;
+}
+
+@media (min-width: 1300px) {
+	.container {
+		max-width: 1250px;
+	}
 }
