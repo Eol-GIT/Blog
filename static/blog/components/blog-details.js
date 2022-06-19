@@ -125,7 +125,7 @@ Vue.component('blog-details', {
     <section class="blog-posts grid-system mt-4">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                     <div class="all-blog-posts">
                         <div class="row">
                             <div class="col-lg-12">
@@ -249,7 +249,7 @@ Vue.component('blog-details', {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2" id="sidemenu">
+                <div class="col-lg-3" id="sidemenu">
                     <sidemenu :entry-slug="entrySlug"></sidemenu>
                 </div>
             </div>
