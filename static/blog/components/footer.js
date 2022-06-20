@@ -21,7 +21,7 @@ Vue.component('footer-section', {
                     <div class="col-md-4 mb-md-0 mb-4">
                         <h4 class="footer-heading">Company</h4>
                         <ul class="list-unstyled">
-                            <li><a href="/blog/entries" class="d-block text-secondary">Our services</a></li>
+                            <li><a href="/blog/tutorials/" class="d-block text-secondary">Our services</a></li>
                             <li><a href="#" class="d-block text-secondary">Clients</a></li>
                             <li><a href="/blog/contact-us" class="d-block text-secondary">Contact</a></li>
                             <li><a href="#" class="d-block text-secondary">Press</a></li>
