@@ -1359,15 +1359,22 @@ pre code {
 	top: 5px;
 	right: 5px;
 	background: #212931;
-	border: 1px solid lightgrey;
+	border: 2px solid lightgrey;
 	border-radius: 8px;
 	color: lightgrey;
+	fill: lightgrey;
 	outline: none;
 	transition-duration: 0.3s;
+	width: 32px;
+	line-height: 27px;
+	border-radius: 8px;
+	text-align: center;
+	font-weight: 900;
 }
 
 .--copy:hover {
 	color: #09f;
+	fill: #09f;
 	border-color: #09f;
 	transition-duration: 0.3s;
 }

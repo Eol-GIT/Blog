@@ -27,7 +27,7 @@ Vue.component('cookie-banner', {
                 </svg>
                 <h4 class="text-dark">Your Privacy</h4>
                 <p class="text-dark">By clicking “Accept all cookies”, you agree we can store cookies on your device and disclose information in accordance with our <a href="/blog/privacy-policy">Privacy Policy</a>.</p>
-                <button class="btn btn-primary cookie-button mb-2" @click="acceptCookies(true)">Accept all cookies</button>
+                <button class="btn btn-primary cookie-button mb-2" @click="acceptCookies(true)" style="background-color: #09f !important;">Accept all cookies</button>
                 <button class="btn btn-outline-secondary cookie-button mb-2" @click="acceptCookies(false)">Decline all cookies</button>
             </div>
         </div>
