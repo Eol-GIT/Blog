@@ -20,10 +20,9 @@
         </section>
     </div>
 
-    {% include 'horizontal-ads.html' %}
-
     <section class="blog-posts grid-system mt-4">
         <div class="container">
+          {% include 'horizontal-ads.html' %}
             <div class="row">
                 <div class="col-lg-9" id="entries">
                     <entries></entries>
@@ -33,9 +32,9 @@
                     {% include 'sidebar-ads.html' %}
                 </div>
             </div>
+            {% include 'horizontal-ads.html' %}
         </div>
     </section>
-    {% include 'horizontal-ads.html' %}
 {% endblock %}
 {% block extrascripts %}
     <script src="{{ url_for('static', filename='blog/components/entries.js') }}"></script>

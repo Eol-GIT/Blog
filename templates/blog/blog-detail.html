@@ -40,10 +40,9 @@
     </section>
 </div>
 
-{% include 'horizontal-ads.html' %}
-
 <section class="blog-posts grid-system mt-4">
     <div class="container">
+        {% include 'horizontal-ads.html' %}
         <div class="row">
             <div class="col-lg-9">
                 <div id="blog-details">
@@ -52,14 +51,14 @@
                 </div>
             </div>
             <div class="col-lg-3" id="sidemenu">
-                <sidemenu entry-slug="{{blog.entry.slug}}"></sidemenu>
+                <sidemenu entry-slug="{{ entry.slug }}"></sidemenu>
                 {% include 'sidebar-ads.html' %}
             </div>
         </div>
+        {% include 'horizontal-ads.html' %}
     </div>
 </section>
 
-{% include 'horizontal-ads.html' %}
 
 {% endblock %}
 {% block extrascripts %}

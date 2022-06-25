@@ -24,11 +24,10 @@
     </div>
     
     <!-- Banner Ends Here -->
-    {% include 'horizontal-ads.html' %}
 
     <section class="about-us">
         <div class="container">
-            
+          {% include 'horizontal-ads.html' %}
           <div class="row">
             <div class="col-lg-12">
               <img src="{{ url_for('static', filename='blog/assets/images/aboutus.jpg') }}" alt="" width="100%">
