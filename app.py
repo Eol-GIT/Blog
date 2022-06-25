@@ -116,6 +116,10 @@ def login():
         return redirect(url_for('admin'))
     return render_template('admin/login.html', )
 
+@app.route('/ads.txt')
+def ads():
+    return render_template('ads.txt')
+
 @app.route('/sitemap')
 @app.route('/sitemap/')
 @app.route('/sitemap.xml')
