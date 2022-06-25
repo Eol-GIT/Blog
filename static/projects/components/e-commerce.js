@@ -65,7 +65,9 @@ Vue.component('e-commerce', {
           <span class="sr-only">Next</span>
         </a>
         </div>
-
+        <div id="horizontal-ads">
+          <horizontal-ads></horizontal-ads>
+        </div>
         <div class="jumbotron jumbotron-fluid my-0">
             <div class="container">
             <h1 class="display-4">E-Commerce Website</h1>

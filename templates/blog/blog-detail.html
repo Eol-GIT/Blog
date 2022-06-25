@@ -23,11 +23,43 @@
     <nav-bar active=""></nav-bar>
 </header>
 
-
-<div id="blog-details">
-    <blog-details blog-slug="{{ blog.slug }}" entry-slug="{{ entry.slug }}">
-    </blog-details>
+<div class="heading-page header-text">
+    <h6 class="pl-2" style="font-size: 16px;">
+        <a href="{{'/' + blog.entry.slug}}">{{ blog.entry.title }}</a> > <a href="{{blog.slug}}">{{blog.title}}</a>
+    </h6>
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-content">
+                        <h2>{{blog.title}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
+
+{% include 'horizontal-ads.html' %}
+
+<section class="blog-posts grid-system mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div id="blog-details">
+                    <blog-details blog-slug="{{ blog.slug }}" entry-slug="{{ entry.slug }}">
+                    </blog-details>
+                </div>
+            </div>
+            <div class="col-lg-3" id="sidemenu">
+                <sidemenu entry-slug="{{blog.entry.slug}}"></sidemenu>
+                {% include 'sidebar-ads.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'horizontal-ads.html' %}
 
 {% endblock %}
 {% block extrascripts %}

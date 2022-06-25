@@ -44,6 +44,8 @@
   </script>
 </head>
 <body id="body">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8400632007706493"
+    crossorigin="anonymous"></script>
     <div id="cookie-banner">
         <cookie-banner></cookie-banner>
     </div>
@@ -51,5 +53,10 @@
     <script src="{{ url_for('static', filename='portfolio/components/cookie-banner.js') }}"></script>
     {% block body %}{% endblock %}
     <script src="{{ url_for('static', filename='projects/assets/darkmode.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/sidebar-ads.js') }}"></script>
+    <script src="{{ url_for('static', filename='blog/components/horizontal-ads.js') }}"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </body>
 </html>

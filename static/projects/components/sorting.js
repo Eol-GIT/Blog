@@ -123,6 +123,9 @@ Vue.component('sorting', {
         </div>
     </div>
     </div>
+    <div id="horizontal-ads">
+      <horizontal-ads></horizontal-ads>
+    </div>
     <p class="text-primary container mt-0">{{i18next.t("otherProjectsText")}}:</p>
     <div class="imageContainer mb-5 mt-4">
       <div class="project-image project-img-1" style="background-image: url('../static/portfolio/images/movie-freaks.webp')"
