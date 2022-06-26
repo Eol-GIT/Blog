@@ -123,7 +123,7 @@ Vue.component('sorting', {
         </div>
     </div>
     </div>
-    <div id="horizontal-ads">
+    <div class="container" id="horizontal-ads">
       <horizontal-ads></horizontal-ads>
     </div>
     <p class="text-primary container mt-0">{{i18next.t("otherProjectsText")}}:</p>

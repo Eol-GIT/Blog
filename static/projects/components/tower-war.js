@@ -69,7 +69,7 @@ Vue.component('tower-war', {
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <div id="horizontal-ads">
+      <div class="container" id="horizontal-ads">
         <horizontal-ads></horizontal-ads>
       </div>
       <div class="jumbotron jumbotron-fluid my-0">
