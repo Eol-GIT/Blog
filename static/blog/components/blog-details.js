@@ -171,6 +171,9 @@ Vue.component('blog-details', {
                                     </div>
                                 </div>
                             </div>
+                            <div class="container" id="horizontal-ads">
+                                <horizontal-ads></horizontal-ads>
+                            </div>
                             <div class="col-lg-12 mt-4" v-if="comments.total != 0">
                                 <div class="sidebar-item comments">
                                     <div class="sidebar-heading">
@@ -238,6 +241,9 @@ Vue.component('blog-details', {
                 </div>
                 <div class="col-lg-3" id="sidemenu">
                     <sidemenu :entry-slug="entrySlug"></sidemenu>
+                    <div class="container" id="sidebar-ads">
+                        <sidebar-ads></sidebar-ads>
+                    </div>
                 </div>
             </div>
         </div>

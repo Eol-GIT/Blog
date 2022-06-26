@@ -53,7 +53,6 @@
 <div class="container">
     {% include 'square-ads.html' %}
 </div>
-
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
@@ -62,4 +61,15 @@
 <script src="{{ url_for('static', filename='blog/components/blog-details.js') }}"></script>
 <script src="{{ url_for('static', filename='blog/components/blogs-sidemenu.js') }}"></script>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+<script src="{{ url_for('static', filename='blog/components/sidebar-ads.js') }}"></script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script src="{{ url_for('static', filename='blog/components/horizontal-ads.js') }}"></script>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 {% endblock %}
