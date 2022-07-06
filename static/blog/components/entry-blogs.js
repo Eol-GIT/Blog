@@ -25,7 +25,7 @@ Vue.component('entry-blogs', {
             <a :href="'/' + entrySlug + '/' + blog.slug">
             <div class="blog-post">
                 <div class="down-content">
-                <a  :href="'/' + entrySlug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
+                <a  :href="'/' + entrySlug + '/category/' + blog.category"><span class="blog-category">{{blog.category}}</span></a>
                 <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
                 <ul class="post-info">
                     <li>{{blog.date}}</li>

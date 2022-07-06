@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function(){
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'));
   var tooltipList = tooltipTriggerList.map(function(element){
       new bootstrap.Tooltip(element, {
-          delay: {show: 200, hide: 0}
+          delay: {show: 0, hide: 0}
       });
       return new bootstrap.Tooltip(element);
   });

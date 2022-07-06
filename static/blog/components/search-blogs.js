@@ -91,7 +91,7 @@ Vue.component('search-blogs', {
                             <a :href="'/' + blog.entry.slug + '/' + blog.slug">
                             <div class="blog-post">
                                 <div class="down-content">
-                                <a :href="'/' + blog.entry.slug + '/category/' + blog.category"><span>{{blog.category}}</span></a>
+                                <a :href="'/' + blog.entry.slug + '/category/' + blog.category"><span class="blog-category">{{blog.category}}</span></a>
                                 <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
                                 <ul class="post-info">
                                     <li>{{blog.date}}</li>

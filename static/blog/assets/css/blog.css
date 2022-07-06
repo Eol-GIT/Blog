@@ -479,13 +479,19 @@ header .navbar {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	font-weight: 900;
-	color: #09f;
 	transition-duration: 0.3s;
 }
 
 .blog-posts .down-content span:hover {
-	color: rgba(0, 153, 255, 0.75);
 	transition-duration: 0.3s;
+}
+
+.blog-category {
+	color: #09f !important;
+}
+
+.blog-category:hover {
+	color: rgba(0, 153, 255, 0.75) !important;
 }
 
 .blog-posts .down-content h4 {
@@ -1328,15 +1334,13 @@ blockquote p {
 }
 
 code {
-	background-color: #f1f1f1;
+	font-size: 16px;
 }
 
 pre code {
-	color: lightgrey !important;
 	padding: 0.25rem 0.5rem;
-	background-color: #2b313a;
 	border-radius: 3px;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 pre {
@@ -1344,8 +1348,6 @@ pre {
 	padding: 1.3rem 1.5rem;
 	margin: 0.85rem 0;
 	border-radius: 8px;
-	color: lightgrey;
-	background-color: #2b313a;
 	border-left: 4px solid #09f;
 	position: relative;
 }
@@ -1358,24 +1360,25 @@ pre code {
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	background: #212931;
-	border: 2px solid lightgrey;
+	background: none;
+	border: 1px solid transparent;
 	border-radius: 8px;
-	color: lightgrey;
-	fill: lightgrey;
+	color: #212931;
+	fill: #212931;
 	outline: none;
 	transition-duration: 0.3s;
-	width: 32px;
-	line-height: 27px;
+	width: 35px;
+	line-height: 30px;
 	border-radius: 8px;
 	text-align: center;
 	font-weight: 900;
+	font-size: 20px;
+	cursor: copy;
 }
 
 .--copy:hover {
 	color: #09f;
 	fill: #09f;
-	border-color: #09f;
 	transition-duration: 0.3s;
 }
 
@@ -1392,7 +1395,7 @@ pre code {
 	text-transform: none !important;
 	font-weight: 500 !important;
 	letter-spacing: none !important;
-	color: #495057 !important;
+	color: #495057;
 }
 
 .markdown table {
