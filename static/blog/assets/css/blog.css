@@ -475,7 +475,7 @@ header .navbar {
 }
 
 .blog-posts .down-content span {
-	font-size: 18px;
+	font-size: 1.15rem;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	font-weight: 900;
@@ -1334,13 +1334,17 @@ blockquote p {
 }
 
 code {
-	font-size: 16px;
+	font-size: 1.15rem;
+	background: #f5f2f0;
+	padding: 2px 3px;
+	border-radius: 8px;
 }
 
 pre code {
-	padding: 0.25rem 0.5rem;
+	padding: 0;
 	border-radius: 3px;
-	font-size: 16px;
+	font-size: 1.15rem;
+	background: #f5f2f0;
 }
 
 pre {
@@ -1350,10 +1354,7 @@ pre {
 	border-radius: 8px;
 	border-left: 4px solid #09f;
 	position: relative;
-}
-
-pre code {
-	padding: 0;
+	background: #f5f2f0;
 }
 
 .--copy {
@@ -1391,7 +1392,7 @@ pre code {
 }
 
 .markdown span {
-	font-size: inherit !important;
+	font-size: 1.15rem;
 	text-transform: none !important;
 	font-weight: 500 !important;
 	letter-spacing: none !important;
