@@ -53,8 +53,12 @@ h6 {
 	margin: 0px;
 }
 
+.markdown :is(p) {
+	font-size: 1.37rem;
+}
+
 .markdown :is(h1, h2, h3, h4, h5, h6, p) {
-	margin-bottom: 0.5rem;
+	line-height: 2.2rem;
 }
 
 .main-button a {
@@ -512,11 +516,6 @@ header .navbar {
 	content: '|';
 	color: #aaa;
 	margin-left: 8px;
-}
-
-.blog-posts .down-content h4 {
-	font-size: 20px;
-	letter-spacing: 0.25px;
 }
 
 .grid-system .down-content ul.post-info li {
@@ -1334,7 +1333,7 @@ blockquote p {
 }
 
 code {
-	font-size: 1.15rem;
+	font-size: 100%;
 	background: #f5f2f0;
 	padding: 2px 3px;
 	border-radius: 8px;
@@ -1374,7 +1373,6 @@ pre {
 	text-align: center;
 	font-weight: 900;
 	font-size: 20px;
-	cursor: copy;
 }
 
 .--copy:hover {
