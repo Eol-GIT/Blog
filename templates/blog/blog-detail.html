@@ -3,9 +3,6 @@
 {% block body %}
 <link rel='dns-prefetch' href='//static.addtoany.com' />
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8400632007706493"
-    crossorigin="anonymous"></script>
-
 <style>
     @media (max-width: 769px) {
         html {
@@ -45,31 +42,38 @@
     {% include 'horizontal-ads.html' %}
 </div>
 
-<div id="blog-details">
-    <blog-details blog-slug="{{ blog.slug }}" entry-slug="{{ entry.slug }}">
-    </blog-details>
-</div>
+<section class="blog-posts grid-system mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9" id="blog-details">
+                <blog-details 
+                    blog-slug="{{ blog.slug }}" 
+                    entry-slug="{{ entry.slug }}">
+                </blog-details>
+            </div>
+            <div class="col-lg-3" id="sidemenu">
+                <sidemenu 
+                    entry-slug="{{ entry.slug }}">
+                </sidemenu>
+                {% include 'sidebar-ads.html' %}
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="container">
     {% include 'square-ads.html' %}
 </div>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 {% endblock %}
 {% block extrascripts %}
 <script src="{{ url_for('static', filename='blog/components/blog-details.js') }}"></script>
+<script src="{{ url_for('static', filename='blog/components/blog-comments.js') }}"></script>
 <script src="{{ url_for('static', filename='blog/components/blogs-sidemenu.js') }}"></script>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 
-<script src="{{ url_for('static', filename='blog/components/sidebar-ads.js') }}"></script>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 <script src="{{ url_for('static', filename='blog/components/horizontal-ads.js') }}"></script>
 
-<script>
+<!--<script>
     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+</script>-->
 {% endblock %}
