@@ -50,6 +50,7 @@
                     blog-slug="{{ blog.slug }}" 
                     entry-slug="{{ entry.slug }}">
                 </blog-details>
+                {% include 'square-ads.html' %}
             </div>
             <div class="col-lg-3" id="sidemenu">
                 <sidemenu 
@@ -60,10 +61,6 @@
         </div>
     </div>
 </section>
-
-<div class="container">
-    {% include 'square-ads.html' %}
-</div>
 {% endblock %}
 {% block extrascripts %}
 <script src="{{ url_for('static', filename='blog/components/blog-details.js') }}"></script>

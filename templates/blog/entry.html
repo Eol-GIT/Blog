@@ -32,6 +32,7 @@
                     <entry-blogs 
                         entry-slug="{{ entry.slug }}">
                     </entry-blogs>
+                    {% include 'square-ads.html' %}
                 </div>
                 <div class="col-lg-3" id="sidemenu">
                     <sidemenu 
@@ -40,7 +41,6 @@
                     {% include 'sidebar-ads.html' %}
                 </div>
             </div>
-            {% include 'horizontal-ads.html' %}
         </div>
     </section>
 {% endblock %}
