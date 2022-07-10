@@ -4,7 +4,7 @@ Vue.component('author-details', {
         return {
             author: {},
             blogs: {},
-            pageSize: 12,
+            pageSize: 18,
             buttonText: 'Load More'
         };
     },
@@ -91,7 +91,7 @@ Vue.component('author-details', {
                 </div>
                 </div>
             </div>
-            <button class="author-btn" v-if="blogs.has_next" @click="getAuthorBlogs(pageSize + 12)" id="load-blogs">{{buttonText}}</button>
+            <button class="author-btn" v-if="blogs.has_next" @click="getAuthorBlogs(pageSize + 18)" id="load-blogs">{{buttonText}}</button>
         </div>
     </section>
     </div>
