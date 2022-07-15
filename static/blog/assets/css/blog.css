@@ -61,6 +61,10 @@ h6 {
 	line-height: 2.2rem;
 }
 
+.markdown :is(h1, h2, h3, h4) {
+	margin-bottom: 15px;
+}
+
 .main-button a {
 	display: inline-block;
 	background-color: #09f;

@@ -75,6 +75,10 @@ var ApiService = {
         return axios.get(`/rest/s1/categories/${category}`, params)
         .then(function (response) { return response; });
     },
+    getRecommendedBlogs: function(params) {
+        return axios.get(`/rest/s1/blogs/recommended`, params)
+        .then(function (response) { return response; });
+    },
     //Comment endpoints
     getComments: function(params) {
         return axios.get(`/rest/s1/comments`, params)

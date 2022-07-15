@@ -616,6 +616,27 @@ def getCategoryBlogs(category):
 
     return jsonify(helpers.getPaginatedDict(helpers.getBlogsList(paginated_items.items), paginated_items))
 
+@app.route('/rest/s1/blogs/recommended', methods=["GET"])
+def getRecommendedBlogs():
+    entry = request.args.get('entry')
+    blog = request.args.get('blog')
+    category = request.args.get('category')
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 5, type=int)
+
+    if entry:
+        query = Blog.query.filter(Blog.entry.has(slug=entry))
+    else:
+        query = Blog.query
+
+    query = query.filter_by(category=category)
+
+    paginated_items = query.order_by(Blog.id.desc()).paginate(page=page, per_page=per_page)
+
+    res = [i for i in helpers.getBlogsList(paginated_items.items) if not (i['slug'] == blog)]
+
+    return jsonify(helpers.getPaginatedDict(res, paginated_items))
+
 @app.route('/rest/s1/comments', methods=["GET"])
 def getComments():
     page = request.args.get('page', 1, type=int)

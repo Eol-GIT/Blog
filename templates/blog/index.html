@@ -18,15 +18,15 @@
         <div class="container">
             {% include 'horizontal-ads.html' %}
             <div class="row">
-            <div class="col-lg-9" id="entries-home">
-                <entries-home></entries-home>
+                <div class="col-lg-9" id="entries-home">
+                    <entries-home></entries-home>
+                    {% include 'square-ads.html' %}
+                </div>
+                <div class="col-lg-3" id="sidemenu">
+                    <sidemenu></sidemenu>
+                    {% include 'sidebar-ads.html' %}
+                </div>
             </div>
-            <div class="col-lg-3" id="sidemenu">
-                <sidemenu></sidemenu>
-                {% include 'sidebar-ads.html' %}
-            </div>
-            </div>
-            {% include 'horizontal-ads.html' %}
         </div>
     </section>
     <div id="blog-stats">
