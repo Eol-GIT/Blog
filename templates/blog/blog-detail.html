@@ -51,6 +51,14 @@
                     entry-slug="{{ entry.slug }}">
                 </blog-details>
                 {% include 'square-ads.html' %}
+                <div id="blog-suggestions">
+                    <blog-suggestions 
+                        blog-slug="{{blog.slug}}" 
+                        entry-slug="{{entry.slug}}" 
+                        category="{{blog.category}}">
+                    </blog-suggestions>
+                </div>
+                {% include 'horizontal-ads.html' %}
             </div>
             <div class="col-lg-3" id="sidemenu">
                 <sidemenu 

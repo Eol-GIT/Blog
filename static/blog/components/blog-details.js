@@ -168,13 +168,6 @@ Vue.component('blog-details', {
                 <blog-comments :blog-slug="blogSlug"></blog-comments>
             </div>
         </div>
-        <div id="blog-suggestions">
-            <blog-suggestions 
-                :blog-slug="blogSlug" 
-                :entry-slug="entrySlug" 
-                :category="blog.category">
-            </blog-suggestions>
-        </div>
     </div>
     `
 })

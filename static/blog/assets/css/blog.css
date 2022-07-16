@@ -1958,3 +1958,17 @@ pre {
 		max-width: 1250px;
 	}
 }
+
+.carousel-indicators li {
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+}
+
+.carousel-indicators li {
+	background-color: #09f !important;
+}
+
+.carousel-indicators .active {
+	background-color: #000 !important;
+}

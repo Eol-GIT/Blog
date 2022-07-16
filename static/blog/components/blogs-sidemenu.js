@@ -52,7 +52,7 @@ Vue.component('sidemenu', {
     template: `
     <div class="sidebar">
         <div class="row">
-        <div class="col-lg-12 p-0">
+        <div class="col-lg-12">
             <div class="sidebar-item search">
                 <form @submit.prevent="location.href = '/search/blogs?search=' + searchInput.replaceAll(' ', '+');">
                     <input type="text" class="searchText" placeholder="Search Blogs..." autocomplete="off" v-model="searchInput" @change="searchBlogs">
