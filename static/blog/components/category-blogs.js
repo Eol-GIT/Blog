@@ -11,7 +11,7 @@ Vue.component('category-blogs', {
     },
     methods: {
         paginatedBlogs(page){
-            ApiService.getCategoryBlogs(this.category, {params: {page: page, entry: this.entrySlug}}).then(
+            ApiService.getCategoryBlogs(this.category, {params: {page: page, entry: this.entrySlug, per_page: 10}}).then(
                 res => {
                     this.blogs = res.data;
                 }
@@ -63,7 +63,7 @@ Vue.component('category-blogs', {
                                 <i class="fa fa-angle-double-left"></i>
                             </a>
                         </li>
-                        <li v-for="page in blogs.pages" :class="{'active': page === blogs.page}">
+                        <li v-for="page in blogs.page_range" :class="{'active': page === blogs.page}">
                             <a @click="paginatedBlogs(page)" href="#" onclick="return false;">{{page}}</a>
                         </li>
                         <li>

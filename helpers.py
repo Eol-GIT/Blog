@@ -1,3 +1,9 @@
+def get_page_range(page, total, show=5):
+    start = max((page - (show // 2)), 1)
+    stop = min(start + show, total) + 1
+    start = max(min(start, stop - show), 1)
+    return list(range(start, stop)[:show])
+
 def getAuthorsList(authors):
     authors_list = []
     for i in authors:
@@ -117,4 +123,5 @@ def getPaginatedDict(data, paginated_items):
         "next_num": paginated_items.next_num,
         "prev_num": paginated_items.prev_num,
         "total": paginated_items.total,
+        "page_range": get_page_range(paginated_items.page, paginated_items.pages, 5)
     }

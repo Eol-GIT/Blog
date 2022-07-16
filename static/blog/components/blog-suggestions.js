@@ -32,7 +32,7 @@ Vue.component('blog-suggestions', {
             font-weight: 700;
             color: #09f;
             font-size: 16pt;
-            letter-spacing: .2rem;">Recommended Blogs:</h4>
+            letter-spacing: .1rem;">Recommended Blogs:</h4>
             <p><b>Page:</b> {{page}} / {{blogs.pages > 3 ? 3 : blogs.pages}}</p>
         </div>
         <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">

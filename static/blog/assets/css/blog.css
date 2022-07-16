@@ -61,8 +61,8 @@ h6 {
 	line-height: 2.2rem;
 }
 
-.markdown :is(h1, h2, h3, h4) {
-	margin-bottom: 15px;
+.markdown :is(h1, h2, h3) {
+	margin-bottom: 1rem;
 }
 
 .main-button a {
@@ -610,6 +610,14 @@ ul.page-numbers li a {
 	border-radius: 8px;
 }
 
+@media (max-width: 769px) {
+	ul.page-numbers li a {
+		width: 35px;
+		height: 35px;
+		line-height: 35px;
+	}
+}
+
 ul.page-numbers li.active a {
 	background-color: #09f;
 	border-color: #09f;
@@ -617,6 +625,10 @@ ul.page-numbers li.active a {
 }
 
 ul.page-numbers li a:hover {
+	color: #09f;
+}
+
+ul.page-numbers li.active a:hover {
 	color: rgb(162, 218, 255);
 }
 

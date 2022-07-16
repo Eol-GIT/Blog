@@ -42,7 +42,7 @@ Vue.component('entry-blogs', {
                     <i class="fa fa-angle-double-left"></i>
                 </a>
             </li>
-            <li v-for="page in blogs.pages" :class="{'active': page === blogs.page}">
+            <li v-for="page in blogs.page_range" :class="{'active': page === blogs.page}">
                 <a @click="paginatedBlogs(page)" href="#" onclick="return false;">{{page}}</a>
             </li>
             <li>
