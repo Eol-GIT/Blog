@@ -3,7 +3,7 @@ Vue.component('search-blogs', {
     data() {
         return {
             page: 1,
-            pageSize: 16,
+            pageSize: 20,
             recentBlogs: [],
             blogs: [],
             searchInput: "",
@@ -44,12 +44,7 @@ Vue.component('search-blogs', {
                         this.searchResults = res.data.data;
                     }
                 )
-            } else {
-                this.emptyResults();
             }
-        },
-        emptyResults(){
-            this.searchResults = [];
         }
     },
     watch: {
@@ -129,7 +124,7 @@ Vue.component('search-blogs', {
                                 <form @submit.prevent="location.href = '/search/blogs?search=' + searchInput.replaceAll(' ', '+');">
                                     <input type="text" class="searchText" placeholder="Search Blogs..." autocomplete="off" v-model="searchInput" @change="searchBlogs">
                                 </form>
-                                <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
+                                <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchInput">
                                     <div v-for="result in searchResults">
                                         <a :href="'/' + result.entry.slug + '/' + result.slug" class="text-dark">
                                             <h5>{{result.title}}</h5>

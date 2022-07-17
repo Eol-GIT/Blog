@@ -11,7 +11,7 @@ Vue.component('category-blogs', {
     },
     methods: {
         paginatedBlogs(page){
-            ApiService.getCategoryBlogs(this.category, {params: {page: page, entry: this.entrySlug, per_page: 10}}).then(
+            ApiService.getCategoryBlogs(this.category, {params: {page: page, entry: this.entrySlug, per_page: 20}}).then(
                 res => {
                     this.blogs = res.data;
                 }
