@@ -26,7 +26,7 @@ Vue.component('blog-suggestions', {
         }
     },
     template: `
-    <div>
+    <div v-if="blogs.data.length > 0">
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
             <h4 style="text-transform: uppercase;
             font-weight: 700;
