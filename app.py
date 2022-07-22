@@ -636,7 +636,12 @@ def getComments():
     per_page = request.args.get('per_page', 5, type=int)
     blog = request.args.get('blog')
 
-    paginated_items = Comment.query.filter(Comment.blog.has(slug=blog)).order_by(Comment.id.desc()).paginate(page=page, per_page=per_page)
+    if blog:
+        query = Comment.query.filter(Comment.blog.has(slug=blog))
+    else:
+        query = Comment.query
+
+    paginated_items = query.order_by(Comment.id.desc()).paginate(page=page, per_page=per_page)
     return jsonify(helpers.getPaginatedDict(helpers.getCommentsList(paginated_items.items), paginated_items))
 
 @app.route('/rest/s1/comments/create', methods=["POST"])
