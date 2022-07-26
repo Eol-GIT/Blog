@@ -217,6 +217,8 @@ def searchBlogs():
     if query:
         query = query.strip().replace('+', ' ')\
             .replace('%20', ' ')
+    else:
+        query = "*"
     return render_template('blog/search-blogs.html', query=query)
 
 @app.route('/search/tutorials/')
@@ -669,6 +671,8 @@ def getSearchedBlogs():
     if search:
         search = search.strip().replace('+', ' ')\
             .replace('%20', ' ')
+    else: 
+        search = "*"
 
     if '*' in search or '_' in search: 
         looking_for = search.replace('_', '__')\
