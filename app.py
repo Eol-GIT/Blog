@@ -444,7 +444,6 @@ def editBlog(slug):
 
     blog = Blog.query.filter_by(slug=slug).first_or_404()
     blog.title = title
-    blog.slug = slugify(title)
     blog.category = category.lower()
     blog.author = query_author
     blog.entry = query_entry
