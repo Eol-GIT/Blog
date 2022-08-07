@@ -38,7 +38,7 @@ Vue.component('footer-component', {
             </div>
             <div class="col-md text-center">
                 <h4> {{i18next.t("findMeOtherSocialMediaText")}}</h4> 
-                <a href="https://www.facebook.com/eol.nuha/"> <i class="fa fa-facebook"></i> </a> 
+                <a href="https://www.facebook.com/EolNuhaBlogs"> <i class="fa fa-facebook"></i> </a> 
                 <a href="https://twitter.com/EolNuhaBlogs"> <i class="fa fa-twitter"></i> </a> 
                 <a href="https://github.com/EolNuha"> <i class="fa fa-github"></i> </a>
                 <a href="https://www.linkedin.com/in/eolnuha/"> <i class="fa fa-linkedin"></i> </a>

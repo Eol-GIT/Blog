@@ -50,11 +50,11 @@ Vue.component('footer-section', {
         </div>
         <div class="row mt-5 pt-4 border-top footer-icons">
             <div class="col-md-6 col-lg-8 mb-md-0 mb-4">
-                <p class="copyright mb-0">Copyright ©<script>document.write(new Date().getFullYear());</script>2022 All rights reserved.</p>
+                <p class="copyright mb-0">Copyright ©<script>document.write(new Date().getFullYear());</script> 2022 All rights reserved.</p>
             </div>
             <div class="col-md-6 col-lg-4 text-md-right">
                 <ul class="social-icons border-bottom-0">
-                    <li class="h2"><a href="https://www.facebook.com/eol.nuha/"><i class="fa fa-facebook"></i></a></li>
+                    <li class="h2"><a href="https://www.facebook.com/EolNuhaBlogs"><i class="fa fa-facebook"></i></a></li>
                     <li class="h2"><a href="https://twitter.com/EolNuhaBlogs"><i class="fa fa-twitter"></i></a></li>
                     <li class="h2"><a href="https://www.linkedin.com/in/eolnuha/"><i class="fa fa-linkedin"></i></a></li>
                 </ul>

@@ -22,7 +22,7 @@ Vue.component('cyber-city', {
     },
     template: `
         <div>
-        <a id="home"><i class="fa fa-home" aria-hidden="true"></i></a>
+        <a id="home"><i class="fa fa-home" aria-hidden="true"></i> PORTFOLIO</a>
         <span class="fas fa-sun position-fixed text-warning" onclick="darkModeToggle()" id="sun"></span>
         <span class="fas fa-moon position-fixed text-warning" onclick="darkModeToggle()" id="moon"></span>
         <div class="flag-menu-parent" tab-index="0" v-if="consent">
