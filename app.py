@@ -736,6 +736,25 @@ def getSearchedAuthors():
 
     return jsonify(helpers.getPaginatedDict(helpers.getAuthorsList(paginated_items.items), paginated_items))
 
+"""
+@app.route('/rest/s1/youtube/mp3/info')
+def getYoutubeUrlInfo():
+    url = request.args.get('url', "", type=str)
+    video_info = youtube_dl.YoutubeDL().extract_info(url = url,download=False)
+    video_id = video_info.get("id", None)
+    video_title = video_info.get('title', None)
+    video_thumbnail = video_info.get('thumbnail', None)
+    video_duration = video_info.get('duration', None)
+
+    info = {
+        "id": video_id,
+        "title": video_title,
+        "duration": video_duration,
+        "thumbnail": video_thumbnail,
+    }
+    return jsonify(info)
+"""
+
 if __name__ == '__main__':
     db.create_all()
-    app.run()
+    app.run(debug=True)

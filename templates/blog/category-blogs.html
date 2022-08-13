@@ -6,12 +6,41 @@
         <nav-bar active=""></nav-bar>
     </header>
     
-    <div id="category-blogs">
-        <category-blogs 
-            entry-slug="{{ entry.slug }}"
-            category="{{ category }}">
-        </category-blogs>
+    <div class="heading-page header-text">
+        <h6 class="pl-2 text-capitalize"><a href="/{{entry.slug}}">{{ entry.slug }}</a> > <a href="{{category}}">{{category}}</a></h6>
+        <section class="page-heading">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-content">
+                  <h4>Blogs by Category</h4>
+                  <h2>{{category}}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
     </div>
+    <section class="blog-posts grid-system mt-4">
+        <div class="container">
+            {% include 'horizontal-ads.html' %}
+            <div class="row">
+                <div class="col-lg-9" id="category-blogs">
+                    <category-blogs 
+                        entry-slug="{{ entry.slug }}"
+                        category="{{ category }}">
+                    </category-blogs>
+                    {% include 'square-ads.html' %}
+                </div>
+                <div class="col-lg-3" id="sidemenu">
+                    <sidemenu
+                        entry-slug="{{entry.slug}}">
+                    </sidemenu>
+                    {% include 'sidebar-ads.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 {% block extrascripts %}
     <script src="{{ url_for('static', filename='blog/components/category-blogs.js') }}"></script>
