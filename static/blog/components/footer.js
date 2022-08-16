@@ -12,7 +12,7 @@ Vue.component('footer-section', {
                     <div class="col-md-4 mb-md-0 mb-4">
                         <h4 class="footer-heading">About</h4>
                         <ul class="list-unstyled">
-                            <li><a href="/blog/about-us" class="d-block text-secondary">Out story</a></li>
+                            <li><a href="/blog/about-us" class="d-block text-secondary">Our story</a></li>
                             <li><a href="#" class="d-block text-secondary">Awards</a></li>
                             <li><a href="/blog/authors" class="d-block text-secondary">Our Team</a></li>
                             <li><a href="#" class="d-block text-secondary">Career</a></li>

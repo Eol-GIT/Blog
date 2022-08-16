@@ -645,10 +645,15 @@ def getComments():
 
 @app.route('/rest/s1/comments/create', methods=["POST"])
 def createComment():
+    illegal_words = ["<script>", "</script>", "<style>", "</style>"]
     first_name = request.json["firstName"]
     last_name = request.json["lastName"]
     body = request.json["body"]
     blog = request.json["blog"]
+
+    if any(x in body for x in illegal_words):
+        return
+
 
     query_blog = Blog.query.filter_by(slug=blog).one()
     
@@ -757,4 +762,4 @@ def getYoutubeUrlInfo():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run()

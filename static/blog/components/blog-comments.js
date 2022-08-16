@@ -33,6 +33,11 @@ Vue.component('blog-comments', {
 		},
 		createComment(){
 			this.submitText = "Posting...";
+            if(this.body.includes("<script>") || this.body.includes("</script>") || this.body.includes("<style>") || this.body.includes("</style>")){
+                toastr.error("Comment can not have script or style tags!", "Error!");
+                this.submitText = "Submit";
+                return;
+            }
 			ApiService.createComment({
 				firstName: this.firstName,
 				lastName: this.lastName,
