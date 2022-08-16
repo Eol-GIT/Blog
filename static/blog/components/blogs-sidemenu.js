@@ -86,7 +86,7 @@ Vue.component('sidemenu', {
             <div class="content">
                 <ul>
                     <li v-for="category in categories">
-                        <a :href="'/' + entrySlug + '/category/' + category" class="text-capitalize">- {{category}}</a>
+                        - <a :href="'/' + entrySlug + '/category/' + category" class="sidebar-categories">{{category}}</a>
                     </li>
                 </ul>
             </div>

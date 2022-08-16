@@ -806,7 +806,7 @@ ul.page-numbers li a.disabled {
 	letter-spacing: 0.5px;
 	color: #20232e;
 	border-bottom: 1px solid #eee;
-	padding-bottom: 15px;
+	padding-bottom: 0;
 	margin-bottom: 25px;
 }
 
@@ -1938,4 +1938,15 @@ pre {
 
 .carousel-indicators .active {
 	background-color: #000 !important;
+}
+
+.sidebar-categories {
+	padding: 5px 10px;
+	background:rgba(0, 153, 255, 0.26);
+	color: white;
+	border-radius: 100px;
+	text-transform: capitalize;
+}
+.sidebar-categories:hover {
+	background: #eee;
 }
