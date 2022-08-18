@@ -74,7 +74,9 @@ Vue.component('blog-comments', {
                             <div class="right-content ml-0">
                                 <h4>{{comment.firstName}}
                                     {{comment.lastName}}<span>{{comment.date}}</span></h4>
-                                <div class="markdown" v-html="markdown(comment.body)"></div>
+                                
+                                <!-- <div class="markdown" v-html="markdown(comment.body)"></div> -->
+                                <div class="markdown">{{ comment.body }}</div>
                             </div>
                         </li>
                     </ul>
@@ -109,8 +111,7 @@ Vue.component('blog-comments', {
                                 <fieldset>
                                     <textarea name="body" rows="6" id="body" placeholder="Your Comment" required=""
                                         v-model="body" class="mb-0"></textarea>
-                                    <small>Comment your opinion on this blog! (hint: you can use
-                                        markdown)</small>
+                                    <small>Comment your opinion on this blog!</small>
                                 </fieldset>
                             </div>
                             <div class="col-lg-12 mt-2">

@@ -40,7 +40,7 @@
 }
 
 .dark-mode-body code,
-pre {
+.dark-mode-body pre {
 	background-color: #1f1f1f;
 	color: white;
 }
@@ -214,4 +214,17 @@ pre {
 .dark-mode-body blockquote {
     background-color: #1f1f1f;
     border-color: #31313142;
+}
+
+.dark-mode-body .table-of-content {
+	background-color: rgba(50, 50, 50, 0.5);
+    border-color: rgba(50, 50, 50, 0.5);
+}
+
+.dark-mode-body .navigator-child .navigator__title {
+    color: lightgray;
+}
+
+.dark-mode-body .is-active .navigator__title, .dark-mode-body .navigator-child:hover .navigator__title {
+	color: #09f;
 }
