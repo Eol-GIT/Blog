@@ -1,23 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block title %}Frequently Asked Questions | Eol Nuha Blogs{% endblock %}
 {% block body %}
-<style>
-    :root {
-  --color-text: hsl(248, 10%, 40%);
-  --color-text-muted: hsl(248, 10%, 40%);
-  --color-purple: #09f;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-button:focus {
-    outline: none;
-}
-</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='blog/assets/css/views/faq.css') }}">
 <!-- Header -->
 <header class="" id="navbar">
     <nav-bar active=""></nav-bar>

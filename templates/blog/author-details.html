@@ -1,27 +1,9 @@
 {% extends 'blog/base.html' %}
 {% block title %}Author | {{ author.first_name }} {{author.last_name}}{% endblock %}
 {% block body %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='blog/assets/css/views/author.css') }}">
     <style>
-        :root {
-            font-size: 13px;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        .author-profile-container {
-            max-width: 93.5rem;
-            margin: 0 auto;
-            padding: 0 2rem;
-            font-size: 10px !important;
-        }
-        .navbar-toggler {
-            padding: 0.35rem 0.95rem;
-            font-size: 1.5rem;
-        }
+        
     </style>
     <!-- Header -->
     <header class="" id="navbar">

@@ -431,7 +431,7 @@ def deleteBlog(slug):
     db.session.commit()
     return jsonify(blog)
 
-@app.route('/rest/s1/blogs/<string:slug>/update', methods=["POST"])
+@app.route('/rest/s1/blogs/<string:slug>/update', methods=["GET", "POST"])
 def editBlog(slug):
     title = request.json["title"]
     category = request.json["category"]

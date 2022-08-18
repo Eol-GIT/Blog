@@ -1,0 +1,182 @@
+svg #sun {
+    cursor: pointer;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+    animation-name: rotate;
+    transform-origin: 50% 50%;
+    fill: #fcd000;
+}
+
+svg line {
+    stroke-width: 2px;
+    stroke: #fcd000;
+    stroke-dasharray: 11px;
+    stroke-dashoffset: 4px;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+}
+
+svg .even line {
+    animation-name: pulse;
+}
+
+svg .even line:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+svg .even line:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+svg .even line:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+svg .odd line {
+    animation-name: pulse-rev;
+    stroke-dashoffset: 11px;
+}
+
+svg .odd line:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+svg .odd line:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+svg .odd line:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0% {
+        stroke-dashoffset: 0px;
+    }
+
+    50% {
+        stroke-dashoffset: 6px;
+    }
+
+    100% {
+        stroke-dashoffset: 0px;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse-rev {
+    0% {
+        stroke-dashoffset: 6px;
+    }
+
+    50% {
+        stroke-dashoffset: 0px;
+    }
+
+    100% {
+        stroke-dashoffset: 6px;
+    }
+}
+
+
+.star {
+    height: 5px;
+    width: 5px;
+    border-radius: 100%;
+    background-color: yellow;
+}
+
+.star-1 {
+    animation: star 5s linear infinite;
+    box-shadow: 35px -0px 0 0 yellow;
+}
+
+.star-2 {
+    background-color: transparent;
+    animation: star2 5s linear infinite;
+    box-shadow: 40px 10px 0 0 yellow;
+}
+
+.fa-moon {
+    z-index: 1000;
+    color: #ffc107;
+    font-size: 1.5rem;
+    animation: float 3s infinite;
+}
+
+#shadow {
+    margin: 5px auto 0;
+    background: transparent;
+    width: 50px;
+    height: 10px;
+    border-radius: 50%;
+    animation: zoom 3s infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transfrom: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes slow-float {
+
+    0%,
+    100% {
+        transfrom: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-2.5px);
+    }
+}
+
+@keyframes star {
+
+    5%,
+    20% {
+        opacity: 0;
+    }
+
+    25%,
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes star2 {
+
+    0%,
+    60% {
+        opacity: 1;
+    }
+
+    65%,
+    70% {
+        opacity: 0;
+    }
+
+    75%,
+    100% {
+        opacity: 1;
+    }
+}

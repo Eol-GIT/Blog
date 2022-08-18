@@ -59,7 +59,7 @@ Vue.component('sidemenu', {
                 <form @submit.prevent="location.href = '/search/tutorials?search=' + searchInput.replaceAll(' ', '+');">
                     <input type="text" class="searchText" placeholder="Search Tutorials..." autocomplete="off" v-model="searchInput" @change="searchEntries">
                 </form>
-                <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchResults.length > 0">
+                <div class="search-results" v-if="searchResults.length > 0">
                     <div v-for="result in searchResults">
                         <a :href="'/' + result.slug" class="text-dark">
                             <div class="d-flex">

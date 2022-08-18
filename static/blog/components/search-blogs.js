@@ -8,7 +8,7 @@ Vue.component('search-blogs', {
             blogs: [],
             searchInput: "",
             searchResults: []
-        };
+        }
     },
     created(){
         this.getSearchResults(this.page);
@@ -87,7 +87,7 @@ Vue.component('search-blogs', {
                             <div class="blog-post">
                                 <div class="down-content">
                                 <a :href="'/' + blog.entry.slug + '/category/' + blog.category"><span class="blog-category">{{blog.category}}</span></a>
-                                <h3 class="text-dark font-weight-bold">{{blog.title}}</h3>
+                                <h3 class="text-dark font-weight-bold" id="entry-blog-title">{{blog.title}}</h3>
                                 <ul class="post-info">
                                     <li>{{blog.date}}</li>
                                 </ul>
@@ -124,7 +124,7 @@ Vue.component('search-blogs', {
                                 <form @submit.prevent="location.href = '/search/blogs?search=' + searchInput.replaceAll(' ', '+');">
                                     <input type="text" class="searchText" placeholder="Search Blogs..." autocomplete="off" v-model="searchInput" @change="searchBlogs" required>
                                 </form>
-                                <div class="position-absolute bg-light w-100 p-3" style="z-index: 1000; border: 1px solid rgba(0,0,0,.1)" v-if="searchInput && searchResults.length > 0">
+                                <div class="search-results" v-if="searchInput && searchResults.length > 0">
                                     <div v-for="result in searchResults">
                                         <a :href="'/' + result.entry.slug + '/' + result.slug" class="text-dark">
                                             <h5>{{result.title}}</h5>

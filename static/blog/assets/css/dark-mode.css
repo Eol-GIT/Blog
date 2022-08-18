@@ -1,0 +1,217 @@
+.dark-mode-body {
+	background-color: #1e1e1e !important;
+}
+
+.dark-mode-body>* {
+	color: white !important;
+}
+
+.dark-mode-body p {
+	color: lightgray;
+}
+
+.dark-mode-body .navbar .navbar-nav a.nav-link {
+	color: white !important;
+	background-color: #1e1e1e !important;
+}
+
+.dark-mode-body .navbar .navbar-nav {
+	color: white !important;
+	background-color: #1e1e1e !important;
+}
+
+.dark-mode-body .navbar .navbar-nav a.nav-link:hover {
+	color: #09f !important;
+}
+
+.dark-mode-body header {
+	background-color: #1e1e1e !important;
+	box-shadow: 0px 1px 10px rgba(100, 100, 100, 0.25);
+}
+
+.dark-mode-body .header-logo {
+	content: url("/static/blog/assets/images/logo-white-icon-blue.png");
+}
+
+.dark-mode-body code[class*=language-], .dark-mode-body pre[class*=language-] {
+	background-color: #1f1f1f;
+	text-shadow: 0 1px transparent !important;
+	color: white;
+}
+
+.dark-mode-body code,
+pre {
+	background-color: #1f1f1f;
+	color: white;
+}
+
+.dark-mode-body .language-css .token.string,
+.dark-mode-body .style .token.string,
+.dark-mode-body .token.entity,
+.dark-mode-body .token.operator,
+.dark-mode-body .token.url {
+	background-color: transparent;
+}
+
+.dark-mode-body hr {
+	border-top: 1px solid rgba(255, 255, 255, .3);
+}
+
+.dark-mode-body .--copy {
+	fill: white;
+	stroke: white;
+}
+
+.dark-mode-body .blog-posts .down-content {
+	border-color: #181818;
+	background-color: #181818;
+	transition-duration: 0.2s;
+}
+
+.dark-mode-body .blog-posts .down-content:hover {
+	background-color: rgba(24, 24, 24, 0.5);
+	transition-duration: 0.2s;
+}
+
+.dark-mode-body #entry-blog-title {
+	color: white !important;
+}
+
+.dark-mode-body footer {
+	background-color: #181818;
+}
+
+.dark-mode-body .page-heading {
+	background: linear-gradient(#181818, #181818, #121212);
+}
+
+.dark-mode-body .sidebar .recent-posts ul li h5 {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.dark-mode-body .sidebar .recent-posts ul li h5:hover {
+	color: #09f;
+}
+
+.dark-mode-body .sidebar .categories ul li a:hover {
+	color: #09f;
+}
+
+.dark-mode-body .blog-posts .sidebar-heading h2,
+.dark-mode-body .blog-posts .comments ul li .right-content h4,
+.dark-mode-body .sidebar .categories ul li a,
+.dark-mode-body ul.page-numbers li a,
+.dark-mode-body .--copy .fa-check,
+.dark-mode-body .blog-posts .down-content h4,
+.dark-mode-body .sidebar .sidebar-heading h2 {
+	color: white;
+}
+
+.dark-mode-body ul.page-numbers li a.disabled {
+	color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode-body ul.page-numbers li.active a:hover {
+	color: rgb(162, 218, 255);
+}
+
+.dark-mode-body ul.page-numbers li a:hover {
+    color: #09f;
+}
+
+.dark-mode-body .--copy:hover {
+	color: #09f;
+	fill: #09f;
+}
+
+.dark-mode-body .sidebar .search input, .dark-mode-body .blog-posts .submit-comment input, .dark-mode-body .blog-posts .submit-comment textarea {
+	background-color: #181818;
+	color: white;
+	border-color: rgb(79, 79, 79);
+}
+
+.dark-mode-body .prev-next-blog-btn {
+	outline: none;
+	background-color: #181818;
+	border-color: rgb(79, 79, 79);
+}
+
+.dark-mode-body .prev-next-blog-btn:hover {
+	outline: none;
+	background-color: #1f1f1f;
+}
+
+.dark-mode-body .prev-next-blog-btn:focus {
+	outline: none;
+}
+
+.dark-mode-body .search-results {
+	background-color: #242424;
+	color: white !important;
+}
+
+.dark-mode-body .search-results .text-dark {
+	color: white !important;
+}
+
+.dark-mode-body ul.page-numbers li a {
+	border-color: rgb(79, 79, 79);
+}
+
+.dark-mode-body .contact-us .sidebar-heading h2 {
+    color: white;
+}
+
+.dark-mode-body .contact-us .contact-information ul li h5 {
+    color: white;
+}
+
+.dark-mode-body .contact-us .contact-form input, .dark-mode-body .contact-us .contact-form textarea {
+    background-color: #181818;
+	color: white;
+	border-color: rgb(79, 79, 79);
+}
+
+.dark-mode-body .navbar .navbar-nav .active a.nav-link {
+    color: #09f !important;
+}
+
+@media (max-width: 992px) {
+    .dark-mode-body .sidebar {
+        border-top: 3px solid transparent;
+    }
+}
+
+.dark-mode-body .accordion {
+	background: #181818;
+}
+
+.dark-mode-body .accordion__btn {
+	background: #181818;
+}
+
+.dark-mode-body .accordion__btn:hover {
+	background: #1f1f1f;
+}
+
+.dark-mode-body .accordion__item--active .accordion__btn {
+    color: #09f;
+	background: #1f1f1f;
+}
+
+.dark-mode-body .accordion__content p {
+	color: hsl(247, 4%, 51%);
+}
+
+.dark-mode-body .accordion__btn {
+    color: lightgray;
+}
+
+.dark-mode-body .stats-col {
+    box-shadow: 0 0 15px 5px #dee2e613;
+}
+
+.dark-mode-body blockquote {
+    background-color: #1f1f1f;
+    border-color: #31313142;
+}
