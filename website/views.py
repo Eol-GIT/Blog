@@ -10,7 +10,7 @@ project_list = ['sorting-visualizer', 'movie-freaks', 'dino-game', 'cyber-city',
 
 @views.errorhandler(404)
 def error_404(e):
-    return render_template('error/500.html'), 500
+    return render_template('error/404.html'), 404
 
 @views.errorhandler(403)
 def error_403(e):
