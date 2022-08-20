@@ -4,6 +4,30 @@ html {
 	scroll-behavior: smooth;
 }
 
+body {
+	font-family: 'Raleway';
+	overflow-x: hidden;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+p {
+	font-size: 20px;
+	font-weight: 400;
+	color: #000;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
 #toast-container>div {
 	opacity: 1;
 }
@@ -61,30 +85,6 @@ html {
 
 #cookiescript_injected {
 	display: none !important;
-}
-
-body {
-	font-family: 'Raleway';
-	overflow-x: hidden;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-p {
-	font-size: 20px;
-	font-weight: 400;
-	color: #000;
-}
-
-a {
-	text-decoration: none !important;
-}
-
-ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
 }
 
 .markdown ul {
